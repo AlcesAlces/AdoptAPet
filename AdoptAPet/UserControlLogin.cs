@@ -26,14 +26,18 @@ namespace AdoptAPet
                 user = new User
                 {
                     userName = "blake",
-                    password = "pass"
+                    password = "pass",
+                    admin = true
                 };
 
                 Global.publicUser = user;
 
                 Global.panel.Controls.Clear();
                 Global.panel.Controls.Add(new UserControlSearch());
-                
+                FormHelpers.changeElementsBasedOnPrivledge();
+                Global.menuItemsUser[0].Visible = false;
+                Global.menuItemsUser[1].Visible = true;
+                Global.menuItemsUser[2].Visible = false;
             }
         }
 
@@ -41,6 +45,7 @@ namespace AdoptAPet
         {
             setElementsNuetral();
             verifyLogin();
+            FormHelpers.changeElementsBasedOnPrivledge();
         }
 
         /// <summary>
@@ -59,6 +64,9 @@ namespace AdoptAPet
                         Global.publicUser = user;
                         Global.panel.Controls.Clear();
                         Global.panel.Controls.Add(new UserControlSearch());
+                        Global.menuItemsUser[0].Visible = false;
+                        Global.menuItemsUser[1].Visible = true;
+                        Global.menuItemsUser[2].Visible = false;
                     }
 
                     else

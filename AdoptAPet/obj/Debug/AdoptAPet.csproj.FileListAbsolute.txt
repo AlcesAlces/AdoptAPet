@@ -13,3 +13,4 @@ D:\C#Projects\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.UserControlSearch.resource
 D:\C#Projects\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.UserControlHome.resources
 D:\C#Projects\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.UserControlLogin.resources
 D:\C#Projects\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.UserControlRegister.resources
+D:\C#Projects\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.AddAnimal.resources

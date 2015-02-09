@@ -15,6 +15,11 @@ namespace AdoptAPet.HelperFunctions
     static class Queries
     {
 
+        /// <summary>
+        /// Pass in a SQL statement, get a dataset back
+        /// </summary>
+        /// <param name="sql"></param>
+        /// <returns>dataset</returns>
         private static DataSet dsBySql(string sql)
         {
             string connection = String.Format("Server=127.0.0.1;Port=5432;User Id=postgres;Password=stimperman;Database=AdoptAPet");
@@ -43,7 +48,8 @@ namespace AdoptAPet.HelperFunctions
             return new User
             {
                 userName = ds.Tables[0].Rows[0]["NAME"].ToString().Trim(),
-                password = ds.Tables[0].Rows[0]["PASS"].ToString().Trim()
+                password = ds.Tables[0].Rows[0]["PASS"].ToString().Trim(),
+                admin = (bool)ds.Tables[0].Rows[0]["ADMIN"]
             };
         }
 
@@ -95,9 +101,36 @@ namespace AdoptAPet.HelperFunctions
 
         public static List<Animal> animalNamesByParameter(string species, string breed)
         {
-            string sql = "SELECT A.\"NAME\", A.\"AID\" FROM \"ANIMAL\" A INNER JOIN \"SPECIES\" S ON "+
-                            "A.\"SPECIES\" = S.\"SID\" INNER JOIN \"BREED\" B ON A.\"BREED\" = "+
-                            "B.\"BID\" WHERE S.\"NAME\" = '"+species+"' AND B.\"NAME\" = '"+breed+"'";
+            string sql = "";
+
+            if(species == null && breed != null)
+            {
+                sql = "SELECT A.\"NAME\", A.\"AID\" FROM \"ANIMAL\" A INNER JOIN \"SPECIES\" S ON " +
+                      "A.\"SPECIES\" = S.\"SID\" INNER JOIN \"BREED\" B ON A.\"BREED\" = " +
+                      "B.\"BID\" WHERE B.\"NAME\" = '" + breed + "'";
+            }
+
+            else if(breed == null && species != null)
+            {
+                sql = "SELECT A.\"NAME\", A.\"AID\" FROM \"ANIMAL\" A INNER JOIN \"SPECIES\" S ON " +
+                      "A.\"SPECIES\" = S.\"SID\" INNER JOIN \"BREED\" B ON A.\"BREED\" = " +
+                      "B.\"BID\" WHERE S.\"NAME\" = '" + species +"'";
+            }
+
+            else if (breed == null && species == null)
+            {
+                sql = "SELECT A.\"NAME\", A.\"AID\" FROM \"ANIMAL\" A INNER JOIN \"SPECIES\" S ON " +
+                      "A.\"SPECIES\" = S.\"SID\" INNER JOIN \"BREED\" B ON A.\"BREED\" = " +
+                      "B.\"BID\"";
+            }
+
+            else
+            {
+                sql = "SELECT A.\"NAME\", A.\"AID\" FROM \"ANIMAL\" A INNER JOIN \"SPECIES\" S ON " +
+                      "A.\"SPECIES\" = S.\"SID\" INNER JOIN \"BREED\" B ON A.\"BREED\" = " +
+                      "B.\"BID\" WHERE S.\"NAME\" = '" + species + "' AND B.\"NAME\" = '" + breed + "'";
+            }
+
 
             DataSet ds = dsBySql(sql);
 
@@ -117,8 +150,7 @@ namespace AdoptAPet.HelperFunctions
 
         public static string imageByAid(int aid)
         {
-
-            string sql = "SELECT I.\"LOCAL_PATH\" FROM \"ANIMAL\" A INNER JOIN \"IMAGE\" I ON A.\"IMG_ID\" = I.\"IMAGE_ID\" WHERE A.\"IMG_ID\" = " + aid;
+            string sql = "SELECT I.\"LOCAL_PATH\" FROM \"ANIMAL\" A INNER JOIN \"IMAGE\" I ON A.\"IMG_ID\" = I.\"IMAGE_ID\" WHERE A.\"AID\" = " + aid;
             DataSet ds = dsBySql(sql);
 
             string toReturn = "";

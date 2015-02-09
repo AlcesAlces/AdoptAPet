@@ -20,9 +20,14 @@ namespace AdoptAPet
             populateComboboxes();
         }
 
+        /// <summary>
+        /// Populate the initial comboboxes, setting the data which will automatically populate the rest of the information.
+        /// </summary>
         public void populateComboboxes()
         {
             var speciesBox = Queries.returnAllSpeciesName();
+
+            cbSpecies.Items.Add("Select a Species");
 
             foreach(var item in speciesBox)
             {
@@ -32,11 +37,28 @@ namespace AdoptAPet
             cbSpecies.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// Populate the animal list box.
+        /// </summary>
         public void populateLisBox()
         {
             lbAnimals.Items.Clear();
-            List<Animal> toPopulate = Queries.animalNamesByParameter(cbSpecies.SelectedItem.ToString(), cbBreed.SelectedItem.ToString());
 
+            string speciesString = null;
+            string breedString = null;
+
+            if(cbSpecies.SelectedItem.ToString() != "Select a Species")
+            {
+                speciesString = cbSpecies.SelectedItem.ToString();
+
+            }
+
+            if (cbBreed.SelectedItem.ToString() != "Select a Breed")
+            {
+                breedString = cbBreed.SelectedItem.ToString();
+            }
+
+            List<Animal> toPopulate = Queries.animalNamesByParameter(speciesString, breedString);
             lbAnimals.Tag = toPopulate;
 
             if(toPopulate.Count == 0)
@@ -80,12 +102,19 @@ namespace AdoptAPet
 
         }
 
+        /// <summary>
+        /// React to the species box changing.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void cbSpecies_SelectedIndexChanged(object sender, EventArgs e)
         {
 
             cbBreed.Items.Clear();
 
             var breedBox = Queries.returnBreedBySpecies(cbSpecies.SelectedItem.ToString());
+
+            cbBreed.Items.Add("Select a Breed");
 
             foreach(var item in breedBox)
             {
@@ -101,6 +130,7 @@ namespace AdoptAPet
 
             populateLisBox();
         }
+
 
         private void cbBreed_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -123,7 +153,10 @@ namespace AdoptAPet
             {
                 List<Animal> animalList = (List<Animal>)lbAnimals.Tag;
 
-                pbPicture.ImageLocation = Queries.imageByAid(animalList[lbAnimals.SelectedIndex].aid);
+                if (lbAnimals.SelectedIndex != -1)
+                {
+                    pbPicture.ImageLocation = Queries.imageByAid(animalList[lbAnimals.SelectedIndex].aid);
+                }
 
             }
 

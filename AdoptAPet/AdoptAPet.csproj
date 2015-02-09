@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddAnimal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AddAnimal.Designer.cs">
+      <DependentUpon>AddAnimal.cs</DependentUpon>
+    </Compile>
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,6 +65,7 @@
     <Compile Include="Global.cs" />
     <Compile Include="HelperClasses\Animal.cs" />
     <Compile Include="HelperClasses\User.cs" />
+    <Compile Include="HelperFunctions\FormHelpers.cs" />
     <Compile Include="HelperFunctions\Queries.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -86,6 +93,9 @@
     <Compile Include="UserControlSearch.Designer.cs">
       <DependentUpon>UserControlSearch.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AddAnimal.resx">
+      <DependentUpon>AddAnimal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
