@@ -66,6 +66,7 @@
     <Compile Include="HelperClasses\Animal.cs" />
     <Compile Include="HelperClasses\User.cs" />
     <Compile Include="HelperFunctions\FormHelpers.cs" />
+    <Compile Include="HelperFunctions\Imgur.cs" />
     <Compile Include="HelperFunctions\Queries.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -136,7 +137,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="bin\Debug\pictures\other\shadow.png" />
-    <Content Include="shadow.png" />
+    <Content Include="shadow.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

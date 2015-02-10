@@ -9,6 +9,10 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using AdoptAPet.HelperFunctions;
 using AdoptAPet.HelperClasses;
+using System.Net;
+using System.Collections.Specialized;
+using System.IO;
+using System.Xml.Linq;
 
 namespace AdoptAPet
 {
@@ -102,6 +106,12 @@ namespace AdoptAPet
 
         private void tbPassword_PreviewKeyDown(object sender, PreviewKeyDownEventArgs e)
         {
+            if(e.KeyCode == Keys.Enter)
+            {
+                setElementsNuetral();
+                verifyLogin();
+                FormHelpers.changeElementsBasedOnPrivledge();
+            }
         }
     }
 }

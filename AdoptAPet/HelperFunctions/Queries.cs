@@ -150,14 +150,17 @@ namespace AdoptAPet.HelperFunctions
 
         public static string imageByAid(int aid)
         {
-            string sql = "SELECT I.\"LOCAL_PATH\" FROM \"ANIMAL\" A INNER JOIN \"IMAGE\" I ON A.\"IMG_ID\" = I.\"IMAGE_ID\" WHERE A.\"AID\" = " + aid;
+            string sql = "SELECT IMG.\"IMAGE_URL\" FROM \"ANIMAL\" A "+
+                          "INNER JOIN \"IMAGE\" I ON A.\"IMG_ID\" = I.\"IMAGE_ID\" "+
+                          "INNER JOIN \"IMGUR_RESOURCE\" IMG ON I.\"IMGUR_ID\" = IMG.\"IMAGE_ID\" "+
+                          "WHERE A.\"AID\" = "+aid;
             DataSet ds = dsBySql(sql);
 
             string toReturn = "";
 
             foreach( DataRow item in ds.Tables[0].Rows)
             {
-                toReturn = item["LOCAL_PATH"].ToString();
+                toReturn = item["IMAGE_URL"].ToString();
             }
 
             if (toReturn == "")
@@ -169,6 +172,81 @@ namespace AdoptAPet.HelperFunctions
             {
                 return toReturn;
             }
+        }
+
+        public static void addAnimal(string species, string breed, Animal animal)
+        {
+
+            string sqlSpecies = "SELECT \"SID\" FROM \"SPECIES\" WHERE \"NAME\" = '"+species+"'";
+            string sqlBreed = "SELECT \"BID\" FROM \"BREED\" WHERE \"NAME\"='"+breed+"'";
+
+            //Should only return 1 result each.
+            DataSet dsSpecies = dsBySql(sqlSpecies);
+            DataSet dsBreed = dsBySql(sqlBreed);
+
+            int sid = 0;
+            int bid = 0;
+
+            foreach(DataRow row in dsSpecies.Tables[0].Rows)
+            {
+                sid = Int32.Parse(row["SID"].ToString());
+            }
+
+            foreach(DataRow row in dsBreed.Tables[0].Rows)
+            {
+                bid = Int32.Parse(row["BID"].ToString());
+            }
+
+            int age = animal.age != null ? animal.age : 0;
+            string sex = animal.sex != null ? animal.sex : "NOT PROVIDED";
+            int color = 0;
+            string name = animal.name != null ? animal.name : "NOT PROVIDED";
+            bool friendly = animal.friendly != null? animal.friendly : false;
+            string description = animal.description != null? animal.description : "NOT PROVIDED";
+            string microchip = "N/A";
+            bool isFixed = animal.isFixed != null?animal.isFixed:false;
+            int location = 0;
+            int imgId = animal.imgid!=null?animal.imgid:0;
+
+            string sqlInsert = "INSERT INTO \"ANIMAL\" (\"AGE\", \"SEX\", \"COLOR\", \"NAME\", \"FRIENDLY\", \"DESCRIPTION\", \"MICROCHIP\", \"FIXED\", \"LOCATION\", \"IMG_ID\", \"SPECIES\", \"BREED\")"+
+                                "VALUES ("+age+",'"+sex+"',"+color+",'"+name+"',"+friendly+",'"+description+"','"+microchip+"',"+isFixed+","+location+","+imgId+","+sid+","+bid+")";
+
+            dsBySql(sqlInsert);
+        
+        }
+        /// <summary>
+        /// Uploads an image based on the link, and deletehash provided by caller. Returns imgid
+        /// </summary>
+        /// <param name="link"></param>
+        /// <param name="?"></param>
+        /// <returns></returns>
+        public static int addImageToDatabase(string link, string deletehash)
+        {
+
+            string sqlImgur = "INSERT INTO \"IMGUR_RESOURCE\" (\"IMAGE_URL\", \"DELETE_HASH\") VALUES ('" + link + "','" + deletehash + "')";
+
+            dsBySql(sqlImgur);
+
+            string sqlTop = "SELECT MAX(\"IMAGE_ID\") FROM \"IMGUR_RESOURCE\"";
+            DataSet topDs = dsBySql(sqlTop);
+            int topImgur = 0;
+            foreach(DataRow row in topDs.Tables[0].Rows)
+            {
+                topImgur = Int32.Parse(row["max"].ToString());
+            }
+
+            string sqlImage = "INSERT INTO \"IMAGE\" (\"IMGUR_ID\") VALUES(" + topImgur +")";
+            dsBySql(sqlImage);
+
+            string topImage = "SELECT MAX(\"IMAGE_ID\") FROM \"IMAGE\"";
+            DataSet topImageDs = dsBySql(topImage);
+            int topImageInt = 0;
+            foreach (DataRow row in topImageDs.Tables[0].Rows)
+            {
+                topImageInt = Int32.Parse(row["max"].ToString());
+            }
+
+            return topImageInt;
         }
     }
 }

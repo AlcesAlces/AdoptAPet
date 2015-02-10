@@ -15,7 +15,7 @@ namespace AdoptAPet.HelperClasses
         public string size { get; set; }
         public int color { get; set; }
         public string name { get; set; }
-        public string friendly { get; set; }
+        public bool friendly { get; set; }
         public int weight { get; set; }
         public string description { get; set; }
         public string microchip { get; set; }
@@ -23,6 +23,7 @@ namespace AdoptAPet.HelperClasses
         public int imgid { get; set; }
         public int species { get; set; }
         public int breed { get; set; }
+        public bool isFixed {get;set;}
 
     }
 }
