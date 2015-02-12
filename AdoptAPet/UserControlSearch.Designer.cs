@@ -34,7 +34,10 @@
             this.lblBreed = new System.Windows.Forms.Label();
             this.lbAnimals = new System.Windows.Forms.ListBox();
             this.lblAnimalListName = new System.Windows.Forms.Label();
+            this.cbAdopted = new System.Windows.Forms.CheckBox();
             this.pbPicture = new System.Windows.Forms.PictureBox();
+            this.tbSearchName = new System.Windows.Forms.TextBox();
+            this.lbSerchName = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).BeginInit();
             this.SuspendLayout();
             // 
@@ -92,20 +95,49 @@
             this.lblAnimalListName.TabIndex = 5;
             this.lblAnimalListName.Text = "Name";
             // 
+            // cbAdopted
+            // 
+            this.cbAdopted.AutoSize = true;
+            this.cbAdopted.Location = new System.Drawing.Point(16, 177);
+            this.cbAdopted.Name = "cbAdopted";
+            this.cbAdopted.Size = new System.Drawing.Size(104, 17);
+            this.cbAdopted.TabIndex = 7;
+            this.cbAdopted.Text = "Include Adopted";
+            this.cbAdopted.UseVisualStyleBackColor = true;
+            // 
             // pbPicture
             // 
             this.pbPicture.ErrorImage = global::AdoptAPet.Properties.Resources.shadow;
-            this.pbPicture.Location = new System.Drawing.Point(360, 144);
+            this.pbPicture.Location = new System.Drawing.Point(360, 158);
             this.pbPicture.Name = "pbPicture";
             this.pbPicture.Size = new System.Drawing.Size(305, 208);
             this.pbPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pbPicture.TabIndex = 6;
             this.pbPicture.TabStop = false;
             // 
+            // tbSearchName
+            // 
+            this.tbSearchName.Location = new System.Drawing.Point(20, 139);
+            this.tbSearchName.Name = "tbSearchName";
+            this.tbSearchName.Size = new System.Drawing.Size(100, 20);
+            this.tbSearchName.TabIndex = 8;
+            // 
+            // lbSerchName
+            // 
+            this.lbSerchName.AutoSize = true;
+            this.lbSerchName.Location = new System.Drawing.Point(17, 123);
+            this.lbSerchName.Name = "lbSerchName";
+            this.lbSerchName.Size = new System.Drawing.Size(87, 13);
+            this.lbSerchName.TabIndex = 9;
+            this.lbSerchName.Text = "Search By Name";
+            // 
             // UserControlSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lbSerchName);
+            this.Controls.Add(this.tbSearchName);
+            this.Controls.Add(this.cbAdopted);
             this.Controls.Add(this.pbPicture);
             this.Controls.Add(this.lblAnimalListName);
             this.Controls.Add(this.lbAnimals);
@@ -131,6 +163,9 @@
         private System.Windows.Forms.ListBox lbAnimals;
         private System.Windows.Forms.Label lblAnimalListName;
         private System.Windows.Forms.PictureBox pbPicture;
+        private System.Windows.Forms.CheckBox cbAdopted;
+        private System.Windows.Forms.TextBox tbSearchName;
+        private System.Windows.Forms.Label lbSerchName;
 
     }
 }

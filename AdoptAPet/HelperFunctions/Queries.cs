@@ -22,7 +22,7 @@ namespace AdoptAPet.HelperFunctions
         /// <returns>dataset</returns>
         private static DataSet dsBySql(string sql)
         {
-            string connection = String.Format("Server=127.0.0.1;Port=5432;User Id=postgres;Password=stimperman;Database=AdoptAPet");
+            string connection = String.Format("Server=75.115.14.171;Port=5432;User Id=postgres;Password=stimperman;Database=postgres");
             NpgsqlConnection conn = new NpgsqlConnection(connection);
             conn.Open();
             DataSet ds = new DataSet();
@@ -105,28 +105,28 @@ namespace AdoptAPet.HelperFunctions
 
             if(species == null && breed != null)
             {
-                sql = "SELECT A.\"NAME\", A.\"AID\" FROM \"ANIMAL\" A INNER JOIN \"SPECIES\" S ON " +
+                sql = "SELECT A.\"NAME\", A.\"AID\", A.\"ADOPTED\" FROM \"ANIMAL\" A INNER JOIN \"SPECIES\" S ON " +
                       "A.\"SPECIES\" = S.\"SID\" INNER JOIN \"BREED\" B ON A.\"BREED\" = " +
                       "B.\"BID\" WHERE B.\"NAME\" = '" + breed + "'";
             }
 
             else if(breed == null && species != null)
             {
-                sql = "SELECT A.\"NAME\", A.\"AID\" FROM \"ANIMAL\" A INNER JOIN \"SPECIES\" S ON " +
+                sql = "SELECT A.\"NAME\", A.\"AID\", A.\"ADOPTED\" FROM \"ANIMAL\" A INNER JOIN \"SPECIES\" S ON " +
                       "A.\"SPECIES\" = S.\"SID\" INNER JOIN \"BREED\" B ON A.\"BREED\" = " +
                       "B.\"BID\" WHERE S.\"NAME\" = '" + species +"'";
             }
 
             else if (breed == null && species == null)
             {
-                sql = "SELECT A.\"NAME\", A.\"AID\" FROM \"ANIMAL\" A INNER JOIN \"SPECIES\" S ON " +
+                sql = "SELECT A.\"NAME\", A.\"AID\", A.\"ADOPTED\" FROM \"ANIMAL\" A INNER JOIN \"SPECIES\" S ON " +
                       "A.\"SPECIES\" = S.\"SID\" INNER JOIN \"BREED\" B ON A.\"BREED\" = " +
                       "B.\"BID\"";
             }
 
             else
             {
-                sql = "SELECT A.\"NAME\", A.\"AID\" FROM \"ANIMAL\" A INNER JOIN \"SPECIES\" S ON " +
+                sql = "SELECT A.\"NAME\", A.\"AID\" A.\"ADOPTED\" FROM \"ANIMAL\" A INNER JOIN \"SPECIES\" S ON " +
                       "A.\"SPECIES\" = S.\"SID\" INNER JOIN \"BREED\" B ON A.\"BREED\" = " +
                       "B.\"BID\" WHERE S.\"NAME\" = '" + species + "' AND B.\"NAME\" = '" + breed + "'";
             }
@@ -141,7 +141,8 @@ namespace AdoptAPet.HelperFunctions
                 toReturn.Add(new Animal
                     {
                         aid = Int32.Parse(item["AID"].ToString()),
-                        name = item["NAME"].ToString()
+                        name = item["NAME"].ToString(),
+                        isAdopted = (bool)item["ADOPTED"]
                     });
             }
 
@@ -172,6 +173,24 @@ namespace AdoptAPet.HelperFunctions
             {
                 return toReturn;
             }
+        }
+
+        public static List<ImageHandler> returnAllImages()
+        {
+            string sql = "SELECT IMG.\"IMAGE_URL\", I.\"IMAGE_ID\" FROM \"ANIMAL\" A " +
+                          "INNER JOIN \"IMAGE\" I ON A.\"IMG_ID\" = I.\"IMAGE_ID\" " +
+                          "INNER JOIN \"IMGUR_RESOURCE\" IMG ON I.\"IMGUR_ID\" = IMG.\"IMAGE_ID\"";
+
+            DataSet ds = dsBySql(sql);
+
+            foreach(DataRow row in ds.Tables[0].Rows)
+            {
+
+            }
+
+            List<ImageHandler> toReturn = new List<ImageHandler>();
+
+            return toReturn;
         }
 
         public static void addAnimal(string species, string breed, Animal animal)
@@ -247,6 +266,32 @@ namespace AdoptAPet.HelperFunctions
             }
 
             return topImageInt;
+        }
+
+        /// <summary>
+        /// Removes an animal from the database
+        /// </summary>
+        public static void removeAnimalByAID(int aid)
+        {
+            string sqlRemoval = "DELETE FROM \"ANIMAL\" WHERE \"AID\" =" + aid;
+            dsBySql(sqlRemoval);
+        }
+
+        /// <summary>
+        /// Set an Animal's adopted status based on AID and ADOPTED
+        /// </summary>
+        /// <param name="aid"></param>
+        /// <param name="adopted"></param>
+        public static void setAnimalAdoptedByAid(int aid, bool adopted)
+        {
+            string sqlAdopt = "UPDATE \"ANIMAL\" SET \"ADOPTED\" ="+adopted+" WHERE \"AID\" =" + aid;
+            dsBySql(sqlAdopt);
+        }
+
+        public static void addUser(string name, string pass)
+        {
+            string sql = "INSERT INTO \"USER\" (\"NAME\", \"PASS\") VALUES ('" + name + "','" + pass + "')";
+            dsBySql(sql);
         }
     }
 }

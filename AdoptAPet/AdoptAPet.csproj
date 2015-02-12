@@ -64,12 +64,20 @@
     </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="HelperClasses\Animal.cs" />
+    <Compile Include="HelperClasses\ImageHandler.cs" />
     <Compile Include="HelperClasses\User.cs" />
     <Compile Include="HelperFunctions\FormHelpers.cs" />
     <Compile Include="HelperFunctions\Imgur.cs" />
     <Compile Include="HelperFunctions\Queries.cs" />
+    <Compile Include="HelperFunctions\UserFileHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RemoveAnimal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RemoveAnimal.Designer.cs">
+      <DependentUpon>RemoveAnimal.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControlHome.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -110,6 +118,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RemoveAnimal.resx">
+      <DependentUpon>RemoveAnimal.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UserControlHome.resx">
       <DependentUpon>UserControlHome.cs</DependentUpon>
     </EmbeddedResource>
@@ -136,6 +147,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="adopted.gif" />
+    <Content Include="XMLTemplates\UserFileTemplate.xml" />
+    <None Include="bin\Debug\pictures\rock\rock 1.jpg" />
+    <None Include="Resources\Image1.bmp" />
     <None Include="bin\Debug\pictures\other\shadow.png" />
     <Content Include="shadow.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

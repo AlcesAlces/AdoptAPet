@@ -24,6 +24,7 @@ namespace AdoptAPet.HelperClasses
         public int species { get; set; }
         public int breed { get; set; }
         public bool isFixed {get;set;}
+        public bool isAdopted { get; set; }
 
     }
 }

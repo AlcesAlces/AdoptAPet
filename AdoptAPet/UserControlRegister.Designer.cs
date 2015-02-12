@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.txtUsername = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtPass = new System.Windows.Forms.TextBox();
+            this.txtPass2 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
@@ -52,19 +52,19 @@
             this.txtUsername.Size = new System.Drawing.Size(100, 20);
             this.txtUsername.TabIndex = 0;
             // 
-            // textBox2
+            // txtPass
             // 
-            this.textBox2.Location = new System.Drawing.Point(3, 65);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 1;
+            this.txtPass.Location = new System.Drawing.Point(3, 65);
+            this.txtPass.Name = "txtPass";
+            this.txtPass.Size = new System.Drawing.Size(100, 20);
+            this.txtPass.TabIndex = 1;
             // 
-            // textBox3
+            // txtPass2
             // 
-            this.textBox3.Location = new System.Drawing.Point(3, 108);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 2;
+            this.txtPass2.Location = new System.Drawing.Point(3, 108);
+            this.txtPass2.Name = "txtPass2";
+            this.txtPass2.Size = new System.Drawing.Size(100, 20);
+            this.txtPass2.TabIndex = 2;
             // 
             // textBox4
             // 
@@ -72,6 +72,7 @@
             this.textBox4.Name = "textBox4";
             this.textBox4.Size = new System.Drawing.Size(100, 20);
             this.textBox4.TabIndex = 3;
+            this.textBox4.Visible = false;
             // 
             // textBox5
             // 
@@ -79,6 +80,7 @@
             this.textBox5.Name = "textBox5";
             this.textBox5.Size = new System.Drawing.Size(100, 20);
             this.textBox5.TabIndex = 4;
+            this.textBox5.Visible = false;
             // 
             // textBox6
             // 
@@ -86,6 +88,7 @@
             this.textBox6.Name = "textBox6";
             this.textBox6.Size = new System.Drawing.Size(100, 20);
             this.textBox6.TabIndex = 5;
+            this.textBox6.Visible = false;
             // 
             // label1
             // 
@@ -186,8 +189,8 @@
             this.Controls.Add(this.textBox6);
             this.Controls.Add(this.textBox5);
             this.Controls.Add(this.textBox4);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
+            this.Controls.Add(this.txtPass2);
+            this.Controls.Add(this.txtPass);
             this.Controls.Add(this.txtUsername);
             this.Name = "UserControlRegister";
             this.Size = new System.Drawing.Size(277, 259);
@@ -200,8 +203,8 @@
         #endregion
 
         private System.Windows.Forms.TextBox txtUsername;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtPass;
+        private System.Windows.Forms.TextBox txtPass2;
         private System.Windows.Forms.TextBox textBox4;
         private System.Windows.Forms.TextBox textBox5;
         private System.Windows.Forms.TextBox textBox6;

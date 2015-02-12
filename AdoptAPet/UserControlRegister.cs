@@ -28,7 +28,9 @@ namespace AdoptAPet
 
             if (Queries.checkUsernameUnique(txtUsername.Text.ToLower()))
             {
-
+                Queries.addUser(txtUsername.Text.Trim(), txtPass.Text.Trim());
+                MessageBox.Show("User created");
+                FormHelpers.setMainComponentsLogin();
             }
 
             else

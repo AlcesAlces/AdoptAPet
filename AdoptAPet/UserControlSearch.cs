@@ -9,6 +9,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using AdoptAPet.HelperFunctions;
 using AdoptAPet.HelperClasses;
+using System.Drawing.Drawing2D;
+using System.Net;
+using System.IO;
 
 namespace AdoptAPet
 {
@@ -155,11 +158,65 @@ namespace AdoptAPet
 
                 if (lbAnimals.SelectedIndex != -1)
                 {
-                    pbPicture.ImageLocation = Queries.imageByAid(animalList[lbAnimals.SelectedIndex].aid);
+                    Animal animal = animalList[lbAnimals.SelectedIndex];
+
+                    if (animal.isAdopted)
+                    {
+                        Image playbutton;
+                        try
+                        {
+                            playbutton = Image.FromFile(@"D:\C#Projects\AdoptAPet\AdoptAPet\bin\Debug\pictures\rock\adopted.gif");
+                        }
+                        catch (Exception ex)
+                        {
+                            return;
+                        }
+
+                        Image Frame;
+                        try
+                        {
+                            WebClient wc = new WebClient();
+                            byte[] bytes = wc.DownloadData(Queries.imageByAid(animal.aid));
+                            MemoryStream ms = new MemoryStream(bytes);
+                            Frame = Image.FromStream(ms);
+                        }
+                        catch (Exception ex)
+                        {
+                            return;
+                        }
+
+                        using (Frame)
+                        {
+                            int height = pbPicture.Height;
+                            int width = pbPicture.Width;
+                            using (var bitmap = new Bitmap(width, height))
+                            {
+                                using (var canvas = Graphics.FromImage(bitmap))
+                                {
+                                    canvas.InterpolationMode = InterpolationMode.HighQualityBicubic;
+                                    canvas.DrawImage(Frame, new Rectangle(0, 0, width, height), new Rectangle(0, 0, Frame.Width, Frame.Height), GraphicsUnit.Pixel);
+                                    canvas.DrawImage(playbutton, (bitmap.Width / 2) - (playbutton.Width / 2 + 5), (bitmap.Height / 2) - (playbutton.Height / 2 + 5));
+                                    canvas.Save();
+                                }
+                                try
+                                {
+                                    pbPicture.Image = new Bitmap(bitmap);
+                                }
+                                catch (Exception ex) { }
+                            }
+                        }
+                    }
+
+                    else
+                    {
+                        pbPicture.ImageLocation = Queries.imageByAid(animal.aid);
+                    }
                 }
 
             }
 
         }
+
+       
     }
 }

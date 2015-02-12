@@ -30,7 +30,6 @@
         {
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.panelMain = new System.Windows.Forms.Panel();
             this.addAnimalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeAnimalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -39,6 +38,8 @@
             this.loginToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.registerToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panelMain = new System.Windows.Forms.Panel();
+            this.adoptAnimalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStripMain.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,18 +59,12 @@
             this.testToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addAnimalToolStripMenuItem,
             this.removeAnimalToolStripMenuItem,
+            this.adoptAnimalToolStripMenuItem,
             this.addUserToolStripMenuItem,
             this.removeUserToolStripMenuItem});
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
             this.testToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.testToolStripMenuItem.Text = "Edit";
-            // 
-            // panelMain
-            // 
-            this.panelMain.Location = new System.Drawing.Point(0, 27);
-            this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(711, 524);
-            this.panelMain.TabIndex = 1;
             // 
             // addAnimalToolStripMenuItem
             // 
@@ -85,6 +80,7 @@
             this.removeAnimalToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
             this.removeAnimalToolStripMenuItem.Text = "Remove Animal";
             this.removeAnimalToolStripMenuItem.Visible = false;
+            this.removeAnimalToolStripMenuItem.Click += new System.EventHandler(this.removeAnimalToolStripMenuItem_Click);
             // 
             // addUserToolStripMenuItem
             // 
@@ -113,14 +109,14 @@
             // loginToolStripMenuItem
             // 
             this.loginToolStripMenuItem.Name = "loginToolStripMenuItem";
-            this.loginToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.loginToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.loginToolStripMenuItem.Text = "Login";
             this.loginToolStripMenuItem.Visible = false;
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Visible = false;
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.logoutToolStripMenuItem_Click);
@@ -128,9 +124,23 @@
             // registerToolStripMenuItem
             // 
             this.registerToolStripMenuItem.Name = "registerToolStripMenuItem";
-            this.registerToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.registerToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.registerToolStripMenuItem.Text = "Register";
             this.registerToolStripMenuItem.Visible = false;
+            // 
+            // panelMain
+            // 
+            this.panelMain.Location = new System.Drawing.Point(0, 27);
+            this.panelMain.Name = "panelMain";
+            this.panelMain.Size = new System.Drawing.Size(711, 524);
+            this.panelMain.TabIndex = 1;
+            // 
+            // adoptAnimalToolStripMenuItem
+            // 
+            this.adoptAnimalToolStripMenuItem.Name = "adoptAnimalToolStripMenuItem";
+            this.adoptAnimalToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.adoptAnimalToolStripMenuItem.Text = "Adopt Animal";
+            this.adoptAnimalToolStripMenuItem.Click += new System.EventHandler(this.adoptAnimalToolStripMenuItem_Click);
             // 
             // Form1
             // 
@@ -163,6 +173,7 @@
         private System.Windows.Forms.ToolStripMenuItem loginToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registerToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem adoptAnimalToolStripMenuItem;
 
     }
 }

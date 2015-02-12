@@ -46,5 +46,16 @@ namespace AdoptAPet
             Global.publicUser.handleLogout();
             FormHelpers.setMainComponentsLogin();
         }
+
+        private void removeAnimalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Form removeAnimalForm = new RemoveAnimal();
+            removeAnimalForm.Show();
+        }
+
+        private void adoptAnimalToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
