@@ -126,7 +126,7 @@ namespace AdoptAPet.HelperFunctions
 
             else
             {
-                sql = "SELECT A.\"NAME\", A.\"AID\" A.\"ADOPTED\" FROM \"ANIMAL\" A INNER JOIN \"SPECIES\" S ON " +
+                sql = "SELECT A.\"NAME\", A.\"AID\", A.\"ADOPTED\" FROM \"ANIMAL\" A INNER JOIN \"SPECIES\" S ON " +
                       "A.\"SPECIES\" = S.\"SID\" INNER JOIN \"BREED\" B ON A.\"BREED\" = " +
                       "B.\"BID\" WHERE S.\"NAME\" = '" + species + "' AND B.\"NAME\" = '" + breed + "'";
             }
