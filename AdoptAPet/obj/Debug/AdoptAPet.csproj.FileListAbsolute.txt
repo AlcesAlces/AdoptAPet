@@ -32,3 +32,6 @@ E:\C#Projects\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.UserControlLogin.resources
 E:\C#Projects\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.UserControlRegister.resources
 E:\C#Projects\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.UserControlSearch.resources
 E:\C#Projects\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.csproj.GenerateResource.Cache
+C:\Users\Chris\Documents\AdoptAPet\AdoptAPet\bin\Debug\AdoptAPet.exe.config
+C:\Users\Chris\Documents\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.exe
+C:\Users\Chris\Documents\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.pdb
