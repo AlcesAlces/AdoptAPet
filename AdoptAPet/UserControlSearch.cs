@@ -53,12 +53,14 @@ namespace AdoptAPet
             if(cbSpecies.SelectedItem.ToString() != "Select a Species")
             {
                 speciesString = cbSpecies.SelectedItem.ToString();
+                txtAnimalSpecies_Infomation.Text = speciesString;
 
             }
 
             if (cbBreed.SelectedItem.ToString() != "Select a Breed")
             {
                 breedString = cbBreed.SelectedItem.ToString();
+                txtAnimalBreed_Information.Text = breedString;
             }
 
             List<Animal> toPopulate = Queries.animalNamesByParameter(speciesString, breedString);
@@ -114,7 +116,7 @@ namespace AdoptAPet
         {
 
             cbBreed.Items.Clear();
-
+            
             var breedBox = Queries.returnBreedBySpecies(cbSpecies.SelectedItem.ToString());
 
             cbBreed.Items.Add("Select a Breed");
@@ -214,6 +216,17 @@ namespace AdoptAPet
                 }
 
             }
+
+        }
+
+        private void tbSearchName_TextChanged(object sender, EventArgs e)
+        {
+            //temp string to pass into information box: Animal Name
+            txtAnimalName_Information.Text = "Fake Animal Name";
+        }
+
+        private void cbAdopted_CheckedChanged(object sender, EventArgs e)
+        {
 
         }
 
