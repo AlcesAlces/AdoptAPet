@@ -35,6 +35,8 @@ E:\C#Projects\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.csproj.GenerateResource.Ca
 C:\Users\Chris\Documents\AdoptAPet\AdoptAPet\bin\Debug\AdoptAPet.exe.config
 C:\Users\Chris\Documents\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.exe
 C:\Users\Chris\Documents\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.pdb
+<<<<<<< HEAD
+=======
 C:\Users\Chris\Documents\AdoptAPet\AdoptAPet\bin\Debug\shadow.png
 C:\Users\Chris\Documents\AdoptAPet\AdoptAPet\bin\Debug\AdoptAPet.exe
 C:\Users\Chris\Documents\AdoptAPet\AdoptAPet\bin\Debug\AdoptAPet.pdb
@@ -51,3 +53,4 @@ C:\Users\Chris\Documents\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.csproj.Generate
 C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\bin\Debug\AdoptAPet.exe.config
 C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.exe
 C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.pdb
+>>>>>>> origin/Chris_Branch
