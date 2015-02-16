@@ -48,3 +48,6 @@ C:\Users\Chris\Documents\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.UserControlLogi
 C:\Users\Chris\Documents\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.UserControlRegister.resources
 C:\Users\Chris\Documents\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.UserControlSearch.resources
 C:\Users\Chris\Documents\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.csproj.GenerateResource.Cache
+C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\bin\Debug\AdoptAPet.exe.config
+C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.exe
+C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.pdb
