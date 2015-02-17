@@ -22,6 +22,7 @@ namespace AdoptAPet
             InitializeComponent();
             cbSex.SelectedIndex = 0;
             populateComboboxes();
+            //apples
         }
 
         /// <summary>
