@@ -67,6 +67,7 @@
     <Compile Include="HelperClasses\ImageHandler.cs" />
     <Compile Include="HelperClasses\User.cs" />
     <Compile Include="HelperFunctions\FormHelpers.cs" />
+    <Compile Include="HelperFunctions\ImageGoBetween.cs" />
     <Compile Include="HelperFunctions\Imgur.cs" />
     <Compile Include="HelperFunctions\Queries.cs" />
     <Compile Include="HelperFunctions\UserFileHandler.cs" />
@@ -147,7 +148,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="adopted.gif" />
+    <Content Include="adopted.gif">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="bin\Debug\pictures\rock\adopted.gif" />
     <Content Include="XMLTemplates\UserFileTemplate.xml" />
     <None Include="bin\Debug\pictures\rock\rock 1.jpg" />
     <None Include="Resources\Image1.bmp" />

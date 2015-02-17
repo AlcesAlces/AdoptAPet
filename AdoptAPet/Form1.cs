@@ -25,6 +25,8 @@ namespace AdoptAPet
             Global.menuItemsUser.Add(registerToolStripMenuItem);
             Global.panel = panelMain;
 
+            UserFileHandler.verifyUserImageFiles();
+
             registerToolStripMenuItem.Visible = true;
             loginToolStripMenuItem.Visible = true;
             panelMain.Controls.Add(new UserControlHome());
