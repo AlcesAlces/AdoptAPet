@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+C:\Users\Chris\Documents\AdoptAPet\AdoptAPet\bin\Debug\AdoptAPet.exe.config
+=======
 C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\bin\Debug\adopted.gif
 C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\bin\Debug\shadow.png
 C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\bin\Debug\AdoptAPet.exe.config
@@ -15,3 +18,4 @@ C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.U
 C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.csproj.GenerateResource.Cache
 C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.exe
 C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.pdb
+>>>>>>> origin/Chris_Branch

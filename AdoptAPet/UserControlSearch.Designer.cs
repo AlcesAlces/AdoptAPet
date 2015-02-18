@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(UserControlSearch));
             this.cbSpecies = new System.Windows.Forms.ComboBox();
             this.lblSpecies = new System.Windows.Forms.Label();
             this.cbBreed = new System.Windows.Forms.ComboBox();
@@ -39,11 +40,22 @@
             this.tbSearchName = new System.Windows.Forms.TextBox();
             this.lbSerchName = new System.Windows.Forms.Label();
             this.gbAnimale_Information = new System.Windows.Forms.GroupBox();
-            this.lbAnimalName = new System.Windows.Forms.Label();
-            this.lbAnimalSpecies = new System.Windows.Forms.Label();
-            this.lb = new System.Windows.Forms.Label();
+            this.lblAnimalName = new System.Windows.Forms.Label();
+            this.lblAnimalSpecies = new System.Windows.Forms.Label();
+            this.lblAnimalBreed = new System.Windows.Forms.Label();
+            this.lblDescription = new System.Windows.Forms.Label();
+            this.txtAnimalName_Information = new System.Windows.Forms.TextBox();
+            this.txtAnimalSpecies_Infomation = new System.Windows.Forms.TextBox();
+            this.txtAnimalBreed_Information = new System.Windows.Forms.TextBox();
+            this.txtAnimalDes_Information = new System.Windows.Forms.TextBox();
+            this.btnAdopt_Information = new System.Windows.Forms.Button();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.Sat_UserLoginStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.pbIsAdoptedPicture_Information = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).BeginInit();
             this.gbAnimale_Information.SuspendLayout();
+            this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbIsAdoptedPicture_Information)).BeginInit();
             this.SuspendLayout();
             // 
             // cbSpecies
@@ -117,6 +129,7 @@
             this.cbAdopted.TabIndex = 7;
             this.cbAdopted.Text = "Include Adopted";
             this.cbAdopted.UseVisualStyleBackColor = true;
+            this.cbAdopted.CheckedChanged += new System.EventHandler(this.cbAdopted_CheckedChanged);
             // 
             // pbPicture
             // 
@@ -136,6 +149,7 @@
             this.tbSearchName.Name = "tbSearchName";
             this.tbSearchName.Size = new System.Drawing.Size(148, 26);
             this.tbSearchName.TabIndex = 8;
+            this.tbSearchName.TextChanged += new System.EventHandler(this.tbSearchName_TextChanged);
             // 
             // lbSerchName
             // 
@@ -149,47 +163,137 @@
             // 
             // gbAnimale_Information
             // 
-            this.gbAnimale_Information.Controls.Add(this.lb);
-            this.gbAnimale_Information.Controls.Add(this.lbAnimalSpecies);
-            this.gbAnimale_Information.Controls.Add(this.lbAnimalName);
+            this.gbAnimale_Information.Controls.Add(this.pbIsAdoptedPicture_Information);
+            this.gbAnimale_Information.Controls.Add(this.btnAdopt_Information);
+            this.gbAnimale_Information.Controls.Add(this.txtAnimalDes_Information);
+            this.gbAnimale_Information.Controls.Add(this.txtAnimalBreed_Information);
+            this.gbAnimale_Information.Controls.Add(this.txtAnimalSpecies_Infomation);
+            this.gbAnimale_Information.Controls.Add(this.txtAnimalName_Information);
+            this.gbAnimale_Information.Controls.Add(this.lblDescription);
+            this.gbAnimale_Information.Controls.Add(this.lblAnimalBreed);
+            this.gbAnimale_Information.Controls.Add(this.lblAnimalSpecies);
+            this.gbAnimale_Information.Controls.Add(this.lblAnimalName);
             this.gbAnimale_Information.Location = new System.Drawing.Point(24, 334);
             this.gbAnimale_Information.Name = "gbAnimale_Information";
-            this.gbAnimale_Information.Size = new System.Drawing.Size(484, 177);
+            this.gbAnimale_Information.Size = new System.Drawing.Size(484, 229);
             this.gbAnimale_Information.TabIndex = 10;
             this.gbAnimale_Information.TabStop = false;
             this.gbAnimale_Information.Text = "Animal Information";
             // 
-            // lbAnimalName
+            // lblAnimalName
             // 
-            this.lbAnimalName.AutoSize = true;
-            this.lbAnimalName.Location = new System.Drawing.Point(7, 26);
-            this.lbAnimalName.Name = "lbAnimalName";
-            this.lbAnimalName.Size = new System.Drawing.Size(107, 20);
-            this.lbAnimalName.TabIndex = 0;
-            this.lbAnimalName.Text = "Animal Name:";
+            this.lblAnimalName.AutoSize = true;
+            this.lblAnimalName.Location = new System.Drawing.Point(8, 22);
+            this.lblAnimalName.Name = "lblAnimalName";
+            this.lblAnimalName.Size = new System.Drawing.Size(107, 20);
+            this.lblAnimalName.TabIndex = 0;
+            this.lblAnimalName.Text = "Animal Name:";
             // 
-            // lbAnimalSpecies
+            // lblAnimalSpecies
             // 
-            this.lbAnimalSpecies.AutoSize = true;
-            this.lbAnimalSpecies.Location = new System.Drawing.Point(8, 55);
-            this.lbAnimalSpecies.Name = "lbAnimalSpecies";
-            this.lbAnimalSpecies.Size = new System.Drawing.Size(122, 20);
-            this.lbAnimalSpecies.TabIndex = 1;
-            this.lbAnimalSpecies.Text = "Animal Species:";
+            this.lblAnimalSpecies.AutoSize = true;
+            this.lblAnimalSpecies.Location = new System.Drawing.Point(8, 53);
+            this.lblAnimalSpecies.Name = "lblAnimalSpecies";
+            this.lblAnimalSpecies.Size = new System.Drawing.Size(122, 20);
+            this.lblAnimalSpecies.TabIndex = 1;
+            this.lblAnimalSpecies.Text = "Animal Species:";
             // 
-            // lb
+            // lblAnimalBreed
             // 
-            this.lb.AutoSize = true;
-            this.lb.Location = new System.Drawing.Point(8, 86);
-            this.lb.Name = "lb";
-            this.lb.Size = new System.Drawing.Size(122, 20);
-            this.lb.TabIndex = 2;
-            this.lb.Text = "Animal Species:";
+            this.lblAnimalBreed.AutoSize = true;
+            this.lblAnimalBreed.Location = new System.Drawing.Point(8, 84);
+            this.lblAnimalBreed.Name = "lblAnimalBreed";
+            this.lblAnimalBreed.Size = new System.Drawing.Size(108, 20);
+            this.lblAnimalBreed.TabIndex = 2;
+            this.lblAnimalBreed.Text = "Animal Breed:";
+            // 
+            // lblDescription
+            // 
+            this.lblDescription.AutoSize = true;
+            this.lblDescription.Location = new System.Drawing.Point(7, 112);
+            this.lblDescription.Name = "lblDescription";
+            this.lblDescription.Size = new System.Drawing.Size(145, 20);
+            this.lblDescription.TabIndex = 3;
+            this.lblDescription.Text = "Animal Description:";
+            // 
+            // txtAnimalName_Information
+            // 
+            this.txtAnimalName_Information.Enabled = false;
+            this.txtAnimalName_Information.Font = new System.Drawing.Font("Modern No. 20", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAnimalName_Information.Location = new System.Drawing.Point(163, 22);
+            this.txtAnimalName_Information.Name = "txtAnimalName_Information";
+            this.txtAnimalName_Information.Size = new System.Drawing.Size(164, 29);
+            this.txtAnimalName_Information.TabIndex = 4;
+            // 
+            // txtAnimalSpecies_Infomation
+            // 
+            this.txtAnimalSpecies_Infomation.Enabled = false;
+            this.txtAnimalSpecies_Infomation.Font = new System.Drawing.Font("Modern No. 20", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAnimalSpecies_Infomation.Location = new System.Drawing.Point(163, 53);
+            this.txtAnimalSpecies_Infomation.Name = "txtAnimalSpecies_Infomation";
+            this.txtAnimalSpecies_Infomation.Size = new System.Drawing.Size(164, 29);
+            this.txtAnimalSpecies_Infomation.TabIndex = 5;
+            // 
+            // txtAnimalBreed_Information
+            // 
+            this.txtAnimalBreed_Information.Enabled = false;
+            this.txtAnimalBreed_Information.Font = new System.Drawing.Font("Modern No. 20", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAnimalBreed_Information.Location = new System.Drawing.Point(163, 84);
+            this.txtAnimalBreed_Information.Name = "txtAnimalBreed_Information";
+            this.txtAnimalBreed_Information.Size = new System.Drawing.Size(164, 29);
+            this.txtAnimalBreed_Information.TabIndex = 6;
+            // 
+            // txtAnimalDes_Information
+            // 
+            this.txtAnimalDes_Information.Enabled = false;
+            this.txtAnimalDes_Information.Font = new System.Drawing.Font("Modern No. 20", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtAnimalDes_Information.Location = new System.Drawing.Point(12, 135);
+            this.txtAnimalDes_Information.Multiline = true;
+            this.txtAnimalDes_Information.Name = "txtAnimalDes_Information";
+            this.txtAnimalDes_Information.Size = new System.Drawing.Size(315, 75);
+            this.txtAnimalDes_Information.TabIndex = 7;
+            // 
+            // btnAdopt_Information
+            // 
+            this.btnAdopt_Information.Location = new System.Drawing.Point(368, 150);
+            this.btnAdopt_Information.Name = "btnAdopt_Information";
+            this.btnAdopt_Information.Size = new System.Drawing.Size(75, 44);
+            this.btnAdopt_Information.TabIndex = 8;
+            this.btnAdopt_Information.Text = "Adopt";
+            this.btnAdopt_Information.UseVisualStyleBackColor = true;
+            // 
+            // statusStrip1
+            // 
+            this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.Sat_UserLoginStatus});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 684);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1118, 30);
+            this.statusStrip1.TabIndex = 11;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // Sat_UserLoginStatus
+            // 
+            this.Sat_UserLoginStatus.Name = "Sat_UserLoginStatus";
+            this.Sat_UserLoginStatus.Size = new System.Drawing.Size(94, 25);
+            this.Sat_UserLoginStatus.Text = "UserName";
+            // 
+            // pbIsAdoptedPicture_Information
+            // 
+            this.pbIsAdoptedPicture_Information.Image = ((System.Drawing.Image)(resources.GetObject("pbIsAdoptedPicture_Information.Image")));
+            this.pbIsAdoptedPicture_Information.Location = new System.Drawing.Point(343, 22);
+            this.pbIsAdoptedPicture_Information.Name = "pbIsAdoptedPicture_Information";
+            this.pbIsAdoptedPicture_Information.Size = new System.Drawing.Size(124, 110);
+            this.pbIsAdoptedPicture_Information.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbIsAdoptedPicture_Information.TabIndex = 9;
+            this.pbIsAdoptedPicture_Information.TabStop = false;
             // 
             // UserControlSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.gbAnimale_Information);
             this.Controls.Add(this.lbSerchName);
             this.Controls.Add(this.tbSearchName);
@@ -208,6 +312,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).EndInit();
             this.gbAnimale_Information.ResumeLayout(false);
             this.gbAnimale_Information.PerformLayout();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbIsAdoptedPicture_Information)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -226,9 +333,18 @@
         private System.Windows.Forms.TextBox tbSearchName;
         private System.Windows.Forms.Label lbSerchName;
         private System.Windows.Forms.GroupBox gbAnimale_Information;
-        private System.Windows.Forms.Label lb;
-        private System.Windows.Forms.Label lbAnimalSpecies;
-        private System.Windows.Forms.Label lbAnimalName;
+        private System.Windows.Forms.Label lblAnimalBreed;
+        private System.Windows.Forms.Label lblAnimalSpecies;
+        private System.Windows.Forms.Label lblAnimalName;
+        private System.Windows.Forms.Button btnAdopt_Information;
+        private System.Windows.Forms.TextBox txtAnimalDes_Information;
+        private System.Windows.Forms.TextBox txtAnimalBreed_Information;
+        private System.Windows.Forms.TextBox txtAnimalSpecies_Infomation;
+        private System.Windows.Forms.TextBox txtAnimalName_Information;
+        private System.Windows.Forms.Label lblDescription;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripStatusLabel Sat_UserLoginStatus;
+        private System.Windows.Forms.PictureBox pbIsAdoptedPicture_Information;
 
     }
 }
