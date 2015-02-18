@@ -53,6 +53,21 @@ namespace AdoptAPet.HelperFunctions
             };
         }
 
+        public static List<string> returnAllColor()
+        {
+            string sql = "SELECT \"NAME\" FROM \"COLOR\"";
+            DataSet ds = dsBySql(sql);
+
+            List<string> toReturn = new List<string>();
+            
+            foreach(DataRow item in ds.Tables[0].Rows)
+            {
+                toReturn.Add(item["NAME"].ToString().Trim());
+            }
+
+            return toReturn;
+        }
+
         public static List<string> returnAllSpeciesName()
         {
             string sql = "SELECT \"NAME\" FROM \"SPECIES\"";
@@ -219,7 +234,7 @@ namespace AdoptAPet.HelperFunctions
 
             int age = animal.age != null ? animal.age : 0;
             string sex = animal.sex != null ? animal.sex : "NOT PROVIDED";
-            int color = 0;
+            int color = animal.color;
             string name = animal.name != null ? animal.name : "NOT PROVIDED";
             bool friendly = animal.friendly != null? animal.friendly : false;
             string description = animal.description != null? animal.description : "NOT PROVIDED";

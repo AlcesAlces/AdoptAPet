@@ -39,6 +39,18 @@ namespace AdoptAPet
             }
 
             cbSpecies.SelectedIndex = 0;
+
+
+            var colorBox = Queries.returnAllColor();
+
+            cbColor.Items.Add("Select a Color");
+
+            foreach (var item in colorBox)
+            {
+                cbColor.Items.Add(item);
+            }
+
+            cbColor.SelectedIndex = 0;
         }
 
         private void cbSpecies_SelectedIndexChanged_1(object sender, EventArgs e)
@@ -84,6 +96,14 @@ namespace AdoptAPet
             bool continueOn = true;
             int ImageId = 0;
 
+            string eMssage = getErrorMessage();
+            if (eMssage.Trim().Length != 0)
+            {
+                eMssage = "Please Fill out:\n" + eMssage;
+                continueOn = false;
+            }
+            MessageBox.Show(eMssage);
+
             try
             {
                 XDocument doc = Imgur.uploadImage(ofdAddAnimal.FileName);
@@ -92,13 +112,11 @@ namespace AdoptAPet
                 ImageId = Queries.addImageToDatabase(link, deletehash);
             }
 
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 continueOn = false;
                 MessageBox.Show("Something messed up with imgur!");
             }
-
-
 
             try
             {
@@ -110,6 +128,7 @@ namespace AdoptAPet
                     string t_name = txtName.Text;
                     string t_sex = cbSex.SelectedItem.ToString();
                     bool t_isFixed = cbFixed.Checked;
+                    int t_color = cbColor.SelectedIndex;
 
                     toAdd = new Animal()
                     {
@@ -119,7 +138,8 @@ namespace AdoptAPet
                         name = t_name,
                         sex = t_sex,
                         isFixed = t_isFixed,
-                        imgid = ImageId
+                        imgid = ImageId,
+                        color = t_color
                     };
 
                     string species = cbSpecies.SelectedItem.ToString();
@@ -132,10 +152,66 @@ namespace AdoptAPet
                 }
             }
 
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 MessageBox.Show("Incorrect input format");
             }
         }
+
+        public string getErrorMessage()
+        {
+            string eMessage = "";
+            if (txtName.Text.Trim().Length == 0){
+                eMessage += "\tName\n";
+            }
+            if (txtAge.Text.Trim().Length == 0)
+            {
+                eMessage += "\tAge\n";
+            }
+            if (txtName.Text.Trim().Length == 0)
+            {
+                eMessage += "\tName\n";
+            }
+            if (cbSex.SelectedIndex == 0)
+            {
+                eMessage += "\tSex\n";
+            }
+            if (cbSpecies.SelectedIndex == 0)
+            {
+                eMessage += "\tSpecies\n";
+            } 
+            if (cbBreed.SelectedIndex == 0)
+            {
+                eMessage += "\tBreed\n";
+            }
+            if (cbColor.SelectedIndex == 0)
+            {
+                eMessage += "\tColor\n";
+            }
+            if (rtbDescription.Text.Trim().Length == 0)
+            {
+                eMessage += "\tDescription\n";
+            }
+
+            return eMessage;
+        }
+
+        //make the text box numeric only 
+        //so no need to do input validation
+        private void txtAge_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+                (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+
+            // only allow one decimal point
+            if ((e.KeyChar == '.') && ((sender as TextBox).Text.IndexOf('.') > -1))
+            {
+                e.Handled = true;
+            }
+        }
+
     }
 }
