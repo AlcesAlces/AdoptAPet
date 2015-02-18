@@ -240,7 +240,7 @@ namespace AdoptAPet.HelperFunctions
             string description = animal.description != null? animal.description : "NOT PROVIDED";
             string microchip = "N/A";
             bool isFixed = animal.isFixed != null?animal.isFixed:false;
-            int location = 0;
+            int location = animal.location;
             int imgId = animal.imgid!=null?animal.imgid:0;
 
             string sqlInsert = "INSERT INTO \"ANIMAL\" (\"AGE\", \"SEX\", \"COLOR\", \"NAME\", \"FRIENDLY\", \"DESCRIPTION\", \"MICROCHIP\", \"FIXED\", \"LOCATION\", \"IMG_ID\", \"SPECIES\", \"BREED\")"+
@@ -309,5 +309,46 @@ namespace AdoptAPet.HelperFunctions
             string sql = "INSERT INTO \"USER\" (\"NAME\", \"PASS\") VALUES ('" + name + "','" + pass + "')";
             dsBySql(sql);
         }
+
+        public static int returnAddressIndexQuery(string city, int zip, string street, string state)
+        {
+            string sql = "SELECT \"ADDRESS_ID\" FROM \"ADDRESS\" WHERE \"STREET\" = '" + street + "' AND \"ZIP\" = '" 
+                    + zip + "'AND \"CITY\" = '" + city + "' AND \"STATE\" = '" + state+ "'";
+
+            DataSet ds = dsBySql(sql);
+
+            List<int> returnList = new List<int>();
+
+            foreach (DataRow item in ds.Tables[0].Rows)
+            {
+                returnList.Add(Int32.Parse(item["ADDRESS_ID"].ToString().Trim()));
+            }
+
+            //if that address exists
+            if (returnList.Count == 1)
+            {
+                return returnList[0];
+            }
+            //make a new address and return the index
+            else
+            {
+                string insretSql = "INSERT INTO \"ADDRESS\" (\"STREET\", \"ZIP\", \"CITY\", \"STATE\") VALUES"+
+                    " ('" + street + "','" + zip + "','" + city + "','" + state + "')";
+                dsBySql(insretSql);
+
+                ds = dsBySql(sql);
+
+                returnList.Clear();
+
+                foreach (DataRow item in ds.Tables[0].Rows)
+                {
+                    returnList.Add(Int32.Parse(item["ADDRESS_ID"].ToString().Trim()));
+                }
+
+                return returnList[0];
+            }
+        }
+
+
     }
 }

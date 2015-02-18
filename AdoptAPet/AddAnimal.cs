@@ -22,6 +22,7 @@ namespace AdoptAPet
             InitializeComponent();
             cbSex.SelectedIndex = 0;
             populateComboboxes();
+            panelAddess.Controls.Add(new UserControlAddress());
         }
 
         /// <summary>
@@ -102,7 +103,29 @@ namespace AdoptAPet
                 eMssage = "Please Fill out:\n" + eMssage;
                 continueOn = false;
             }
-            MessageBox.Show(eMssage);
+           
+
+            int addressIndex =-1;
+            //get the address index
+            if (panelAddess.Controls[0] != null)
+            {
+                UserControlAddress boundUserControl = panelAddess.Controls[0] as UserControlAddress;
+                addressIndex = boundUserControl.returnAddressindex();
+                if (addressIndex == -1)//field not filled 
+                {
+                    eMssage += "\tAddress\n";
+                    continueOn = false;
+
+                }
+            }
+            else {
+                //error?
+            }
+
+            if (continueOn == false)
+            {
+                MessageBox.Show(eMssage);
+            }
 
             try
             {
@@ -129,6 +152,7 @@ namespace AdoptAPet
                     string t_sex = cbSex.SelectedItem.ToString();
                     bool t_isFixed = cbFixed.Checked;
                     int t_color = cbColor.SelectedIndex;
+                    int t_location= addressIndex;
 
                     toAdd = new Animal()
                     {
@@ -139,7 +163,8 @@ namespace AdoptAPet
                         sex = t_sex,
                         isFixed = t_isFixed,
                         imgid = ImageId,
-                        color = t_color
+                        color = t_color,
+                        location = t_location
                     };
 
                     string species = cbSpecies.SelectedItem.ToString();
@@ -212,6 +237,5 @@ namespace AdoptAPet
                 e.Handled = true;
             }
         }
-
     }
 }

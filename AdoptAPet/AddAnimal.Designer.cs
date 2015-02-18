@@ -49,6 +49,8 @@
             this.cbColor = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txtAge = new System.Windows.Forms.TextBox();
+            this.panelAddess = new System.Windows.Forms.Panel();
+            this.label9 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbPreview)).BeginInit();
             this.SuspendLayout();
             // 
@@ -257,11 +259,29 @@
             this.txtAge.TabIndex = 1;
             this.txtAge.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtAge_KeyPress);
             // 
+            // panelAddess
+            // 
+            this.panelAddess.Location = new System.Drawing.Point(531, 64);
+            this.panelAddess.Name = "panelAddess";
+            this.panelAddess.Size = new System.Drawing.Size(415, 155);
+            this.panelAddess.TabIndex = 21;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(531, 33);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(132, 25);
+            this.label9.TabIndex = 22;
+            this.label9.Text = "Address Info";
+            // 
             // AddAnimal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1474, 696);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.panelAddess);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.cbColor);
             this.Controls.Add(this.btnSubmit);
@@ -314,5 +334,7 @@
         private System.Windows.Forms.ComboBox cbColor;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox txtAge;
+        private System.Windows.Forms.Panel panelAddess;
+        private System.Windows.Forms.Label label9;
     }
 }
