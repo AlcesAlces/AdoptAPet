@@ -53,6 +53,21 @@ namespace AdoptAPet.HelperFunctions
             };
         }
 
+        public static List<string> returnAllColor()
+        {
+            string sql = "SELECT \"NAME\" FROM \"COLOR\"";
+            DataSet ds = dsBySql(sql);
+
+            List<string> toReturn = new List<string>();
+            
+            foreach(DataRow item in ds.Tables[0].Rows)
+            {
+                toReturn.Add(item["NAME"].ToString().Trim());
+            }
+
+            return toReturn;
+        }
+
         public static List<string> returnAllSpeciesName()
         {
             string sql = "SELECT \"NAME\" FROM \"SPECIES\"";
@@ -149,30 +164,27 @@ namespace AdoptAPet.HelperFunctions
             return toReturn;
         }
 
-        public static string imageByAid(int aid)
+        public static ImageHandler imageByAid(int aid)
         {
-            string sql = "SELECT IMG.\"IMAGE_URL\" FROM \"ANIMAL\" A "+
+            string sql = "SELECT IMG.\"IMAGE_URL\", IMG.\"IMAGE_ID\" FROM \"ANIMAL\" A "+
                           "INNER JOIN \"IMAGE\" I ON A.\"IMG_ID\" = I.\"IMAGE_ID\" "+
                           "INNER JOIN \"IMGUR_RESOURCE\" IMG ON I.\"IMGUR_ID\" = IMG.\"IMAGE_ID\" "+
                           "WHERE A.\"AID\" = "+aid;
             DataSet ds = dsBySql(sql);
 
-            string toReturn = "";
+            ImageHandler toReturn = new ImageHandler();
 
             foreach( DataRow item in ds.Tables[0].Rows)
             {
-                toReturn = item["IMAGE_URL"].ToString();
+                toReturn = new ImageHandler
+                {
+                    imageId = Int32.Parse(item["IMAGE_ID"].ToString()),
+                    local = false,
+                    path = item["IMAGE_URL"].ToString()
+                };
             }
 
-            if (toReturn == "")
-            {
-                return null;
-            }
-
-            else
-            {
-                return toReturn;
-            }
+            return toReturn;
         }
 
         public static List<ImageHandler> returnAllImages()
@@ -183,12 +195,16 @@ namespace AdoptAPet.HelperFunctions
 
             DataSet ds = dsBySql(sql);
 
+            List<ImageHandler> toReturn = new List<ImageHandler>();
+
             foreach(DataRow row in ds.Tables[0].Rows)
             {
-
+                toReturn.Add(new ImageHandler
+                    {
+                        imageId = Int32.Parse(row["IMAGE_ID"].ToString()),
+                        path = row["IMAGE_URL"].ToString()
+                    });
             }
-
-            List<ImageHandler> toReturn = new List<ImageHandler>();
 
             return toReturn;
         }
@@ -218,7 +234,7 @@ namespace AdoptAPet.HelperFunctions
 
             int age = animal.age != null ? animal.age : 0;
             string sex = animal.sex != null ? animal.sex : "NOT PROVIDED";
-            int color = 0;
+            int color = animal.color;
             string name = animal.name != null ? animal.name : "NOT PROVIDED";
             bool friendly = animal.friendly != null? animal.friendly : false;
             string description = animal.description != null? animal.description : "NOT PROVIDED";

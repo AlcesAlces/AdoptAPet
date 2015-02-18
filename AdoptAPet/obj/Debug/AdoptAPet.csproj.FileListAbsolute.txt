@@ -1,1 +1,21 @@
+<<<<<<< HEAD
 C:\Users\Chris\Documents\AdoptAPet\AdoptAPet\bin\Debug\AdoptAPet.exe.config
+=======
+C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\bin\Debug\adopted.gif
+C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\bin\Debug\shadow.png
+C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\bin\Debug\AdoptAPet.exe.config
+C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\bin\Debug\AdoptAPet.exe
+C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\bin\Debug\AdoptAPet.pdb
+C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.csprojResolveAssemblyReference.cache
+C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.AddAnimal.resources
+C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.Form1.resources
+C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.Properties.Resources.resources
+C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.RemoveAnimal.resources
+C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.UserControlHome.resources
+C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.UserControlLogin.resources
+C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.UserControlRegister.resources
+C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.UserControlSearch.resources
+C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.csproj.GenerateResource.Cache
+C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.exe
+C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.pdb
+>>>>>>> origin/Chris_Branch

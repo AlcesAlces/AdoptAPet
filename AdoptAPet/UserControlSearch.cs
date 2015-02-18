@@ -45,60 +45,86 @@ namespace AdoptAPet
         /// </summary>
         public void populateLisBox()
         {
-            lbAnimals.Items.Clear();
+            try
+            {
+                this.Enabled = false;
 
-            string speciesString = null;
-            string breedString = null;
+                lbAnimals.Items.Clear();
 
+<<<<<<< HEAD
             if(cbSpecies.SelectedItem.ToString() != "Select a Species")
             {
                 speciesString = cbSpecies.SelectedItem.ToString();
                 txtAnimalSpecies_Infomation.Text = speciesString;
+=======
+                string speciesString = null;
+                string breedString = null;
+>>>>>>> origin/Chris_Branch
 
-            }
+                if (cbSpecies.SelectedItem.ToString() != "Select a Species")
+                {
+                    speciesString = cbSpecies.SelectedItem.ToString();
 
+<<<<<<< HEAD
             if (cbBreed.SelectedItem.ToString() != "Select a Breed")
             {
                 breedString = cbBreed.SelectedItem.ToString();
                 txtAnimalBreed_Information.Text = breedString;
             }
-
-            List<Animal> toPopulate = Queries.animalNamesByParameter(speciesString, breedString);
-            lbAnimals.Tag = toPopulate;
-
-            if(toPopulate.Count == 0)
-            {
-                lbAnimals.Items.Add("No animals!");
-            }
-
-            foreach(Animal item in toPopulate)
-            {
-                lbAnimals.Items.Add(item.name.ToString());
-            }
-
-            string toSet = null;
-
-            if (toPopulate.Count != 0)
-            {
-                toSet = Queries.imageByAid(toPopulate[0].aid);
-            }
-
-            if (toSet != null)
-            {
-                pbPicture.ImageLocation = toSet;
-            }
-
-            else
-            {
-                try
-                {
-                    //TODO: Change the way this references the image
-                    pbPicture.ImageLocation = @"pictures/other/shadow.png";
+=======
                 }
-                catch(Exception e)
+>>>>>>> origin/Chris_Branch
+
+                if (cbBreed.SelectedItem.ToString() != "Select a Breed")
                 {
-                    MessageBox.Show(e.ToString());
+                    breedString = cbBreed.SelectedItem.ToString();
                 }
+
+                List<Animal> toPopulate = Queries.animalNamesByParameter(speciesString, breedString);
+                lbAnimals.Tag = toPopulate;
+
+                if (toPopulate.Count == 0)
+                {
+                    lbAnimals.Items.Add("No animals!");
+                }
+
+                foreach (Animal item in toPopulate)
+                {
+                    lbAnimals.Items.Add(item.name.ToString());
+                }
+
+                Image toSet = null;
+
+                if (toPopulate.Count != 0)
+                {
+                    toSet = ImageGoBetween.imageFromAid(toPopulate[0].aid);
+                }
+
+                if (toSet != null)
+                {
+                    pbPicture.Image = toSet;
+                }
+
+                else
+                {
+                    try
+                    {
+                        //TODO: Change the way this references the image
+                        pbPicture.ImageLocation = @"pictures/other/shadow.png";
+                    }
+                    catch (Exception e)
+                    {
+                        MessageBox.Show(e.ToString());
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+            finally
+            {
+                this.Enabled = true;
             }
         }
 
@@ -167,7 +193,7 @@ namespace AdoptAPet
                         Image playbutton;
                         try
                         {
-                            playbutton = Image.FromFile(@"D:\C#Projects\AdoptAPet\AdoptAPet\bin\Debug\pictures\rock\adopted.gif");
+                            playbutton = (Image)AdoptAPet.Properties.Resources.adopted;
                         }
                         catch (Exception ex)
                         {
@@ -177,10 +203,7 @@ namespace AdoptAPet
                         Image Frame;
                         try
                         {
-                            WebClient wc = new WebClient();
-                            byte[] bytes = wc.DownloadData(Queries.imageByAid(animal.aid));
-                            MemoryStream ms = new MemoryStream(bytes);
-                            Frame = Image.FromStream(ms);
+                            Frame = ImageGoBetween.imageFromAid(animal.aid);
                         }
                         catch (Exception ex)
                         {
@@ -211,7 +234,7 @@ namespace AdoptAPet
 
                     else
                     {
-                        pbPicture.ImageLocation = Queries.imageByAid(animal.aid);
+                        pbPicture.Image = ImageGoBetween.imageFromAid(animal.aid);
                     }
                 }
 
