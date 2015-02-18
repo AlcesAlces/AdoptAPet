@@ -51,29 +51,14 @@ namespace AdoptAPet
 
                 lbAnimals.Items.Clear();
 
-<<<<<<< HEAD
-            if(cbSpecies.SelectedItem.ToString() != "Select a Species")
-            {
-                speciesString = cbSpecies.SelectedItem.ToString();
-                txtAnimalSpecies_Infomation.Text = speciesString;
-=======
                 string speciesString = null;
                 string breedString = null;
->>>>>>> origin/Chris_Branch
 
                 if (cbSpecies.SelectedItem.ToString() != "Select a Species")
                 {
                     speciesString = cbSpecies.SelectedItem.ToString();
 
-<<<<<<< HEAD
-            if (cbBreed.SelectedItem.ToString() != "Select a Breed")
-            {
-                breedString = cbBreed.SelectedItem.ToString();
-                txtAnimalBreed_Information.Text = breedString;
-            }
-=======
                 }
->>>>>>> origin/Chris_Branch
 
                 if (cbBreed.SelectedItem.ToString() != "Select a Breed")
                 {
