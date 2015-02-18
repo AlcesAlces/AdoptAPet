@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using AdoptAPet.HelperFunctions;
 using System.ComponentModel;
 using System.Drawing;
 using System.Data;
@@ -51,7 +52,33 @@ namespace AdoptAPet
             {
                 e.Handled = true;
             }
-        
+        }
+
+
+        public int returnAddressindex()
+        {
+            string state;
+            int zip;
+            string street;
+            string city;
+            //TODO:
+            //test the state thing
+
+
+            if (cbState.SelectedItem.ToString().Trim().ToLower() == "select" || tbZipCode.Text.Trim() == "" || tbAddress.Text.Trim().ToLower() == ""
+                || tbCity.Text.Trim().ToLower() == "") {
+                    return -1;
+            }
+            else//error free
+            {
+                state = cbState.SelectedItem.ToString().Trim().ToLower();
+                zip = Int32.Parse(tbZipCode.Text.Trim());
+                street = tbAddress.Text.Trim().ToLower();
+                city = tbCity.Text.Trim().ToLower();
+            }
+
+            int addressIndex = Queries.returnAddressIndexQuery(city, zip, street, state);
+            return addressIndex;
         }
     }
 }

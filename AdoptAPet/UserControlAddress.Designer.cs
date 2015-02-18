@@ -118,7 +118,7 @@
             this.Controls.Add(this.tbAddress);
             this.Controls.Add(this.tbCity);
             this.Name = "UserControlAddress";
-            this.Size = new System.Drawing.Size(368, 154);
+            this.Size = new System.Drawing.Size(420, 164);
             this.Load += new System.EventHandler(this.UserControlAddress_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
