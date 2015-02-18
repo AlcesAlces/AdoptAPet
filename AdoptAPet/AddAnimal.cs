@@ -22,6 +22,7 @@ namespace AdoptAPet
             InitializeComponent();
             cbSex.SelectedIndex = 0;
             populateComboboxes();
+            panelAddess.Controls.Add(new UserControlAddress());
         }
 
         /// <summary>
@@ -212,6 +213,5 @@ namespace AdoptAPet
                 e.Handled = true;
             }
         }
-
     }
 }

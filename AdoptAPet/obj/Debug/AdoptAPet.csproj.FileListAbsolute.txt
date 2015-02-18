@@ -15,3 +15,4 @@ C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.U
 C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.csproj.GenerateResource.Cache
 C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.exe
 C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.pdb
+C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.UserControlAddress.resources
