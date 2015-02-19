@@ -53,6 +53,7 @@ namespace AdoptAPet
 
                 string speciesString = null;
                 string breedString = null;
+                string searchName = null; 
 
                 if (cbSpecies.SelectedItem.ToString() != "Select a Species")
                 {
@@ -65,7 +66,11 @@ namespace AdoptAPet
                     breedString = cbBreed.SelectedItem.ToString();
                 }
 
-                List<Animal> toPopulate = Queries.animalNamesByParameter(speciesString, breedString);
+                if (tbSearchName.Text.Trim().Length != 0){
+                    searchName = tbSearchName.Text;
+                }
+
+                List<Animal> toPopulate = Queries.animalNamesByParameter(speciesString, breedString, searchName);
                 lbAnimals.Tag = toPopulate;
 
                 if (toPopulate.Count == 0)
@@ -236,6 +241,11 @@ namespace AdoptAPet
         private void cbAdopted_CheckedChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void btnSearchName_Click(object sender, EventArgs e)
+        {
+            populateLisBox();
         }
 
        

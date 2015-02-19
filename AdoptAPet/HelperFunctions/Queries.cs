@@ -114,36 +114,42 @@ namespace AdoptAPet.HelperFunctions
             }
         }
 
-        public static List<Animal> animalNamesByParameter(string species, string breed)
+        public static List<Animal> animalNamesByParameter(string species, string breed,string searchName)
         {
-            string sql = "";
-
-            if(species == null && breed != null)
-            {
-                sql = "SELECT A.\"NAME\", A.\"AID\", A.\"ADOPTED\" FROM \"ANIMAL\" A INNER JOIN \"SPECIES\" S ON " +
+            bool adddedWhere = false;
+            string sql = "SELECT A.\"NAME\", A.\"AID\", A.\"ADOPTED\" FROM \"ANIMAL\" A INNER JOIN \"SPECIES\" S ON " +
                       "A.\"SPECIES\" = S.\"SID\" INNER JOIN \"BREED\" B ON A.\"BREED\" = " +
-                      "B.\"BID\" WHERE B.\"NAME\" = '" + breed + "'";
+                      "B.\"BID\"";
+
+            if (species == null && breed != null)
+            {
+                sql +=  "WHERE B.\"NAME\" = '" + breed + "'";
+                adddedWhere = true;
             }
 
             else if(breed == null && species != null)
             {
-                sql = "SELECT A.\"NAME\", A.\"AID\", A.\"ADOPTED\" FROM \"ANIMAL\" A INNER JOIN \"SPECIES\" S ON " +
-                      "A.\"SPECIES\" = S.\"SID\" INNER JOIN \"BREED\" B ON A.\"BREED\" = " +
-                      "B.\"BID\" WHERE S.\"NAME\" = '" + species +"'";
+                sql += "WHERE S.\"NAME\" = '" + species +"'";
+                adddedWhere = true;
             }
 
-            else if (breed == null && species == null)
+            else if (breed != null && species != null)
             {
-                sql = "SELECT A.\"NAME\", A.\"AID\", A.\"ADOPTED\" FROM \"ANIMAL\" A INNER JOIN \"SPECIES\" S ON " +
-                      "A.\"SPECIES\" = S.\"SID\" INNER JOIN \"BREED\" B ON A.\"BREED\" = " +
-                      "B.\"BID\"";
+               sql += "WHERE S.\"NAME\" = '" + species + "' AND B.\"NAME\" = '" + breed + "'";
+                adddedWhere = true;
             }
 
-            else
+
+            /*SELECT *
+            FROM "ANIMAL" A
+            WHERE difference(A."NAME", 'dr') > 1;*/
+            if (searchName != null && adddedWhere)
             {
-                sql = "SELECT A.\"NAME\", A.\"AID\", A.\"ADOPTED\" FROM \"ANIMAL\" A INNER JOIN \"SPECIES\" S ON " +
-                      "A.\"SPECIES\" = S.\"SID\" INNER JOIN \"BREED\" B ON A.\"BREED\" = " +
-                      "B.\"BID\" WHERE S.\"NAME\" = '" + species + "' AND B.\"NAME\" = '" + breed + "'";
+                sql += "AND difference(A.\"NAME\" , '" + searchName + "') > 1"; 
+            }
+            else if (searchName != null && !adddedWhere)
+            {
+                sql += "WHERE difference(A.\"NAME\" , '" + searchName + "') > 1";
             }
 
 

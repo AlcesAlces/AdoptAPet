@@ -17,7 +17,7 @@ namespace AdoptAPet
         public RemoveAnimal()
         {
             InitializeComponent();
-            List<Animal> animals = Queries.animalNamesByParameter(null, null);
+            List<Animal> animals = Queries.animalNamesByParameter(null, null,null);
 
             lbAvailableAnimals.Tag = animals;
 
