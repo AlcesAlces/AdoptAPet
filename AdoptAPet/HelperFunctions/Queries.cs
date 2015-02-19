@@ -83,6 +83,22 @@ namespace AdoptAPet.HelperFunctions
             return toReturn;
         }
 
+        public static List<Animal> allAnimals()
+        {
+            string sql = "SELECT* FROM \"ANIMAL\"";
+            DataSet ds = dsBySql(sql);
+
+            List<Animal> toReturn = new List<Animal>();
+            
+            foreach(DataRow item in ds.Tables[0].Rows)
+            {
+                toReturn.Add(DataConversions.AnimalFromDataRow(item));
+            }
+
+            return toReturn;
+        }
+        
+
         public static List<string> returnBreedBySpecies(string species)
         {
             string sql = "SELECT B.\"NAME\" FROM \"BREED\" B, \"SPECIES\" S WHERE S.\"SID\" = B.\"SPECIES\" AND S.\"NAME\" ='" + species + "'";
@@ -114,7 +130,7 @@ namespace AdoptAPet.HelperFunctions
             }
         }
 
-        public static List<Animal> animalNamesByParameter(string species, string breed,string searchName)
+        public static List<Animal> animalNamesByParameter(string species, string breed,string searchName, bool adopted, bool isfixed, bool friendly)
         {
             bool adddedWhere = false;
             string sql = "SELECT A.\"NAME\", A.\"AID\", A.\"ADOPTED\" FROM \"ANIMAL\" A INNER JOIN \"SPECIES\" S ON " +
@@ -139,18 +155,53 @@ namespace AdoptAPet.HelperFunctions
                 adddedWhere = true;
             }
 
-
-            /*SELECT *
-            FROM "ANIMAL" A
-            WHERE difference(A."NAME", 'dr') > 1;*/
+           //add part for search name
             if (searchName != null && adddedWhere)
             {
-                sql += "AND difference(A.\"NAME\" , '" + searchName + "') > 1"; 
+                sql += "AND difference(A.\"NAME\" , '" + searchName + "') > 1";
+                adddedWhere = true;
             }
             else if (searchName != null && !adddedWhere)
             {
                 sql += "WHERE difference(A.\"NAME\" , '" + searchName + "') > 1";
+                adddedWhere = true;
             }
+
+            // add part for adopted
+            if (adopted && adddedWhere)
+            {
+                sql += "AND A.\"ADOPTED\" = 'TRUE'";
+                adddedWhere = true;
+            }
+            else if (adopted && !adddedWhere)
+            {
+                sql += "WHERE A.\"ADOPTED\" = 'TRUE'";
+                adddedWhere = true;
+            } 
+            //add part for friendly
+            if (friendly && adddedWhere)
+            {
+                sql += "AND A.\"FRIENDLY\" = 'TRUE'";
+                adddedWhere = true;
+            }
+            else if (friendly && !adddedWhere)
+            {
+                sql += "WHERE A.\"FRIENDLY\" = 'TRUE'";
+                adddedWhere = true;
+            } 
+
+            // add part for fixed
+            if (isfixed && adddedWhere)
+            {
+                sql += "AND A.\"FIXED\" = 'TRUE'";
+                adddedWhere = true;
+            }
+            else if (isfixed && !adddedWhere)
+            {
+                sql += "WHERE A.\"FIXED\" = 'TRUE'";
+                adddedWhere = true;
+            } 
+
 
 
             DataSet ds = dsBySql(sql);
