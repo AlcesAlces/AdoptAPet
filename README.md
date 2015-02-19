@@ -8,7 +8,16 @@ Add / Remove Breeds (Verify that no animals with breed X exist in the database b
 
 Animal information on the search page
 
-Add more filtering options (color, adopted, friendly, etc)
-
 Add user registration
 
+BLAKE:
+
+Add more filtering options (color, adopted, friendly, etc)
+
+MIKE:
+
+Be a rad dude.
+
+CHRIS:
+
+Be a milk drinker.
