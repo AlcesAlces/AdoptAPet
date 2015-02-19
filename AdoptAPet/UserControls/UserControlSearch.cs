@@ -47,8 +47,6 @@ namespace AdoptAPet
         {
             try
             {
-                this.Enabled = false;
-
                 lbAnimals.Items.Clear();
 
                 string speciesString = null;
@@ -112,10 +110,6 @@ namespace AdoptAPet
             catch(Exception ex)
             {
                 MessageBox.Show(ex.ToString());
-            }
-            finally
-            {
-                this.Enabled = true;
             }
         }
 

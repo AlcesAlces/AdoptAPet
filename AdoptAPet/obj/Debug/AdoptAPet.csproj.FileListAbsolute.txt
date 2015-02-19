@@ -36,3 +36,21 @@ C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\bin\Debug\AdoptAPet.p
 C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.csprojResolveAssemblyReference.cache
 C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.exe
 C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.pdb
+E:\C#Projects\AdoptAPet\AdoptAPet\bin\Debug\AdoptAPet.exe.config
+E:\C#Projects\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.exe
+E:\C#Projects\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.pdb
+E:\C#Projects\AdoptAPet\AdoptAPet\bin\Debug\adopted.gif
+E:\C#Projects\AdoptAPet\AdoptAPet\bin\Debug\shadow.png
+E:\C#Projects\AdoptAPet\AdoptAPet\bin\Debug\AdoptAPet.exe
+E:\C#Projects\AdoptAPet\AdoptAPet\bin\Debug\AdoptAPet.pdb
+E:\C#Projects\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.csprojResolveAssemblyReference.cache
+E:\C#Projects\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.AddAnimal.resources
+E:\C#Projects\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.Form1.resources
+E:\C#Projects\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.Properties.Resources.resources
+E:\C#Projects\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.RemoveAnimal.resources
+E:\C#Projects\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.UserControlAddress.resources
+E:\C#Projects\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.UserControlHome.resources
+E:\C#Projects\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.UserControlLogin.resources
+E:\C#Projects\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.UserControlRegister.resources
+E:\C#Projects\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.UserControlSearch.resources
+E:\C#Projects\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.csproj.GenerateResource.Cache
