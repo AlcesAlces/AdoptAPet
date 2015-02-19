@@ -110,5 +110,10 @@ namespace AdoptAPet.HelperFunctions
 
             return getImageDirectory() + "\\" + img.imageId.ToString() + "." + pathType;
         }
+
+        public static Image returnPlaceholderPicture()
+        {
+            return (Image)AdoptAPet.Properties.Resources.shadow;
+        }
     }
 }

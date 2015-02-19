@@ -50,9 +50,11 @@
             this.lblAnimalSpecies = new System.Windows.Forms.Label();
             this.lblAnimalName = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.Sat_UserLoginStatus = new System.Windows.Forms.ToolStripStatusLabel();
+            this.tssLabelStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.btnSearchName = new System.Windows.Forms.Button();
             this.clbfFilters = new System.Windows.Forms.CheckedListBox();
+            this.bwPopComboBoxes = new System.ComponentModel.BackgroundWorker();
+            this.bwListBox = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).BeginInit();
             this.gbAnimale_Information.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIsAdoptedPicture_Information)).BeginInit();
@@ -276,19 +278,18 @@
             // 
             this.statusStrip1.ImageScalingSize = new System.Drawing.Size(24, 24);
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.Sat_UserLoginStatus});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 442);
+            this.tssLabelStatus});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 502);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Padding = new System.Windows.Forms.Padding(0, 0, 10, 0);
             this.statusStrip1.Size = new System.Drawing.Size(746, 22);
             this.statusStrip1.TabIndex = 11;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // Sat_UserLoginStatus
+            // tssLabelStatus
             // 
-            this.Sat_UserLoginStatus.Name = "Sat_UserLoginStatus";
-            this.Sat_UserLoginStatus.Size = new System.Drawing.Size(62, 17);
-            this.Sat_UserLoginStatus.Text = "UserName";
+            this.tssLabelStatus.Name = "tssLabelStatus";
+            this.tssLabelStatus.Size = new System.Drawing.Size(0, 17);
             // 
             // btnSearchName
             // 
@@ -316,6 +317,14 @@
             this.clbfFilters.TabIndex = 13;
             this.clbfFilters.SelectedIndexChanged += new System.EventHandler(this.clbfFilters_SelectedIndexChanged);
             // 
+            // bwPopComboBoxes
+            // 
+            this.bwPopComboBoxes.DoWork += new System.ComponentModel.DoWorkEventHandler(this.popComboBoxes_DoWork);
+            // 
+            // bwListBox
+            // 
+            this.bwListBox.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bwListBox_DoWork);
+            // 
             // UserControlSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -335,8 +344,7 @@
             this.Controls.Add(this.cbSpecies);
             this.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.Name = "UserControlSearch";
-            this.Size = new System.Drawing.Size(746, 464);
-            this.Load += new System.EventHandler(this.UserControlSearch_Load);
+            this.Size = new System.Drawing.Size(746, 524);
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).EndInit();
             this.gbAnimale_Information.ResumeLayout(false);
             this.gbAnimale_Information.PerformLayout();
@@ -370,10 +378,12 @@
         private System.Windows.Forms.TextBox txtAnimalName_Information;
         private System.Windows.Forms.Label lblDescription;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.ToolStripStatusLabel Sat_UserLoginStatus;
         private System.Windows.Forms.PictureBox pbIsAdoptedPicture_Information;
         private System.Windows.Forms.Button btnSearchName;
         private System.Windows.Forms.CheckedListBox clbfFilters;
+        private System.ComponentModel.BackgroundWorker bwPopComboBoxes;
+        private System.Windows.Forms.ToolStripStatusLabel tssLabelStatus;
+        private System.ComponentModel.BackgroundWorker bwListBox;
 
     }
 }

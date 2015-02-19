@@ -20,103 +20,11 @@ namespace AdoptAPet
         public UserControlSearch()
         {
             InitializeComponent();
-            populateComboboxes();
+            popComboBoxesWrapper();
+            //populateComboboxes();
         }
 
-        /// <summary>
-        /// Populate the initial comboboxes, setting the data which will automatically populate the rest of the information.
-        /// </summary>
-        public void populateComboboxes()
-        {
-            var speciesBox = Queries.returnAllSpeciesName();
-
-            cbSpecies.Items.Add("Select a Species");
-
-            foreach(var item in speciesBox)
-            {
-                cbSpecies.Items.Add(item);
-            }
-
-            cbSpecies.SelectedIndex = 0;
-        }
-
-        /// <summary>
-        /// Populate the animal list box.
-        /// </summary>
-        public void populateLisBox()
-        {
-            try
-            {
-                lbAnimals.Items.Clear();
-
-                string speciesString = null;
-                string breedString = null;
-                string searchName = null; 
-
-                if (cbSpecies.SelectedItem.ToString() != "Select a Species")
-                {
-                    speciesString = cbSpecies.SelectedItem.ToString();
-
-                }
-
-                if (cbBreed.SelectedItem.ToString() != "Select a Breed")
-                {
-                    breedString = cbBreed.SelectedItem.ToString();
-                }
-
-                if (tbSearchName.Text.Trim().Length != 0){
-                    searchName = tbSearchName.Text;
-                }
-
-
-                List<Animal> toPopulate = Queries.animalNamesByParameter(speciesString, breedString, searchName, clbfFilters.GetItemChecked(0), clbfFilters.GetItemChecked(1), clbfFilters.GetItemChecked(2));
-                lbAnimals.Tag = toPopulate;
-
-                if (toPopulate.Count == 0)
-                {
-                    lbAnimals.Items.Add("No animals!");
-                }
-
-                foreach (Animal item in toPopulate)
-                {
-                    lbAnimals.Items.Add(item.name.ToString());
-                }
-
-                Image toSet = null;
-
-                if (toPopulate.Count != 0)
-                {
-                    toSet = ImageGoBetween.imageFromAid(toPopulate[0].aid);
-                }
-
-                if (toSet != null)
-                {
-                    pbPicture.Image = toSet;
-                }
-
-                else
-                {
-                    try
-                    {
-                        //TODO: Change the way this references the image
-                        pbPicture.ImageLocation = @"pictures/other/shadow.png";
-                    }
-                    catch (Exception e)
-                    {
-                        MessageBox.Show(e.ToString());
-                    }
-                }
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-            }
-        }
-
-        private void UserControlSearch_Load(object sender, EventArgs e)
-        {
-
-        }
+        #region control events
 
         /// <summary>
         /// React to the species box changing.
@@ -127,24 +35,24 @@ namespace AdoptAPet
         {
 
             cbBreed.Items.Clear();
-            
+
             var breedBox = Queries.returnBreedBySpecies(cbSpecies.SelectedItem.ToString());
 
             cbBreed.Items.Add("Select a Breed");
 
-            foreach(var item in breedBox)
+            foreach (var item in breedBox)
             {
                 cbBreed.Items.Add(item.ToString());
             }
 
-            cbBreed.SelectedIndex = 0;
+            unhookBreedBox();
 
             if (lbAnimals.Items.Count != 0)
             {
                 lbAnimals.SelectedIndex = 0;
             }
 
-            populateLisBox();
+            listBoxWrapper();
         }
 
 
@@ -154,25 +62,67 @@ namespace AdoptAPet
             {
                 lbAnimals.SelectedIndex = 0;
             }
-            populateLisBox();
+
+            listBoxWrapper();
         }
 
         private void lbAnimals_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            if(lbAnimals.Items.Count == 0 || lbAnimals.Items[0] == "No animals!")
+
+            if (lbAnimals.Items.Count == 0 || lbAnimals.Items[0] == "No animals!")
             {
                 //Don't do anything, dummy
             }
 
             else
             {
-                List<Animal> animalList = (List<Animal>)lbAnimals.Tag;
+                setPictureBoxContent();
+            }
 
-                if (lbAnimals.SelectedIndex != -1)
+        }
+
+        private void tbSearchName_TextChanged(object sender, EventArgs e)
+        {
+            //temp string to pass into information box: Animal Name
+            txtAnimalName_Information.Text = "Fake Animal Name";
+        }
+
+        private void btnSearchName_Click(object sender, EventArgs e)
+        {
+            listBoxWrapper();
+        }
+
+        private void clbfFilters_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            listBoxWrapper();
+        }
+
+        #endregion
+
+        #region support functions
+
+        private void setPictureBoxContent()
+        {
+            List<Animal> animalList = getlbAnimalsTag();
+            int index = getLbAnimalSelectedIndex();
+
+            if (animalList.Count == 0)
+            {
+                setpbPictureImage(ImageGoBetween.returnPlaceholderPicture());
+            }
+
+            else
+            {
+
+                if (index == -1)
                 {
-                    Animal animal = animalList[lbAnimals.SelectedIndex];
+                    index = 0;
+                }
 
+                Animal animal = animalList[index];
+
+                try
+                {
                     if (animal.isAdopted)
                     {
                         Image playbutton;
@@ -219,35 +169,279 @@ namespace AdoptAPet
 
                     else
                     {
-                        pbPicture.Image = ImageGoBetween.imageFromAid(animal.aid);
+                        setpbPictureImage(ImageGoBetween.imageFromAid(animal.aid));
                     }
-                }
 
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+        }
+
+        /// <summary>
+        /// Populate the initial comboboxes, setting the data which will automatically populate the rest of the information.
+        /// </summary>
+        public void populateComboboxes()
+        {
+            var speciesBox = Queries.returnAllSpeciesName();
+
+            addItemCbSpecies("Select a Species");
+
+            foreach (var item in speciesBox)
+            {
+                addItemCbSpecies(item);
             }
 
+            setCbSpeciesIndex(0);
         }
 
-        private void tbSearchName_TextChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Populate the animal list box.
+        /// </summary>
+        public void populateLisBox()
         {
-            //temp string to pass into information box: Animal Name
-            txtAnimalName_Information.Text = "Fake Animal Name";
+            try
+            {
+                clearLbAnimals();
+
+                string speciesString = null;
+                string breedString = null;
+                string searchName = null;
+
+                if (getSelectedCbSpeciesItem() != "Select a Species")
+                {
+                    speciesString = getSelectedCbSpeciesItem();
+
+                }
+
+                if (getSelectedCbBreedItem() != "Select a Breed")
+                {
+                    breedString = getSelectedCbBreedItem();
+                }
+
+                if (tbSearchName.Text.Trim().Length != 0)
+                {
+                    searchName = tbSearchName.Text;
+                }
+
+
+                List<Animal> toPopulate = Queries.animalNamesByParameter(speciesString, breedString, searchName, clbfFilters.GetItemChecked(0), clbfFilters.GetItemChecked(1), clbfFilters.GetItemChecked(2));
+                lbAnimals.Tag = toPopulate;
+
+                if (toPopulate.Count == 0)
+                {
+                    lbAnimalsAddItem("No animals!");
+                }
+
+                foreach (Animal item in toPopulate)
+                {
+                    lbAnimalsAddItem(item.name.ToString());
+                }
+
+                setPictureBoxContent();
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.ToString());
+            }
+        }
+        #endregion
+
+        #region background workers
+
+        /// <summary>
+        /// Acts as a stand-between the worker and function calls.
+        /// </summary>
+        private void popComboBoxesWrapper()
+        {
+            bwPopComboBoxes.RunWorkerAsync();
         }
 
-        private void cbAdopted_CheckedChanged(object sender, EventArgs e)
+        /// <summary>
+        /// Worker for the comboboxes repopulation function.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void popComboBoxes_DoWork(object sender, DoWorkEventArgs e)
         {
 
+            setFormEnabled(false);
+            tssLabelStatus.Text = "Loading animal information...";
+            populateComboboxes();
+            tssLabelStatus.Text = "Animal information loaded";
+            setFormEnabled(true);
         }
 
-        private void btnSearchName_Click(object sender, EventArgs e)
+        private void listBoxWrapper()
         {
+            bwListBox.RunWorkerAsync();
+        }
+
+        private void bwListBox_DoWork(object sender, DoWorkEventArgs e)
+        {
+            setFormEnabled(false);
             populateLisBox();
+            setFormEnabled(true);
         }
 
-        private void clbfFilters_SelectedIndexChanged(object sender, EventArgs e)
+        #endregion
+
+        #region unhooking component methods
+
+        /// <summary>
+        /// Needed when you don't want the breedbox selected index changed event to fire.
+        /// </summary>
+        private void unhookBreedBox()
         {
-            populateLisBox();
+            cbBreed.SelectedIndexChanged -= cbBreed_SelectedIndexChanged;
+            cbBreed.SelectedIndex = 0;
+            cbBreed.SelectedIndexChanged += cbBreed_SelectedIndexChanged;
         }
 
-       
+        #endregion
+
+        #region threadsafe component interaction
+        //All of these functions are needed if you're going to interact with a
+        //component outside of this thread.
+
+        private void setFormEnabled(bool state)
+        {
+            if (this.InvokeRequired)
+            {
+                this.Invoke(new MethodInvoker(() => { this.Enabled = state; }));
+            }
+
+            else
+            {
+                this.Enabled = state;
+            }
+        }
+
+        private void addItemCbSpecies(string toSet)
+        {
+            if (cbSpecies.InvokeRequired)
+            {
+                cbSpecies.Invoke(new MethodInvoker(() => { cbSpecies.Items.Add(toSet); }));
+            }
+
+            else
+            {
+                cbSpecies.Items.Add(toSet);
+            }
+        }
+
+        private void setCbSpeciesIndex(int index)
+        {
+            if(cbSpecies.InvokeRequired)
+            {
+                cbSpecies.Invoke(new MethodInvoker(() => { cbSpecies.SelectedIndex = index; }));
+            }
+
+            else
+            {
+                cbSpecies.SelectedIndex = 0;
+            }
+        }
+
+        private void clearLbAnimals()
+        {
+            if (lbAnimals.InvokeRequired)
+            {
+                lbAnimals.Invoke(new MethodInvoker(() => { lbAnimals.Items.Clear(); }));
+            }
+            else
+            {
+                lbAnimals.Items.Clear();
+            }
+        }
+
+        private string getSelectedCbSpeciesItem()
+        {
+            if(cbSpecies.InvokeRequired)
+            {
+                string toReturn = "";
+                cbSpecies.Invoke(new MethodInvoker(() => { toReturn = cbSpecies.SelectedItem.ToString(); }));
+                return toReturn;
+            }
+            else
+            {
+                return cbSpecies.SelectedItem.ToString();
+            }
+        }
+
+        private string getSelectedCbBreedItem()
+        {
+            if(cbBreed.InvokeRequired)
+            {
+                string toReturn = "";
+                cbBreed.Invoke(new MethodInvoker(() => { toReturn = cbBreed.SelectedItem.ToString(); }));
+                return toReturn;
+            }
+
+            else
+            {
+                return cbBreed.SelectedItem.ToString();
+            }
+        }
+
+        private void lbAnimalsAddItem(string toAdd)
+        {
+            if(lbAnimals.InvokeRequired)
+            {
+                lbAnimals.Invoke(new MethodInvoker(() => { lbAnimals.Items.Add(toAdd); }));
+            }
+
+            else
+            {
+                lbAnimals.Items.Add(toAdd);
+            }
+        }
+
+        private List<Animal> getlbAnimalsTag()
+        {
+            if(lbAnimals.InvokeRequired)
+            {
+                List<Animal> toReturn = new List<Animal>();
+                lbAnimals.Invoke(new MethodInvoker(() => { toReturn = lbAnimals.Tag as List<Animal>; }));
+                return toReturn;
+            }
+            else
+            {
+                return lbAnimals.Tag as List<Animal>;
+            }
+        }
+
+        private int getLbAnimalSelectedIndex()
+        {
+            if(lbAnimals.InvokeRequired)
+            {
+                int toReturn = 0;
+                lbAnimals.Invoke(new MethodInvoker(() => { toReturn = lbAnimals.SelectedIndex; }));
+                return toReturn;
+            }
+
+            else
+            {
+                return lbAnimals.SelectedIndex;
+            }
+        }
+
+        private void setpbPictureImage(Image toSet)
+        {
+            if(pbPicture.InvokeRequired)
+            {
+                pbPicture.Invoke(new MethodInvoker(() => { pbPicture.Image = toSet; }));
+            }
+
+            else
+            {
+                pbPicture.Image = toSet;
+            }
+        }
+
+        #endregion
     }
 }
