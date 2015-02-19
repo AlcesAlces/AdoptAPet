@@ -69,6 +69,7 @@
     <Compile Include="HelperClasses\Animal.cs" />
     <Compile Include="HelperClasses\ImageHandler.cs" />
     <Compile Include="HelperClasses\User.cs" />
+    <Compile Include="HelperFunctions\DataConversions.cs" />
     <Compile Include="HelperFunctions\FormHelpers.cs" />
     <Compile Include="HelperFunctions\ImageGoBetween.cs" />
     <Compile Include="HelperFunctions\Imgur.cs" />

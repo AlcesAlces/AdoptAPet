@@ -35,7 +35,6 @@
             this.lblBreed = new System.Windows.Forms.Label();
             this.lbAnimals = new System.Windows.Forms.ListBox();
             this.lblAnimalListName = new System.Windows.Forms.Label();
-            this.cbAdopted = new System.Windows.Forms.CheckBox();
             this.pbPicture = new System.Windows.Forms.PictureBox();
             this.tbSearchName = new System.Windows.Forms.TextBox();
             this.lbSerchName = new System.Windows.Forms.Label();
@@ -53,6 +52,7 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.Sat_UserLoginStatus = new System.Windows.Forms.ToolStripStatusLabel();
             this.btnSearchName = new System.Windows.Forms.Button();
+            this.clbfFilters = new System.Windows.Forms.CheckedListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).BeginInit();
             this.gbAnimale_Information.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbIsAdoptedPicture_Information)).BeginInit();
@@ -120,18 +120,6 @@
             this.lblAnimalListName.TabIndex = 5;
             this.lblAnimalListName.Text = "Name";
             // 
-            // cbAdopted
-            // 
-            this.cbAdopted.AutoSize = true;
-            this.cbAdopted.Location = new System.Drawing.Point(32, 340);
-            this.cbAdopted.Margin = new System.Windows.Forms.Padding(5, 6, 5, 6);
-            this.cbAdopted.Name = "cbAdopted";
-            this.cbAdopted.Size = new System.Drawing.Size(199, 29);
-            this.cbAdopted.TabIndex = 7;
-            this.cbAdopted.Text = "Include Adopted";
-            this.cbAdopted.UseVisualStyleBackColor = true;
-            this.cbAdopted.CheckedChanged += new System.EventHandler(this.cbAdopted_CheckedChanged);
-            // 
             // pbPicture
             // 
             this.pbPicture.ErrorImage = global::AdoptAPet.Properties.Resources.shadow;
@@ -175,9 +163,9 @@
             this.gbAnimale_Information.Controls.Add(this.lblAnimalSpecies);
             this.gbAnimale_Information.Controls.Add(this.lblAnimalName);
             this.gbAnimale_Information.Location = new System.Drawing.Point(32, 418);
-            this.gbAnimale_Information.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbAnimale_Information.Margin = new System.Windows.Forms.Padding(4);
             this.gbAnimale_Information.Name = "gbAnimale_Information";
-            this.gbAnimale_Information.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gbAnimale_Information.Padding = new System.Windows.Forms.Padding(4);
             this.gbAnimale_Information.Size = new System.Drawing.Size(645, 286);
             this.gbAnimale_Information.TabIndex = 10;
             this.gbAnimale_Information.TabStop = false;
@@ -187,7 +175,7 @@
             // 
             this.pbIsAdoptedPicture_Information.Image = ((System.Drawing.Image)(resources.GetObject("pbIsAdoptedPicture_Information.Image")));
             this.pbIsAdoptedPicture_Information.Location = new System.Drawing.Point(457, 28);
-            this.pbIsAdoptedPicture_Information.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.pbIsAdoptedPicture_Information.Margin = new System.Windows.Forms.Padding(4);
             this.pbIsAdoptedPicture_Information.Name = "pbIsAdoptedPicture_Information";
             this.pbIsAdoptedPicture_Information.Size = new System.Drawing.Size(165, 138);
             this.pbIsAdoptedPicture_Information.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -197,7 +185,7 @@
             // btnAdopt_Information
             // 
             this.btnAdopt_Information.Location = new System.Drawing.Point(491, 188);
-            this.btnAdopt_Information.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAdopt_Information.Margin = new System.Windows.Forms.Padding(4);
             this.btnAdopt_Information.Name = "btnAdopt_Information";
             this.btnAdopt_Information.Size = new System.Drawing.Size(100, 55);
             this.btnAdopt_Information.TabIndex = 8;
@@ -209,7 +197,7 @@
             this.txtAnimalDes_Information.Enabled = false;
             this.txtAnimalDes_Information.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAnimalDes_Information.Location = new System.Drawing.Point(16, 169);
-            this.txtAnimalDes_Information.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAnimalDes_Information.Margin = new System.Windows.Forms.Padding(4);
             this.txtAnimalDes_Information.Multiline = true;
             this.txtAnimalDes_Information.Name = "txtAnimalDes_Information";
             this.txtAnimalDes_Information.Size = new System.Drawing.Size(419, 93);
@@ -220,7 +208,7 @@
             this.txtAnimalBreed_Information.Enabled = false;
             this.txtAnimalBreed_Information.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAnimalBreed_Information.Location = new System.Drawing.Point(217, 105);
-            this.txtAnimalBreed_Information.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAnimalBreed_Information.Margin = new System.Windows.Forms.Padding(4);
             this.txtAnimalBreed_Information.Name = "txtAnimalBreed_Information";
             this.txtAnimalBreed_Information.Size = new System.Drawing.Size(217, 38);
             this.txtAnimalBreed_Information.TabIndex = 6;
@@ -230,7 +218,7 @@
             this.txtAnimalSpecies_Infomation.Enabled = false;
             this.txtAnimalSpecies_Infomation.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAnimalSpecies_Infomation.Location = new System.Drawing.Point(217, 66);
-            this.txtAnimalSpecies_Infomation.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAnimalSpecies_Infomation.Margin = new System.Windows.Forms.Padding(4);
             this.txtAnimalSpecies_Infomation.Name = "txtAnimalSpecies_Infomation";
             this.txtAnimalSpecies_Infomation.Size = new System.Drawing.Size(217, 38);
             this.txtAnimalSpecies_Infomation.TabIndex = 5;
@@ -240,7 +228,7 @@
             this.txtAnimalName_Information.Enabled = false;
             this.txtAnimalName_Information.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtAnimalName_Information.Location = new System.Drawing.Point(217, 28);
-            this.txtAnimalName_Information.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtAnimalName_Information.Margin = new System.Windows.Forms.Padding(4);
             this.txtAnimalName_Information.Name = "txtAnimalName_Information";
             this.txtAnimalName_Information.Size = new System.Drawing.Size(217, 38);
             this.txtAnimalName_Information.TabIndex = 4;
@@ -313,16 +301,29 @@
             this.btnSearchName.UseVisualStyleBackColor = true;
             this.btnSearchName.Click += new System.EventHandler(this.btnSearchName_Click);
             // 
+            // clbfFilters
+            // 
+            this.clbfFilters.FormattingEnabled = true;
+            this.clbfFilters.Items.AddRange(new object[] {
+            "Adopted",
+            "Fixed",
+            "Friendly"});
+            this.clbfFilters.Location = new System.Drawing.Point(377, 82);
+            this.clbfFilters.Name = "clbfFilters";
+            this.clbfFilters.Size = new System.Drawing.Size(238, 134);
+            this.clbfFilters.TabIndex = 13;
+            this.clbfFilters.SelectedIndexChanged += new System.EventHandler(this.clbfFilters_SelectedIndexChanged);
+            // 
             // UserControlSearch
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.clbfFilters);
             this.Controls.Add(this.btnSearchName);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.gbAnimale_Information);
             this.Controls.Add(this.lbSerchName);
             this.Controls.Add(this.tbSearchName);
-            this.Controls.Add(this.cbAdopted);
             this.Controls.Add(this.pbPicture);
             this.Controls.Add(this.lblAnimalListName);
             this.Controls.Add(this.lbAnimals);
@@ -354,7 +355,6 @@
         private System.Windows.Forms.ListBox lbAnimals;
         private System.Windows.Forms.Label lblAnimalListName;
         private System.Windows.Forms.PictureBox pbPicture;
-        private System.Windows.Forms.CheckBox cbAdopted;
         private System.Windows.Forms.TextBox tbSearchName;
         private System.Windows.Forms.Label lbSerchName;
         private System.Windows.Forms.GroupBox gbAnimale_Information;
@@ -371,6 +371,7 @@
         private System.Windows.Forms.ToolStripStatusLabel Sat_UserLoginStatus;
         private System.Windows.Forms.PictureBox pbIsAdoptedPicture_Information;
         private System.Windows.Forms.Button btnSearchName;
+        private System.Windows.Forms.CheckedListBox clbfFilters;
 
     }
 }

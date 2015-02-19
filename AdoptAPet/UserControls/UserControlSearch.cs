@@ -70,7 +70,8 @@ namespace AdoptAPet
                     searchName = tbSearchName.Text;
                 }
 
-                List<Animal> toPopulate = Queries.animalNamesByParameter(speciesString, breedString, searchName);
+
+                List<Animal> toPopulate = Queries.animalNamesByParameter(speciesString, breedString, searchName, clbfFilters.GetItemChecked(0), clbfFilters.GetItemChecked(1), clbfFilters.GetItemChecked(2));
                 lbAnimals.Tag = toPopulate;
 
                 if (toPopulate.Count == 0)
@@ -244,6 +245,11 @@ namespace AdoptAPet
         }
 
         private void btnSearchName_Click(object sender, EventArgs e)
+        {
+            populateLisBox();
+        }
+
+        private void clbfFilters_SelectedIndexChanged(object sender, EventArgs e)
         {
             populateLisBox();
         }
