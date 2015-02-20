@@ -95,6 +95,12 @@
     <Compile Include="UserControls\UserControlAddress.Designer.cs">
       <DependentUpon>UserControlAddress.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UserControlAnimalRecord.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControlAnimalRecord.Designer.cs">
+      <DependentUpon>UserControlAnimalRecord.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UserControlHome.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -143,6 +149,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlAddress.resx">
       <DependentUpon>UserControlAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControlAnimalRecord.resx">
+      <DependentUpon>UserControlAnimalRecord.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlHome.resx">
       <DependentUpon>UserControlHome.cs</DependentUpon>

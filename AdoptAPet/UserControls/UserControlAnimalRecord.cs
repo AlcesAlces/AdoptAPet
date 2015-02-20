@@ -7,19 +7,41 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AdoptAPet.HelperClasses;
+using AdoptAPet.HelperFunctions;
 
 namespace AdoptAPet.UserControls
 {
     public partial class UserControlAnimalRecord : UserControl
     {
-        public UserControlAnimalRecord()
+        Animal _animal = new Animal();
+
+        public UserControlAnimalRecord(Animal infoAnimal)
         {
             InitializeComponent();
+            _animal = infoAnimal;
+            populateItems();
         }
+
+        private void populateItems()
+        {
+            //TODO: Fill in all of these functions.
+            
+            setAnimalName(_animal.name);
+            
+        }
+
         // (Set) Animal General Information
         private void setAnimalName(string setName)
         {
-            txtAnimalName.Text = setName;
+            if (txtAnimalName.InvokeRequired)
+            {
+                txtAnimalName.Invoke(new MethodInvoker(() => { txtAnimalName.Text = setName; }));
+            }
+            else
+            {
+                txtAnimalName.Text = setName;
+            }
         }
         private void setAnimalSpecies(string setSpecies)
         {
@@ -80,8 +102,9 @@ namespace AdoptAPet.UserControls
             cbAnimalMicochip.Checked = setMicrochip;
         }
 
-
-
-
+        private void btnAdopt_Information_Click(object sender, EventArgs e)
+        {
+            //TODO: Threadsafe verification of adoption.
+        }
     }
 }

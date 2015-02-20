@@ -12,6 +12,7 @@ using AdoptAPet.HelperClasses;
 using System.Drawing.Drawing2D;
 using System.Net;
 using System.IO;
+using AdoptAPet.UserControls;
 
 namespace AdoptAPet
 {
@@ -76,7 +77,7 @@ namespace AdoptAPet
 
             else
             {
-                setPictureBoxContent();
+                setAnimalInfo();
             }
 
         }
@@ -84,7 +85,7 @@ namespace AdoptAPet
         private void tbSearchName_TextChanged(object sender, EventArgs e)
         {
             //temp string to pass into information box: Animal Name
-            txtAnimalName_Information.Text = "Fake Animal Name";
+            //txtAnimalName_Information.Text = "Fake Animal Name";
         }
 
         private void btnSearchName_Click(object sender, EventArgs e)
@@ -101,7 +102,7 @@ namespace AdoptAPet
 
         #region support functions
 
-        private void setPictureBoxContent()
+        private void setAnimalInfo()
         {
             List<Animal> animalList = getlbAnimalsTag();
             int index = getLbAnimalSelectedIndex();
@@ -120,6 +121,8 @@ namespace AdoptAPet
                 }
 
                 Animal animal = animalList[index];
+
+                setpnlContent(new UserControlAnimalRecord(animal));
 
                 try
                 {
@@ -240,7 +243,7 @@ namespace AdoptAPet
                     lbAnimalsAddItem(item.name.ToString());
                 }
 
-                setPictureBoxContent();
+                setAnimalInfo();
 
             }
             catch (Exception ex)
@@ -439,6 +442,25 @@ namespace AdoptAPet
             else
             {
                 pbPicture.Image = toSet;
+            }
+        }
+
+        private void setpnlContent(UserControlAnimalRecord test)
+        {
+            if(pnlAnimalInfo.InvokeRequired)
+            {
+                pnlAnimalInfo.Invoke(new MethodInvoker(() =>
+                {
+                    pnlAnimalInfo.Controls.Clear();
+                    pnlAnimalInfo.Controls.Add(test);
+
+                }));
+            }
+
+            else
+            {
+                pnlAnimalInfo.Controls.Clear();
+                pnlAnimalInfo.Controls.Add(test);
             }
         }
 

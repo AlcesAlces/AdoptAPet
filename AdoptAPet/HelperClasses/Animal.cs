@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdoptAPet.HelperClasses
 {
-    class Animal
+    public class Animal
     {
 
         public int aid { get; set; }

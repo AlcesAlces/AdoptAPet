@@ -215,19 +215,7 @@ namespace AdoptAPet.HelperFunctions
                         aid = Int32.Parse(item["AID"].ToString()),
                         name = item["NAME"].ToString(),
                         isAdopted = (bool)item["ADOPTED"],
-                        age = (int)item["AGE"],
-                        breed = (int)item["BREED"],
-                        color = (int)item["COLOR"],
-                        description = item["DESCRIPTION"].ToString(),
-                        friendly = (bool)item["FRIENDLY"],
-                        imgid = (int)item["IMG_ID"],
-                        isFixed = (bool)item["FIXED"],
-                        location = (int)item["LOCATION"],
-                        microchip = item["MICROCHIP"].ToString(),
-                        sex = item["SEX"].ToString(),
-                        size = item["SIZE"].ToString(),
-                        species = (int)item["SPECIES"]
-
+                        age 
                     });
             }
 
