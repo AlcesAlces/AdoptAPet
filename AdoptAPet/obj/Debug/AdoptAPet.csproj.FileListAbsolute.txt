@@ -54,3 +54,5 @@ E:\C#Projects\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.UserControlSearch.resource
 E:\C#Projects\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.csproj.GenerateResource.Cache
 E:\C#Projects\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.exe
 E:\C#Projects\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.pdb
+C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.Forms.AddBreed.resources
+C:\Users\Blake Burton\Documents\GitHub\AdoptAPet\AdoptAPet\obj\Debug\AdoptAPet.Forms.RemoveUser.resources

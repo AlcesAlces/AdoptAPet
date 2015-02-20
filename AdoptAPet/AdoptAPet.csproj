@@ -71,6 +71,12 @@
     <Compile Include="Forms\AddBreed.Designer.cs">
       <DependentUpon>AddBreed.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms\RemoveUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\RemoveUser.Designer.cs">
+      <DependentUpon>RemoveUser.cs</DependentUpon>
+    </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="HelperClasses\Animal.cs" />
     <Compile Include="HelperClasses\ImageHandler.cs" />
@@ -127,6 +133,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AddBreed.resx">
       <DependentUpon>AddBreed.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\RemoveUser.resx">
+      <DependentUpon>RemoveUser.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

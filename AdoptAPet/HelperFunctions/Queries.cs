@@ -97,7 +97,22 @@ namespace AdoptAPet.HelperFunctions
 
             return toReturn;
         }
-        
+
+        public static List<User> ReturnAllUsers()
+        {
+            string sql = "SELECT* FROM \"USER\"";
+            DataSet ds = dsBySql(sql);
+
+            List<User> toReturn = new List<User>();
+
+            foreach (DataRow item in ds.Tables[0].Rows)
+            {
+                toReturn.Add(DataConversions.userFromDataRow(item));
+            }
+
+            return toReturn;
+        }
+
 
         public static List<string> returnBreedBySpecies(string species)
         {
@@ -347,6 +362,15 @@ namespace AdoptAPet.HelperFunctions
         public static void removeAnimalByAID(int aid)
         {
             string sqlRemoval = "DELETE FROM \"ANIMAL\" WHERE \"AID\" =" + aid;
+            dsBySql(sqlRemoval);
+        }
+
+        /// <summary>
+        /// Removes an user from the database
+        /// </summary>
+        public static void romoveUserById(int uid)
+        {
+            string sqlRemoval = "DELETE FROM \"USER\" WHERE \"UID\" =" + uid;
             dsBySql(sqlRemoval);
         }
 
