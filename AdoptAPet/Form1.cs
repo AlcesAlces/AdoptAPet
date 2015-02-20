@@ -1,4 +1,5 @@
-﻿using AdoptAPet.HelperFunctions;
+﻿using AdoptAPet.Forms;
+using AdoptAPet.HelperFunctions;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -58,6 +59,12 @@ namespace AdoptAPet
         private void adoptAnimalToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void addBreedToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddBreed breedForm = new AddBreed();
+            breedForm.Show();
         }
     }
 }

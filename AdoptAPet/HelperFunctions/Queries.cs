@@ -406,6 +406,31 @@ namespace AdoptAPet.HelperFunctions
             }
         }
 
+        public static int returnSpeciesIdByName(string name)
+        {
+            string sql = "SELECT \"SID\" FROM \"SPECIES\" WHERE \"NAME\" = '" + name + "'";
+            DataSet ds = dsBySql(sql);
+
+            int toReturn = 0;
+
+            foreach(DataRow row in ds.Tables[0].Rows)
+            {
+                toReturn = Int32.Parse(row["SID"].ToString());
+            }
+
+            return toReturn;
+        }
+
+        /// <summary>
+        /// Add a new breed to the database.
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="speciesId"></param>
+        public static void addBreed(string name, int speciesId)
+        {
+            string sql = "INSERT INTO \"BREED\" (\"SPECIES\", \"NAME\") VALUES ("+speciesId+",'"+name+"')";
+            dsBySql(sql);
+        }
 
     }
 }
