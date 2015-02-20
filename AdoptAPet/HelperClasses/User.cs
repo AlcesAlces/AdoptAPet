@@ -13,8 +13,7 @@ namespace AdoptAPet.HelperClasses
         public string password { get; set; }
         public int userId { get; set; }
         public bool admin { get; set; }
-    
-    
+
         public void handleLogout()
         {
             Global.menuItemsUser[0].Visible = true;

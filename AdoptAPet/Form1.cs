@@ -66,5 +66,11 @@ namespace AdoptAPet
             AddBreed breedForm = new AddBreed();
             breedForm.Show();
         }
+
+        private void removeUserToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            RemoveUser removeUserForm = new RemoveUser();
+            removeUserForm.Show();
+        }
     }
 }
