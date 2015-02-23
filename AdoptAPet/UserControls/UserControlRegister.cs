@@ -26,16 +26,25 @@ namespace AdoptAPet
         private void btnRegister_Click(object sender, EventArgs e)
         {
 
-            if (Queries.checkUsernameUnique(txtUsername.Text.ToLower()))
+            if (txtPass.Text == txtPass2.Text)
             {
-                Queries.addUser(txtUsername.Text.Trim(), txtPass.Text.Trim());
-                MessageBox.Show("User created");
-                FormHelpers.setMainComponentsLogin();
+
+                if (Queries.checkUsernameUnique(txtUsername.Text.ToLower()))
+                {
+                    Queries.addUser(txtUsername.Text.Trim(), txtPass.Text.Trim());
+                    MessageBox.Show("User created");
+                    FormHelpers.setMainComponentsLogin();
+                }
+
+                else
+                {
+                    MessageBox.Show("Username is taken");
+                }
             }
 
             else
             {
-                MessageBox.Show("Username is taken");
+                MessageBox.Show("Passwords don't match!");
             }
 
         }
