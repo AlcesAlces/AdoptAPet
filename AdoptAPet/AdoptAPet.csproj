@@ -124,6 +124,12 @@
     <Compile Include="UserControls\UserControlLogin.Designer.cs">
       <DependentUpon>UserControlLogin.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UserControlLoginOptions.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControlLoginOptions.Designer.cs">
+      <DependentUpon>UserControlLoginOptions.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UserControlRegister.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -167,6 +173,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlLogin.resx">
       <DependentUpon>UserControlLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControlLoginOptions.resx">
+      <DependentUpon>UserControlLoginOptions.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlRegister.resx">
       <DependentUpon>UserControlRegister.cs</DependentUpon>

@@ -13,6 +13,7 @@ using System.Net;
 using System.Collections.Specialized;
 using System.IO;
 using System.Xml.Linq;
+using AdoptAPet.UserControls;
 
 namespace AdoptAPet
 {
@@ -101,6 +102,7 @@ namespace AdoptAPet
         private void btnRegister_Click(object sender, EventArgs e)
         {
             Global.userPanel.Controls.Clear();
+            Global.userPanel.Tag = "login";
             Global.userPanel.Controls.Add(new UserControlRegister());
         }
 
@@ -112,6 +114,12 @@ namespace AdoptAPet
                 verifyLogin();
                 FormHelpers.changeElementsBasedOnPrivledge();
             }
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            Global.userPanel.Controls.Clear();
+            Global.userPanel.Controls.Add(new UserControlLoginOptions());
         }
     }
 }

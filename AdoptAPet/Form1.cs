@@ -21,6 +21,7 @@ namespace AdoptAPet
             Global.menuItemsEdit.Add(removeAnimalToolStripMenuItem);
             Global.menuItemsEdit.Add(addUserToolStripMenuItem);
             Global.menuItemsEdit.Add(removeUserToolStripMenuItem);
+            Global.menuItemsEdit.Add(addBreedToolStripMenuItem);
             Global.menuItemsUser.Add(loginToolStripMenuItem);
             Global.menuItemsUser.Add(logoutToolStripMenuItem);
             Global.menuItemsUser.Add(registerToolStripMenuItem);

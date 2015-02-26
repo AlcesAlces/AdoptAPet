@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AdoptAPet.HelperFunctions;
+using AdoptAPet.UserControls;
 
 namespace AdoptAPet
 {
@@ -51,8 +52,19 @@ namespace AdoptAPet
 
         private void btnCancel_Click(object sender, EventArgs e)
         {
-            Global.userPanel.Controls.Clear();
-            Global.userPanel.Controls.Add(new UserControlLogin());
+
+            if (Global.userPanel.Tag as string == "login")
+            {
+
+                Global.userPanel.Controls.Clear();
+                Global.userPanel.Controls.Add(new UserControlLogin());
+            }
+
+            else
+            {
+                Global.userPanel.Controls.Clear();
+                Global.userPanel.Controls.Add(new UserControlLoginOptions());
+            }
         }
     }
 }

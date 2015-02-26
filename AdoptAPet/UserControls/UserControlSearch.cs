@@ -102,6 +102,9 @@ namespace AdoptAPet
 
         #region support functions
 
+        /// <summary>
+        /// Sets all animal information in concern to the image box and combo boxes
+        /// </summary>
         private void setAnimalInfo()
         {
             List<Animal> animalList = getlbAnimalsTag();
@@ -231,6 +234,7 @@ namespace AdoptAPet
 
 
                 List<Animal> toPopulate = Queries.animalNamesByParameter(speciesString, breedString, searchName, clbfFilters.GetItemChecked(0), clbfFilters.GetItemChecked(1), clbfFilters.GetItemChecked(2));
+                toPopulate = toPopulate.OrderBy(x => x.name).ToList();
                 lbAnimals.Tag = toPopulate;
 
                 if (toPopulate.Count == 0)

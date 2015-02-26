@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AdoptAPet.UserControls;
 
 namespace AdoptAPet
 {
@@ -16,7 +17,7 @@ namespace AdoptAPet
         public UserControlHome()
         {
             InitializeComponent();
-            panelHome.Controls.Add(new UserControlLogin());
+            panelHome.Controls.Add(new UserControlLoginOptions());
             Global.userPanel = panelHome;
         }
 
