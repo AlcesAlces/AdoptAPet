@@ -469,5 +469,102 @@ namespace AdoptAPet.HelperFunctions
             dsBySql(sql);
         }
 
-    }
-}
+        /// <summary>
+        /// Returns an animal's address as a string array
+        /// </summary>
+        /// <param name="address">int animal location</param>
+        /// <returns>["street","city","state","zip"]</returns>
+        public static string[] returnAnimalAddress(int address)
+        {
+            string sql = "SELECT adr.\"CITY\", adr.\"STREET\", adr.\"STATE\", adr.\"ZIP\" FROM \"ANIMAL\" AS a INNER JOIN \"ADDRESS\" AS adr ON a.\"LOCATION\" = adr.\"ADDRESS_ID\" WHERE a.\"LOCATION\" =" + address;
+            DataSet ds = dsBySql(sql);
+            List<string> toReturn = new List<string>();
+            try
+            {
+                toReturn.Add(ds.Tables[0].Rows[0]["CITY"].ToString().Trim().ToUpper());
+                toReturn.Add(ds.Tables[0].Rows[0]["STREET"].ToString().Trim().ToUpper());
+                toReturn.Add(ds.Tables[0].Rows[0]["STATE"].ToString().Trim().ToUpper());
+                toReturn.Add(ds.Tables[0].Rows[0]["ZIP"].ToString().Trim().ToUpper());
+            }
+            catch
+            {
+                //Something bad
+                for (int i = 0; i < 4; i++)
+                {
+                    toReturn.Add("");
+                }
+            }
+            return toReturn.ToArray();
+
+        }
+        /// <summary>
+        /// Query is to return the animal's attributes that relate to what type animal the animal is.  
+        /// </summary>
+        /// <param name="breed"></param>
+        /// <returns>Animal's breed, species, and color </returns>
+        public static string[] returnAnimalMISC(int breed)
+        {
+            string sql = "SELECT b.\"NAME\" AS BREED, s.\"NAME\" AS SPECIES, c.\"NAME\" AS COLOR FROM \"ANIMAL\" a INNER JOIN \"BREED\" b ON a.\"BREED\" = b.\"BID\" INNER JOIN \"SPECIES\" s ON s.\"SID\" = b.\"SPECIES\" INNER JOIN \"COLOR\" c on c.\"COLOR_ID\" = a.\"COLOR\" WHERE \"BREED\" =" + breed;
+            DataSet ds = dsBySql(sql);
+            List<string> toReturn = new List<string>();
+            try
+            {
+                toReturn.Add(ds.Tables[0].Rows[0]["BREED"].ToString().Trim().ToUpper());
+                toReturn.Add(ds.Tables[0].Rows[0]["SPECIES"].ToString().Trim().ToUpper());
+                toReturn.Add(ds.Tables[0].Rows[0]["COLOR"].ToString().Trim().ToUpper());
+            }
+            catch 
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    toReturn.Add("NA");
+                }
+            }
+
+            return toReturn.ToArray(); ;
+        }
+        /// <summary>
+        /// Query will keep track of which user has adopted which pet by inserting the ids into a adopted_checkout table
+        /// </summary>
+        /// <param name="userID"></param>
+        /// <param name="animalID">UserID, PersonID, AnimalID</param>
+        public static void adoptedCheckInformation(int userID, int animalID)
+        {
+            string sql = "INSERT INTO \"ADOPTED_CHECKOUT\"(\"PID\", \"AID\", \"UID\") SELECT p.\"PID\", a.\"AID\", u.\"UID\" FROM \"PERSON\" AS p, \"ANIMAL\" AS a, \"USER\" AS u WHERE a.\"AID\" =" + animalID + " and u.\"UID\" =" + userID + " and p.\"USER_ID\" = u.\"UID\"";
+            dsBySql(sql);
+        }
+        /// <summary>
+        /// Query return the attributes of a customer
+        /// </summary>
+        /// <param name="personID"></param>
+        /// <returns>Name,Email,DoB,User_ID,Has_Adopted,Num_Pets,StreetAddress,CityAddress,StateAddress,CityAddress</returns>
+        public static List<Customer> customerInformation(int personID)
+        {
+            string sql = "SELECT p.\"NAME\", p.\"EMAIL\", p.\"DOB\", p.\"USER_ID\", c.\"HAS_ADOPTED\", c.\"NUM_PETS\", a.\"STREET\", a.\"CITY\", a.\"STATE\", a.\"ZIP\""+
+                "FROM \"CUSTOMER\" c INNER JOIN \"PERSON\" p ON c.\"CID\" = p.\"CID\" INNER JOIN \"ADDRESS\" a ON p.\"ADDRESS\" = a.\"ADDRESS_ID\"" +
+                "WHERE p.\"PID\" =" + personID;
+
+            DataSet ds = dsBySql(sql);
+
+            List<Customer> toReturn = new List<Customer>();
+            foreach(DataRow item in ds.Tables[0].Rows)
+            {
+	            toReturn.Add(new Customer
+	            {
+		            name = item["NAME"].ToString(),
+		            email = item["EMAIL"].ToString(),
+		            dob = item["DOB"].ToString(),
+		            address = (int)item["Address"],
+		            user_id = (int)item["USER_ID"],
+		            has_adopted = (bool)item["HAS_ADOPTED"],
+		            num_pets = (int)item["NUM_PETS"],
+                    street = item["STREET"].ToString(),
+                    city = item["CITY"].ToString(),
+                    state = item["STATE"].ToString(),
+                    zip = (int)item["ZIP"]
+	            });
+            }
+            return toReturn;
+            }
+          }
+        }
