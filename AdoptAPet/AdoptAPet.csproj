@@ -79,6 +79,7 @@
     </Compile>
     <Compile Include="Global.cs" />
     <Compile Include="HelperClasses\Animal.cs" />
+    <Compile Include="HelperClasses\Customer.cs" />
     <Compile Include="HelperClasses\ImageHandler.cs" />
     <Compile Include="HelperClasses\User.cs" />
     <Compile Include="HelperFunctions\DataConversions.cs" />
@@ -105,6 +106,12 @@
     </Compile>
     <Compile Include="UserControls\UserControlAddress.Designer.cs">
       <DependentUpon>UserControlAddress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UserControls\UserControlAdoptCheckOut.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControlAdoptCheckOut.Designer.cs">
+      <DependentUpon>UserControlAdoptCheckOut.cs</DependentUpon>
     </Compile>
     <Compile Include="UserControls\UserControlAnimalRecord.cs">
       <SubType>UserControl</SubType>
@@ -164,6 +171,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlAddress.resx">
       <DependentUpon>UserControlAddress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControlAdoptCheckOut.resx">
+      <DependentUpon>UserControlAdoptCheckOut.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlAnimalRecord.resx">
       <DependentUpon>UserControlAnimalRecord.cs</DependentUpon>

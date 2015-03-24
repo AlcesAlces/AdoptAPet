@@ -18,6 +18,7 @@ namespace AdoptAPet.HelperClasses
         public bool friendly { get; set; }
         public int weight { get; set; }
         public string description { get; set; }
+        public int vacciness { get; set; }
         public string microchip { get; set; }
         public int location { get; set; }
         public int imgid { get; set; }
