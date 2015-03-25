@@ -22,6 +22,11 @@ namespace AdoptAPet.UserControls
             populateItems();
         }
 
+        public UserControlAdoptCheckOut()
+        {
+            // TODO: Complete member initialization
+        }
+
         private void populateItems()
         {
             setAdopterName(_customer.name);

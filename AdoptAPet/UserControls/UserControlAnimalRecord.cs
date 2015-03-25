@@ -22,6 +22,15 @@ namespace AdoptAPet.UserControls
             InitializeComponent();
             _animal = infoAnimal;
             populateItems();
+            if (_animal.isAdopted != true)
+            {
+                btnAdopt_Information.Visible = true;
+
+            }
+            else
+            {
+                btnAdopt_Information.Visible = false;                
+            }
         }
 
         private void populateItems()
@@ -244,7 +253,18 @@ namespace AdoptAPet.UserControls
             Global.userPanel.Tag = "login";
             Global.userPanel.Controls.Add(new UserControlRegister());
              */
-            HelperFunctions.Queries.adoptedCheckInformation(1, _animal.aid);
+            if (_animal.isAdopted == false)
+            {
+                //This will pair the current user with a pet to adopt
+                HelperFunctions.Queries.adoptedCheckInformation(Global.publicUser.userId, _animal.aid);
+                
+                //This will return person's information based on which user is logged in and adopted the current pet
+                _customer = HelperFunctions.Queries.customerInformation(HelperFunctions.Queries.adoptedPersonID(Global.publicUser.userId));
+                
+                //Display the customer with adopted pet panel
+                Global.panel.Controls.Clear();
+                Global.panel.Controls.Add(new UserControlAdoptCheckOut(_customer));
+            }
         }
     }
 }

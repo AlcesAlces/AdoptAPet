@@ -533,12 +533,24 @@ namespace AdoptAPet.HelperFunctions
             string sql = "INSERT INTO \"ADOPTED_CHECKOUT\"(\"PID\", \"AID\", \"UID\") SELECT p.\"PID\", a.\"AID\", u.\"UID\" FROM \"PERSON\" AS p, \"ANIMAL\" AS a, \"USER\" AS u WHERE a.\"AID\" =" + animalID + " and u.\"UID\" =" + userID + " and p.\"USER_ID\" = u.\"UID\"";
             dsBySql(sql);
         }
+
+        public static int adoptedPersonID(int userID)
+        {
+            int personID = 0;
+            string sql = "SELECT DISTINCT ac.\"PID\" FROM \"ADOPTED_CHECKOUT\" AS ac WHERE ac.\"UID\" = " + userID;
+            DataSet ds = dsBySql(sql);
+            foreach (DataRow row in ds.Tables[0].Rows)
+            {
+                personID = Int32.Parse(row["PID"].ToString());
+            }
+            return personID;
+        }
         /// <summary>
         /// Query return the attributes of a customer
         /// </summary>
         /// <param name="personID"></param>
         /// <returns>Name,Email,DoB,User_ID,Has_Adopted,Num_Pets,StreetAddress,CityAddress,StateAddress,CityAddress</returns>
-        public static List<Customer> customerInformation(int personID)
+        public static Customer customerInformation(int personID)
         {
             string sql = "SELECT p.\"NAME\", p.\"EMAIL\", p.\"DOB\", p.\"USER_ID\", c.\"HAS_ADOPTED\", c.\"NUM_PETS\", a.\"STREET\", a.\"CITY\", a.\"STATE\", a.\"ZIP\""+
                 "FROM \"CUSTOMER\" c INNER JOIN \"PERSON\" p ON c.\"CID\" = p.\"CID\" INNER JOIN \"ADDRESS\" a ON p.\"ADDRESS\" = a.\"ADDRESS_ID\"" +
@@ -546,23 +558,22 @@ namespace AdoptAPet.HelperFunctions
 
             DataSet ds = dsBySql(sql);
 
-            List<Customer> toReturn = new List<Customer>();
+            Customer toReturn = new Customer();
             foreach(DataRow item in ds.Tables[0].Rows)
             {
-	            toReturn.Add(new Customer
-	            {
-		            name = item["NAME"].ToString(),
-		            email = item["EMAIL"].ToString(),
-		            dob = item["DOB"].ToString(),
-		            address = (int)item["Address"],
-		            user_id = (int)item["USER_ID"],
-		            has_adopted = (bool)item["HAS_ADOPTED"],
-		            num_pets = (int)item["NUM_PETS"],
-                    street = item["STREET"].ToString(),
-                    city = item["CITY"].ToString(),
-                    state = item["STATE"].ToString(),
-                    zip = (int)item["ZIP"]
-	            });
+	            
+		            toReturn.name = item["NAME"].ToString();
+		            toReturn. email = item["EMAIL"].ToString();
+		            toReturn.dob = item["DOB"].ToString();
+		            toReturn.address = (int)item["Address"];
+		            toReturn.user_id = (int)item["USER_ID"];
+		            toReturn.has_adopted = (bool)item["HAS_ADOPTED"];
+		            toReturn.num_pets = (int)item["NUM_PETS"];
+                    toReturn.street = item["STREET"].ToString();
+                    toReturn.city = item["CITY"].ToString();
+                    toReturn.state = item["STATE"].ToString();
+                    toReturn.zip = (int)item["ZIP"];
+	           
             }
             return toReturn;
             }
