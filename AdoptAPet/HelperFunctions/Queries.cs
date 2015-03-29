@@ -49,6 +49,7 @@ namespace AdoptAPet.HelperFunctions
             {
                 userName = ds.Tables[0].Rows[0]["NAME"].ToString().Trim(),
                 password = ds.Tables[0].Rows[0]["PASS"].ToString().Trim(),
+                userId = (int)ds.Tables[0].Rows[0]["UID"],
                 admin = (bool)ds.Tables[0].Rows[0]["ADMIN"]
             };
         }
@@ -562,20 +563,64 @@ namespace AdoptAPet.HelperFunctions
             foreach(DataRow item in ds.Tables[0].Rows)
             {
 	            
-		            toReturn.name = item["NAME"].ToString();
-		            toReturn. email = item["EMAIL"].ToString();
-		            toReturn.dob = item["DOB"].ToString();
-		            toReturn.address = (int)item["Address"];
+		            toReturn.name = item["NAME"].ToString().ToUpper();
+		            toReturn. email = item["EMAIL"].ToString().ToUpper();
+		            toReturn.dob = item["DOB"].ToString().ToUpper();
+		            //toReturn.address = (int)item["ADDRESS"];
 		            toReturn.user_id = (int)item["USER_ID"];
 		            toReturn.has_adopted = (bool)item["HAS_ADOPTED"];
 		            toReturn.num_pets = (int)item["NUM_PETS"];
-                    toReturn.street = item["STREET"].ToString();
-                    toReturn.city = item["CITY"].ToString();
-                    toReturn.state = item["STATE"].ToString();
+                    toReturn.street = item["STREET"].ToString().ToUpper();
+                    toReturn.city = item["CITY"].ToString().ToUpper();
+                    toReturn.state = item["STATE"].ToString().ToUpper();
                     toReturn.zip = (int)item["ZIP"];
 	           
             }
             return toReturn;
             }
-          }
+        public static string[] adoptedCheckout_AnimalQuery(bool isAdopted, int animalID)
+        {
+            string sql = " SELECT * " +
+                          " FROM \"ADOPTED_CHECKOUT\" AS ac INNER JOIN \"ANIMAL\" AS a ON ac.\"AID\" = a.\"AID\" " +
+                          " WHERE a.\"ADOPTED\" = " + isAdopted + " AND ac.\"AID\" =" + animalID; 
+
+             DataSet ds = dsBySql(sql);
+             List<string> toReturn = new List<string>();
+             try
+             {                                                                                  //index
+                 toReturn.Add(ds.Tables[0].Rows[0]["AID"].ToString());                          //0
+                 toReturn.Add(ds.Tables[0].Rows[0]["AGE"].ToString());                          //1
+                 toReturn.Add(ds.Tables[0].Rows[0]["SEX"].ToString().Trim().ToUpper());         //2
+                 toReturn.Add(ds.Tables[0].Rows[0]["SIZE"].ToString().Trim().ToUpper());        //3
+                 toReturn.Add(ds.Tables[0].Rows[0]["COLOR"].ToString());                        //4
+                 toReturn.Add(ds.Tables[0].Rows[0]["NAME"].ToString().Trim().ToUpper());        //5
+                 toReturn.Add(ds.Tables[0].Rows[0]["FRIENDLY"].ToString());                     //6
+                 toReturn.Add(ds.Tables[0].Rows[0]["WEIGHT"].ToString());                       //7
+                 toReturn.Add(ds.Tables[0].Rows[0]["DESCRIPTION"].ToString().Trim().ToUpper()); //8
+                 toReturn.Add(ds.Tables[0].Rows[0]["VACCINES"].ToString());                     //9
+                 toReturn.Add(ds.Tables[0].Rows[0]["MICROCHIP"].ToString().Trim().ToUpper());   //10
+                 toReturn.Add(ds.Tables[0].Rows[0]["LOCATION"].ToString());                     //11
+                 toReturn.Add(ds.Tables[0].Rows[0]["IMG_ID"].ToString());                       //12
+                 toReturn.Add(ds.Tables[0].Rows[0]["SPECIES"].ToString());                      //13
+                 toReturn.Add(ds.Tables[0].Rows[0]["BREED"].ToString());                        //14
+                 toReturn.Add(ds.Tables[0].Rows[0]["FIXED"].ToString());                        //15
+                 toReturn.Add(ds.Tables[0].Rows[0]["ADOPTED"].ToString());                      //16                 
+             }
+             catch
+             {
+                 for (int i = 0; i < 16; i++)
+                 {
+                     toReturn.Add("NA");
+                 }
+             }
+
+             return toReturn.ToArray();
         }
+        public static void adoptedCheckout_RemoveRow(int animalID)
+        {
+            string sql = "DELETE FROM \"ADOPTED_CHECKOUT\" WHERE \"UID\" = " + Global.publicUser.userId + "AND \"AID\" =" + animalID;
+            DataSet ds = dsBySql(sql);
+
+        }
+        }
+    }

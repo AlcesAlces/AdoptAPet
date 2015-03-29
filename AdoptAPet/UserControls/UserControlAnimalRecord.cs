@@ -263,7 +263,7 @@ namespace AdoptAPet.UserControls
                 
                 //Display the customer with adopted pet panel
                 Global.panel.Controls.Clear();
-                Global.panel.Controls.Add(new UserControlAdoptCheckOut(_customer));
+                Global.panel.Controls.Add(new UserControlAdoptCheckOut(_customer, _animal.aid));
             }
         }
     }
