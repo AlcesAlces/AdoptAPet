@@ -595,7 +595,7 @@ namespace AdoptAPet.HelperFunctions
                  toReturn.Add(ds.Tables[0].Rows[0]["COLOR"].ToString());                        //4
                  toReturn.Add(ds.Tables[0].Rows[0]["NAME"].ToString().Trim().ToUpper());        //5
                  toReturn.Add(ds.Tables[0].Rows[0]["FRIENDLY"].ToString());                     //6
-                 toReturn.Add(ds.Tables[0].Rows[0]["WEIGHT"].ToString());                       //7
+                 //toReturn.Add(ds.Tables[0].Rows[0]["WEIGHT"].ToString());                       //7 No, weight attribute in animal's table
                  toReturn.Add(ds.Tables[0].Rows[0]["DESCRIPTION"].ToString().Trim().ToUpper()); //8
                  toReturn.Add(ds.Tables[0].Rows[0]["VACCINES"].ToString());                     //9
                  toReturn.Add(ds.Tables[0].Rows[0]["MICROCHIP"].ToString().Trim().ToUpper());   //10
@@ -608,7 +608,7 @@ namespace AdoptAPet.HelperFunctions
              }
              catch
              {
-                 for (int i = 0; i < 16; i++)
+                 for (int i = 0; i < 15; i++)
                  {
                      toReturn.Add("NA");
                  }
@@ -621,6 +621,24 @@ namespace AdoptAPet.HelperFunctions
             string sql = "DELETE FROM \"ADOPTED_CHECKOUT\" WHERE \"UID\" = " + Global.publicUser.userId + "AND \"AID\" =" + animalID;
             DataSet ds = dsBySql(sql);
 
+        }
+        public static void adoptedCheckout_UpdatePet(int animalID)
+        {
+            string sql =    "UPDATE \"ANIMAL\" AS a " +
+                            "SET \"ADOPTED\" = 'true' " +
+                            "FROM \"ADOPTED_CHECKOUT\" AS ac " +
+                            "WHERE ac.\"UID\" =" + Global.publicUser.userId + "AND ac.\"AID\" = " + animalID + "AND a.\"AID\" = ac.\"AID\"";
+            DataSet ds = dsBySql(sql);
+        }
+        public static string[] isAdopted(int animalID)
+        {
+            string sql = "SELECT a.\"ADOPTED\" " +
+                            "FROM \"ANIMAL\" AS a " +
+                            "WHERE a.\"AID\" = " + animalID;
+            DataSet ds = dsBySql(sql);
+            List<string> toReturn = new List<string>();
+            toReturn.Add(ds.Tables[0].Rows[0]["ADOPTED"].ToString());
+            return toReturn.ToArray();
         }
         }
     }

@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using AdoptAPet.HelperClasses;
 using AdoptAPet.HelperFunctions;
+using System.Drawing.Drawing2D;
 namespace AdoptAPet.UserControls
 {
     public partial class UserControlAdoptCheckOut : UserControl
@@ -22,6 +23,7 @@ namespace AdoptAPet.UserControls
             _customer = infoCustomer;
             animalAttributes = HelperFunctions.Queries.adoptedCheckout_AnimalQuery(false, animalID);
             populateItems();
+            setAnimalInfo();
         }
 
         public UserControlAdoptCheckOut()
@@ -42,22 +44,22 @@ namespace AdoptAPet.UserControls
 
             //animal information
             _animal.aid = int.Parse(animalAttributes[0]);
-            _animal.age = int.Parse(animalAttributes[1]);
-            _animal.sex = animalAttributes[2];
-            _animal.size = animalAttributes[3];
+            _animal.age = int.Parse(animalAttributes[1]) != null ? int.Parse(animalAttributes[1]): 0;
+            _animal.sex = animalAttributes[2] != null ? animalAttributes[2] : "NA";
+            _animal.size = animalAttributes[3] != null ? animalAttributes[3] : "NA" ;
             _animal.color = int.Parse(animalAttributes[4]);
-            _animal.name = animalAttributes[5];
-            _animal.friendly = bool.Parse(animalAttributes[6]);
-            _animal.weight = int.Parse(animalAttributes[7]);
-            _animal.description = animalAttributes[8];
-            _animal.vacciness = int.Parse(animalAttributes[9]);
-            _animal.microchip = animalAttributes[10];
-            _animal.location = int.Parse(animalAttributes[11]);
-            _animal.imgid = int.Parse(animalAttributes[12]);
-            _animal.species = int.Parse(animalAttributes[13]);
-            _animal.breed = int.Parse(animalAttributes[14]);
-            _animal.isFixed = bool.Parse(animalAttributes[15]);
-            _animal.isAdopted = bool.Parse(animalAttributes[16]);
+            _animal.name = animalAttributes[5] != null ? animalAttributes[5] :"NOT PROVIDED";
+            _animal.friendly = bool.Parse(animalAttributes[6]) != null ? bool.Parse(animalAttributes[6]) : false;
+            //_animal.weight = int.Parse(animalAttributes[7]) != null ? int.Parse(animalAttributes[7]) : 0;
+            _animal.description = animalAttributes[7] != null ? animalAttributes[7] : "NOT PROVIDED";
+            //_animal.vacciness = int.Parse(animalAttributes[8]) != null ? int.Parse(animalAttributes[9]) : 0;
+            _animal.microchip = animalAttributes[9] != null ? animalAttributes[9] : "NA";
+            _animal.location = int.Parse(animalAttributes[10]);
+            _animal.imgid = int.Parse(animalAttributes[11]) != null ? int.Parse(animalAttributes[11]) : 0;
+            _animal.species = int.Parse(animalAttributes[12]);
+            _animal.breed = int.Parse(animalAttributes[13]);
+            _animal.isFixed = bool.Parse(animalAttributes[14]) != null ? bool.Parse(animalAttributes[14]) : false;
+            _animal.isAdopted = bool.Parse(animalAttributes[15]);
         }
         private void setAdopterName(string setName)
         {
@@ -158,24 +160,21 @@ namespace AdoptAPet.UserControls
             //go back to search menu
             Global.panel.Controls.Clear();
             Global.panel.Controls.Add(new UserControlSearch());
-            string isAdopted = animalAttributes[10];
-            if (isAdopted != "True")
+            string[] isAdopted = HelperFunctions.Queries.isAdopted(_animal.aid);
+            if (isAdopted[0] != "True")
             {
                 HelperFunctions.Queries.adoptedCheckout_RemoveRow(int.Parse(animalAttributes[0]));
             }
 
         }
 
-        /*
         private void setAnimalInfo()
         {
-          
-
-                setpnlContent(new UserControlAnimalRecord(animal));
+               setpnlContent(new UserControlAnimalRecord( _animal));
 
                 try
                 {
-                    if (animal.isAdopted)
+                    if (_animal.isAdopted)
                     {
                         Image playbutton;
                         try
@@ -190,7 +189,7 @@ namespace AdoptAPet.UserControls
                         Image Frame;
                         try
                         {
-                            Frame = ImageGoBetween.imageFromAid(animal.aid);
+                            Frame = ImageGoBetween.imageFromAid(_animal.aid);
                         }
                         catch (Exception ex)
                         {
@@ -221,7 +220,7 @@ namespace AdoptAPet.UserControls
 
                     else
                     {
-                        setpbPictureImage(ImageGoBetween.imageFromAid(animal.aid));
+                        setpbPictureImage(ImageGoBetween.imageFromAid(_animal.aid));
                     }
 
                 }
@@ -230,9 +229,7 @@ namespace AdoptAPet.UserControls
                     MessageBox.Show(ex.ToString());
                 }
             }
-        }
-
-        */
+        
 
         private void setpnlContent(UserControlAnimalRecord test)
         {
@@ -253,6 +250,28 @@ namespace AdoptAPet.UserControls
             }
         }
 
+        private void setpbPictureImage(Image toSet)
+        {
+            if(pbPicture.InvokeRequired)
+            {
+                pbPicture.Invoke(new MethodInvoker(() => { pbPicture.Image = toSet; }));
+            }
 
+            else
+            {
+                pbPicture.Image = toSet;
+            }
+        }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Do you want to adopt this pet?", "AdoptAPet",
+                MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+               HelperFunctions.Queries.adoptedCheckout_UpdatePet(_animal.aid);
+            }
+
+        }
+      }
     }
-}
+

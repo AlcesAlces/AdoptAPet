@@ -119,6 +119,12 @@
     <Compile Include="UserControls\UserControlAnimalRecord.Designer.cs">
       <DependentUpon>UserControlAnimalRecord.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserControls\UserControlDataTableIntegrity.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UserControls\UserControlDataTableIntegrity.Designer.cs">
+      <DependentUpon>UserControlDataTableIntegrity.cs</DependentUpon>
+    </Compile>
     <Compile Include="UserControls\UserControlHome.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -177,6 +183,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlAnimalRecord.resx">
       <DependentUpon>UserControlAnimalRecord.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserControls\UserControlDataTableIntegrity.resx">
+      <DependentUpon>UserControlDataTableIntegrity.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UserControls\UserControlHome.resx">
       <DependentUpon>UserControlHome.cs</DependentUpon>

@@ -51,16 +51,16 @@
             this.txtAdopterStreetAddress = new System.Windows.Forms.TextBox();
             this.lblAdopterStreetAddress = new System.Windows.Forms.Label();
             this.pnlAnimalInfo = new System.Windows.Forms.Panel();
-            this.pbPicture = new System.Windows.Forms.PictureBox();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.btnBack = new System.Windows.Forms.Button();
+            this.pbPicture = new System.Windows.Forms.PictureBox();
             this.gbToC.SuspendLayout();
             this.gbAdopter.SuspendLayout();
             this.gbAdopterInformation.SuspendLayout();
             this.gbAdopterLocation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).BeginInit();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // gbToC
@@ -279,14 +279,6 @@
             this.pnlAnimalInfo.TabIndex = 3;
             this.pnlAnimalInfo.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
-            // pbPicture
-            // 
-            this.pbPicture.Location = new System.Drawing.Point(31, 447);
-            this.pbPicture.Name = "pbPicture";
-            this.pbPicture.Size = new System.Drawing.Size(515, 216);
-            this.pbPicture.TabIndex = 4;
-            this.pbPicture.TabStop = false;
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.btnSubmit);
@@ -304,6 +296,7 @@
             this.btnSubmit.TabIndex = 1;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // btnBack
             // 
@@ -314,6 +307,15 @@
             this.btnBack.Text = "Back";
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // pbPicture
+            // 
+            this.pbPicture.Location = new System.Drawing.Point(31, 447);
+            this.pbPicture.Name = "pbPicture";
+            this.pbPicture.Size = new System.Drawing.Size(515, 216);
+            this.pbPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPicture.TabIndex = 4;
+            this.pbPicture.TabStop = false;
             // 
             // UserControlAdoptCheckOut
             // 
@@ -333,8 +335,8 @@
             this.gbAdopterInformation.PerformLayout();
             this.gbAdopterLocation.ResumeLayout(false);
             this.gbAdopterLocation.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).EndInit();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).EndInit();
             this.ResumeLayout(false);
 
         }

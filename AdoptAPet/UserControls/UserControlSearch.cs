@@ -449,13 +449,6 @@ namespace AdoptAPet
             }
         }
 
-
-
-
-
-
-
-
         private void setpnlContent(UserControlAnimalRecord test)
         {
             if(pnlAnimalInfo.InvokeRequired)
