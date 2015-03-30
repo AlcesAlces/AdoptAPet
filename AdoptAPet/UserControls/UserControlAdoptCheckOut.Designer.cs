@@ -32,6 +32,15 @@
             this.gbToC = new System.Windows.Forms.GroupBox();
             this.txtToC = new System.Windows.Forms.TextBox();
             this.gbAdopter = new System.Windows.Forms.GroupBox();
+            this.gbAdopterInformation = new System.Windows.Forms.GroupBox();
+            this.txtAdopterName = new System.Windows.Forms.TextBox();
+            this.txtAdopterEmail = new System.Windows.Forms.TextBox();
+            this.txtHasAdopted = new System.Windows.Forms.TextBox();
+            this.txtAdopterDoB = new System.Windows.Forms.TextBox();
+            this.lblHasAdopted = new System.Windows.Forms.Label();
+            this.lblAdopterEmail = new System.Windows.Forms.Label();
+            this.lblAdopterDoB = new System.Windows.Forms.Label();
+            this.lblAdopterName = new System.Windows.Forms.Label();
             this.gbAdopterLocation = new System.Windows.Forms.GroupBox();
             this.txtAdopterZip = new System.Windows.Forms.TextBox();
             this.lblAdopterZip = new System.Windows.Forms.Label();
@@ -41,26 +50,17 @@
             this.lblAdopterCity = new System.Windows.Forms.Label();
             this.txtAdopterStreetAddress = new System.Windows.Forms.TextBox();
             this.lblAdopterStreetAddress = new System.Windows.Forms.Label();
-            this.gbAdopterInformation = new System.Windows.Forms.GroupBox();
-            this.lblAdopterName = new System.Windows.Forms.Label();
-            this.lblAdopterDoB = new System.Windows.Forms.Label();
-            this.lblAdopterEmail = new System.Windows.Forms.Label();
-            this.lblHasAdopted = new System.Windows.Forms.Label();
-            this.txtAdopterDoB = new System.Windows.Forms.TextBox();
-            this.txtHasAdopted = new System.Windows.Forms.TextBox();
-            this.txtAdopterEmail = new System.Windows.Forms.TextBox();
-            this.txtAdopterName = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.pbAnimalPhoto = new System.Windows.Forms.PictureBox();
+            this.pnlAnimalInfo = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.btnBack = new System.Windows.Forms.Button();
             this.btnSubmit = new System.Windows.Forms.Button();
+            this.btnBack = new System.Windows.Forms.Button();
+            this.pbPicture = new System.Windows.Forms.PictureBox();
             this.gbToC.SuspendLayout();
             this.gbAdopter.SuspendLayout();
-            this.gbAdopterLocation.SuspendLayout();
             this.gbAdopterInformation.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbAnimalPhoto)).BeginInit();
+            this.gbAdopterLocation.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).BeginInit();
             this.SuspendLayout();
             // 
             // gbToC
@@ -91,12 +91,97 @@
             this.gbAdopter.Controls.Add(this.gbAdopterLocation);
             this.gbAdopter.Enabled = false;
             this.gbAdopter.Font = new System.Drawing.Font("Modern No. 20", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbAdopter.Location = new System.Drawing.Point(39, 145);
+            this.gbAdopter.Location = new System.Drawing.Point(31, 145);
             this.gbAdopter.Name = "gbAdopter";
-            this.gbAdopter.Size = new System.Drawing.Size(500, 295);
+            this.gbAdopter.Size = new System.Drawing.Size(515, 295);
             this.gbAdopter.TabIndex = 1;
             this.gbAdopter.TabStop = false;
             this.gbAdopter.Text = "Adopter";
+            // 
+            // gbAdopterInformation
+            // 
+            this.gbAdopterInformation.Controls.Add(this.txtAdopterName);
+            this.gbAdopterInformation.Controls.Add(this.txtAdopterEmail);
+            this.gbAdopterInformation.Controls.Add(this.txtHasAdopted);
+            this.gbAdopterInformation.Controls.Add(this.txtAdopterDoB);
+            this.gbAdopterInformation.Controls.Add(this.lblHasAdopted);
+            this.gbAdopterInformation.Controls.Add(this.lblAdopterEmail);
+            this.gbAdopterInformation.Controls.Add(this.lblAdopterDoB);
+            this.gbAdopterInformation.Controls.Add(this.lblAdopterName);
+            this.gbAdopterInformation.Location = new System.Drawing.Point(6, 28);
+            this.gbAdopterInformation.Name = "gbAdopterInformation";
+            this.gbAdopterInformation.Size = new System.Drawing.Size(503, 133);
+            this.gbAdopterInformation.TabIndex = 14;
+            this.gbAdopterInformation.TabStop = false;
+            this.gbAdopterInformation.Text = "Personal Information";
+            // 
+            // txtAdopterName
+            // 
+            this.txtAdopterName.Enabled = false;
+            this.txtAdopterName.Location = new System.Drawing.Point(78, 25);
+            this.txtAdopterName.Name = "txtAdopterName";
+            this.txtAdopterName.Size = new System.Drawing.Size(419, 29);
+            this.txtAdopterName.TabIndex = 8;
+            // 
+            // txtAdopterEmail
+            // 
+            this.txtAdopterEmail.Enabled = false;
+            this.txtAdopterEmail.Location = new System.Drawing.Point(83, 95);
+            this.txtAdopterEmail.Name = "txtAdopterEmail";
+            this.txtAdopterEmail.Size = new System.Drawing.Size(414, 29);
+            this.txtAdopterEmail.TabIndex = 7;
+            // 
+            // txtHasAdopted
+            // 
+            this.txtHasAdopted.Enabled = false;
+            this.txtHasAdopted.Location = new System.Drawing.Point(419, 60);
+            this.txtHasAdopted.Name = "txtHasAdopted";
+            this.txtHasAdopted.Size = new System.Drawing.Size(78, 29);
+            this.txtHasAdopted.TabIndex = 6;
+            // 
+            // txtAdopterDoB
+            // 
+            this.txtAdopterDoB.Enabled = false;
+            this.txtAdopterDoB.Location = new System.Drawing.Point(151, 60);
+            this.txtAdopterDoB.Name = "txtAdopterDoB";
+            this.txtAdopterDoB.Size = new System.Drawing.Size(131, 29);
+            this.txtAdopterDoB.TabIndex = 5;
+            // 
+            // lblHasAdopted
+            // 
+            this.lblHasAdopted.AutoSize = true;
+            this.lblHasAdopted.Location = new System.Drawing.Point(288, 63);
+            this.lblHasAdopted.Name = "lblHasAdopted";
+            this.lblHasAdopted.Size = new System.Drawing.Size(131, 22);
+            this.lblHasAdopted.TabIndex = 4;
+            this.lblHasAdopted.Text = "Has Adopted:";
+            // 
+            // lblAdopterEmail
+            // 
+            this.lblAdopterEmail.AutoSize = true;
+            this.lblAdopterEmail.Location = new System.Drawing.Point(6, 98);
+            this.lblAdopterEmail.Name = "lblAdopterEmail";
+            this.lblAdopterEmail.Size = new System.Drawing.Size(71, 22);
+            this.lblAdopterEmail.TabIndex = 3;
+            this.lblAdopterEmail.Text = "Email:";
+            // 
+            // lblAdopterDoB
+            // 
+            this.lblAdopterDoB.AutoSize = true;
+            this.lblAdopterDoB.Location = new System.Drawing.Point(6, 63);
+            this.lblAdopterDoB.Name = "lblAdopterDoB";
+            this.lblAdopterDoB.Size = new System.Drawing.Size(142, 22);
+            this.lblAdopterDoB.TabIndex = 2;
+            this.lblAdopterDoB.Text = "Date Of Birth:";
+            // 
+            // lblAdopterName
+            // 
+            this.lblAdopterName.AutoSize = true;
+            this.lblAdopterName.Location = new System.Drawing.Point(6, 28);
+            this.lblAdopterName.Name = "lblAdopterName";
+            this.lblAdopterName.Size = new System.Drawing.Size(66, 22);
+            this.lblAdopterName.TabIndex = 1;
+            this.lblAdopterName.Text = "Name:";
             // 
             // gbAdopterLocation
             // 
@@ -110,23 +195,23 @@
             this.gbAdopterLocation.Controls.Add(this.lblAdopterStreetAddress);
             this.gbAdopterLocation.Location = new System.Drawing.Point(6, 167);
             this.gbAdopterLocation.Name = "gbAdopterLocation";
-            this.gbAdopterLocation.Size = new System.Drawing.Size(484, 117);
+            this.gbAdopterLocation.Size = new System.Drawing.Size(503, 117);
             this.gbAdopterLocation.TabIndex = 13;
             this.gbAdopterLocation.TabStop = false;
             this.gbAdopterLocation.Text = "Location";
             // 
             // txtAdopterZip
             // 
-            this.txtAdopterZip.Location = new System.Drawing.Point(399, 76);
+            this.txtAdopterZip.Location = new System.Drawing.Point(419, 76);
             this.txtAdopterZip.Name = "txtAdopterZip";
             this.txtAdopterZip.ReadOnly = true;
-            this.txtAdopterZip.Size = new System.Drawing.Size(79, 29);
+            this.txtAdopterZip.Size = new System.Drawing.Size(78, 29);
             this.txtAdopterZip.TabIndex = 7;
             // 
             // lblAdopterZip
             // 
             this.lblAdopterZip.AutoSize = true;
-            this.lblAdopterZip.Location = new System.Drawing.Point(358, 79);
+            this.lblAdopterZip.Location = new System.Drawing.Point(372, 79);
             this.lblAdopterZip.Name = "lblAdopterZip";
             this.lblAdopterZip.Size = new System.Drawing.Size(46, 22);
             this.lblAdopterZip.TabIndex = 6;
@@ -135,10 +220,10 @@
             // 
             // txtAdopterState
             // 
-            this.txtAdopterState.Location = new System.Drawing.Point(315, 76);
+            this.txtAdopterState.Location = new System.Drawing.Point(316, 76);
             this.txtAdopterState.Name = "txtAdopterState";
             this.txtAdopterState.ReadOnly = true;
-            this.txtAdopterState.Size = new System.Drawing.Size(37, 29);
+            this.txtAdopterState.Size = new System.Drawing.Size(45, 29);
             this.txtAdopterState.TabIndex = 5;
             // 
             // lblAdopterState
@@ -153,10 +238,10 @@
             // 
             // txtAdopterCity
             // 
-            this.txtAdopterCity.Location = new System.Drawing.Point(52, 76);
+            this.txtAdopterCity.Location = new System.Drawing.Point(55, 76);
             this.txtAdopterCity.Name = "txtAdopterCity";
             this.txtAdopterCity.ReadOnly = true;
-            this.txtAdopterCity.Size = new System.Drawing.Size(199, 29);
+            this.txtAdopterCity.Size = new System.Drawing.Size(196, 29);
             this.txtAdopterCity.TabIndex = 3;
             // 
             // lblAdopterCity
@@ -174,7 +259,7 @@
             this.txtAdopterStreetAddress.Location = new System.Drawing.Point(152, 37);
             this.txtAdopterStreetAddress.Name = "txtAdopterStreetAddress";
             this.txtAdopterStreetAddress.ReadOnly = true;
-            this.txtAdopterStreetAddress.Size = new System.Drawing.Size(327, 29);
+            this.txtAdopterStreetAddress.Size = new System.Drawing.Size(345, 29);
             this.txtAdopterStreetAddress.TabIndex = 1;
             // 
             // lblAdopterStreetAddress
@@ -186,105 +271,13 @@
             this.lblAdopterStreetAddress.TabIndex = 0;
             this.lblAdopterStreetAddress.Text = "Street Address: ";
             // 
-            // gbAdopterInformation
+            // pnlAnimalInfo
             // 
-            this.gbAdopterInformation.Controls.Add(this.txtAdopterName);
-            this.gbAdopterInformation.Controls.Add(this.txtAdopterEmail);
-            this.gbAdopterInformation.Controls.Add(this.txtHasAdopted);
-            this.gbAdopterInformation.Controls.Add(this.txtAdopterDoB);
-            this.gbAdopterInformation.Controls.Add(this.lblHasAdopted);
-            this.gbAdopterInformation.Controls.Add(this.lblAdopterEmail);
-            this.gbAdopterInformation.Controls.Add(this.lblAdopterDoB);
-            this.gbAdopterInformation.Controls.Add(this.lblAdopterName);
-            this.gbAdopterInformation.Location = new System.Drawing.Point(6, 28);
-            this.gbAdopterInformation.Name = "gbAdopterInformation";
-            this.gbAdopterInformation.Size = new System.Drawing.Size(484, 133);
-            this.gbAdopterInformation.TabIndex = 14;
-            this.gbAdopterInformation.TabStop = false;
-            this.gbAdopterInformation.Text = "Personal Information";
-            // 
-            // lblAdopterName
-            // 
-            this.lblAdopterName.AutoSize = true;
-            this.lblAdopterName.Location = new System.Drawing.Point(6, 28);
-            this.lblAdopterName.Name = "lblAdopterName";
-            this.lblAdopterName.Size = new System.Drawing.Size(66, 22);
-            this.lblAdopterName.TabIndex = 1;
-            this.lblAdopterName.Text = "Name:";
-            // 
-            // lblAdopterDoB
-            // 
-            this.lblAdopterDoB.AutoSize = true;
-            this.lblAdopterDoB.Location = new System.Drawing.Point(6, 63);
-            this.lblAdopterDoB.Name = "lblAdopterDoB";
-            this.lblAdopterDoB.Size = new System.Drawing.Size(142, 22);
-            this.lblAdopterDoB.TabIndex = 2;
-            this.lblAdopterDoB.Text = "Date Of Birth:";
-            // 
-            // lblAdopterEmail
-            // 
-            this.lblAdopterEmail.AutoSize = true;
-            this.lblAdopterEmail.Location = new System.Drawing.Point(6, 98);
-            this.lblAdopterEmail.Name = "lblAdopterEmail";
-            this.lblAdopterEmail.Size = new System.Drawing.Size(71, 22);
-            this.lblAdopterEmail.TabIndex = 3;
-            this.lblAdopterEmail.Text = "Email:";
-            // 
-            // lblHasAdopted
-            // 
-            this.lblHasAdopted.AutoSize = true;
-            this.lblHasAdopted.Location = new System.Drawing.Point(288, 63);
-            this.lblHasAdopted.Name = "lblHasAdopted";
-            this.lblHasAdopted.Size = new System.Drawing.Size(131, 22);
-            this.lblHasAdopted.TabIndex = 4;
-            this.lblHasAdopted.Text = "Has Adopted:";
-            // 
-            // txtAdopterDoB
-            // 
-            this.txtAdopterDoB.Enabled = false;
-            this.txtAdopterDoB.Location = new System.Drawing.Point(151, 60);
-            this.txtAdopterDoB.Name = "txtAdopterDoB";
-            this.txtAdopterDoB.Size = new System.Drawing.Size(131, 29);
-            this.txtAdopterDoB.TabIndex = 5;
-            // 
-            // txtHasAdopted
-            // 
-            this.txtHasAdopted.Enabled = false;
-            this.txtHasAdopted.Location = new System.Drawing.Point(419, 60);
-            this.txtHasAdopted.Name = "txtHasAdopted";
-            this.txtHasAdopted.Size = new System.Drawing.Size(59, 29);
-            this.txtHasAdopted.TabIndex = 6;
-            // 
-            // txtAdopterEmail
-            // 
-            this.txtAdopterEmail.Enabled = false;
-            this.txtAdopterEmail.Location = new System.Drawing.Point(83, 95);
-            this.txtAdopterEmail.Name = "txtAdopterEmail";
-            this.txtAdopterEmail.Size = new System.Drawing.Size(395, 29);
-            this.txtAdopterEmail.TabIndex = 7;
-            // 
-            // txtAdopterName
-            // 
-            this.txtAdopterName.Enabled = false;
-            this.txtAdopterName.Location = new System.Drawing.Point(78, 25);
-            this.txtAdopterName.Name = "txtAdopterName";
-            this.txtAdopterName.Size = new System.Drawing.Size(400, 29);
-            this.txtAdopterName.TabIndex = 8;
-            // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(576, 145);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(507, 518);
-            this.panel1.TabIndex = 3;
-            // 
-            // pbAnimalPhoto
-            // 
-            this.pbAnimalPhoto.Location = new System.Drawing.Point(39, 447);
-            this.pbAnimalPhoto.Name = "pbAnimalPhoto";
-            this.pbAnimalPhoto.Size = new System.Drawing.Size(500, 216);
-            this.pbAnimalPhoto.TabIndex = 4;
-            this.pbAnimalPhoto.TabStop = false;
+            this.pnlAnimalInfo.Location = new System.Drawing.Point(568, 145);
+            this.pnlAnimalInfo.Name = "pnlAnimalInfo";
+            this.pnlAnimalInfo.Size = new System.Drawing.Size(507, 518);
+            this.pnlAnimalInfo.TabIndex = 3;
+            this.pnlAnimalInfo.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // panel2
             // 
@@ -295,15 +288,6 @@
             this.panel2.Size = new System.Drawing.Size(677, 87);
             this.panel2.TabIndex = 5;
             // 
-            // btnBack
-            // 
-            this.btnBack.Location = new System.Drawing.Point(13, 14);
-            this.btnBack.Name = "btnBack";
-            this.btnBack.Size = new System.Drawing.Size(308, 58);
-            this.btnBack.TabIndex = 0;
-            this.btnBack.Text = "Back";
-            this.btnBack.UseVisualStyleBackColor = true;
-            // 
             // btnSubmit
             // 
             this.btnSubmit.Location = new System.Drawing.Point(358, 14);
@@ -312,14 +296,34 @@
             this.btnSubmit.TabIndex = 1;
             this.btnSubmit.Text = "Submit";
             this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            // 
+            // btnBack
+            // 
+            this.btnBack.Location = new System.Drawing.Point(13, 14);
+            this.btnBack.Name = "btnBack";
+            this.btnBack.Size = new System.Drawing.Size(308, 58);
+            this.btnBack.TabIndex = 0;
+            this.btnBack.Text = "Back";
+            this.btnBack.UseVisualStyleBackColor = true;
+            this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
+            // 
+            // pbPicture
+            // 
+            this.pbPicture.Location = new System.Drawing.Point(31, 447);
+            this.pbPicture.Name = "pbPicture";
+            this.pbPicture.Size = new System.Drawing.Size(515, 216);
+            this.pbPicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pbPicture.TabIndex = 4;
+            this.pbPicture.TabStop = false;
             // 
             // UserControlAdoptCheckOut
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.pbAnimalPhoto);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.pbPicture);
+            this.Controls.Add(this.pnlAnimalInfo);
             this.Controls.Add(this.gbAdopter);
             this.Controls.Add(this.gbToC);
             this.Name = "UserControlAdoptCheckOut";
@@ -327,12 +331,12 @@
             this.gbToC.ResumeLayout(false);
             this.gbToC.PerformLayout();
             this.gbAdopter.ResumeLayout(false);
-            this.gbAdopterLocation.ResumeLayout(false);
-            this.gbAdopterLocation.PerformLayout();
             this.gbAdopterInformation.ResumeLayout(false);
             this.gbAdopterInformation.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pbAnimalPhoto)).EndInit();
+            this.gbAdopterLocation.ResumeLayout(false);
+            this.gbAdopterLocation.PerformLayout();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pbPicture)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -360,8 +364,8 @@
         private System.Windows.Forms.Label lblAdopterCity;
         private System.Windows.Forms.TextBox txtAdopterStreetAddress;
         private System.Windows.Forms.Label lblAdopterStreetAddress;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.PictureBox pbAnimalPhoto;
+        private System.Windows.Forms.Panel pnlAnimalInfo;
+        private System.Windows.Forms.PictureBox pbPicture;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Button btnBack;

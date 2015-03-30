@@ -80,9 +80,11 @@
             this.gbAnimale_Information.Controls.Add(this.lblAnimalBreed);
             this.gbAnimale_Information.Controls.Add(this.lblAnimalSpecies);
             this.gbAnimale_Information.Controls.Add(this.lblAnimalName);
-            this.gbAnimale_Information.Location = new System.Drawing.Point(8, 8);
+            this.gbAnimale_Information.Location = new System.Drawing.Point(5, 5);
+            this.gbAnimale_Information.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gbAnimale_Information.Name = "gbAnimale_Information";
-            this.gbAnimale_Information.Size = new System.Drawing.Size(490, 368);
+            this.gbAnimale_Information.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbAnimale_Information.Size = new System.Drawing.Size(327, 239);
             this.gbAnimale_Information.TabIndex = 11;
             this.gbAnimale_Information.TabStop = false;
             this.gbAnimale_Information.Text = "Animal Information";
@@ -91,18 +93,20 @@
             // 
             this.txtAnimalColor.Enabled = false;
             this.txtAnimalColor.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAnimalColor.Location = new System.Drawing.Point(86, 94);
+            this.txtAnimalColor.Location = new System.Drawing.Point(57, 61);
+            this.txtAnimalColor.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtAnimalColor.Name = "txtAnimalColor";
             this.txtAnimalColor.ReadOnly = true;
-            this.txtAnimalColor.Size = new System.Drawing.Size(284, 30);
+            this.txtAnimalColor.Size = new System.Drawing.Size(191, 23);
             this.txtAnimalColor.TabIndex = 20;
             // 
             // lblAnimalColor
             // 
             this.lblAnimalColor.AutoSize = true;
-            this.lblAnimalColor.Location = new System.Drawing.Point(9, 102);
+            this.lblAnimalColor.Location = new System.Drawing.Point(6, 66);
+            this.lblAnimalColor.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAnimalColor.Name = "lblAnimalColor";
-            this.lblAnimalColor.Size = new System.Drawing.Size(50, 20);
+            this.lblAnimalColor.Size = new System.Drawing.Size(34, 13);
             this.lblAnimalColor.TabIndex = 19;
             this.lblAnimalColor.Text = "Color:";
             // 
@@ -110,37 +114,41 @@
             // 
             this.txtAnimalSex.Enabled = false;
             this.txtAnimalSex.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAnimalSex.Location = new System.Drawing.Point(421, 58);
+            this.txtAnimalSex.Location = new System.Drawing.Point(281, 38);
+            this.txtAnimalSex.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtAnimalSex.Name = "txtAnimalSex";
             this.txtAnimalSex.ReadOnly = true;
-            this.txtAnimalSex.Size = new System.Drawing.Size(62, 30);
+            this.txtAnimalSex.Size = new System.Drawing.Size(43, 23);
             this.txtAnimalSex.TabIndex = 18;
             // 
             // txtAnimalAge
             // 
             this.txtAnimalAge.Enabled = false;
             this.txtAnimalAge.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAnimalAge.Location = new System.Drawing.Point(421, 22);
+            this.txtAnimalAge.Location = new System.Drawing.Point(281, 14);
+            this.txtAnimalAge.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtAnimalAge.Name = "txtAnimalAge";
             this.txtAnimalAge.ReadOnly = true;
-            this.txtAnimalAge.Size = new System.Drawing.Size(62, 30);
+            this.txtAnimalAge.Size = new System.Drawing.Size(43, 23);
             this.txtAnimalAge.TabIndex = 17;
             // 
             // lblAnimalAge
             // 
             this.lblAnimalAge.AutoSize = true;
-            this.lblAnimalAge.Location = new System.Drawing.Point(373, 29);
+            this.lblAnimalAge.Location = new System.Drawing.Point(249, 19);
+            this.lblAnimalAge.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAnimalAge.Name = "lblAnimalAge";
-            this.lblAnimalAge.Size = new System.Drawing.Size(42, 20);
+            this.lblAnimalAge.Size = new System.Drawing.Size(29, 13);
             this.lblAnimalAge.TabIndex = 16;
             this.lblAnimalAge.Text = "Age:";
             // 
             // lblAnimalSex
             // 
             this.lblAnimalSex.AutoSize = true;
-            this.lblAnimalSex.Location = new System.Drawing.Point(373, 65);
+            this.lblAnimalSex.Location = new System.Drawing.Point(249, 42);
+            this.lblAnimalSex.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAnimalSex.Name = "lblAnimalSex";
-            this.lblAnimalSex.Size = new System.Drawing.Size(40, 20);
+            this.lblAnimalSex.Size = new System.Drawing.Size(28, 13);
             this.lblAnimalSex.TabIndex = 15;
             this.lblAnimalSex.Text = "Sex:";
             // 
@@ -151,29 +159,34 @@
             this.gbAnimalOptions.Controls.Add(this.cbVaccines);
             this.gbAnimalOptions.Controls.Add(this.cbAnimalMicochip);
             this.gbAnimalOptions.Controls.Add(this.cbAnimalFixed);
-            this.gbAnimalOptions.Location = new System.Drawing.Point(368, 148);
+            this.gbAnimalOptions.Location = new System.Drawing.Point(245, 96);
+            this.gbAnimalOptions.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gbAnimalOptions.Name = "gbAnimalOptions";
-            this.gbAnimalOptions.Size = new System.Drawing.Size(117, 218);
+            this.gbAnimalOptions.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbAnimalOptions.Size = new System.Drawing.Size(78, 142);
             this.gbAnimalOptions.TabIndex = 14;
             this.gbAnimalOptions.TabStop = false;
             this.gbAnimalOptions.Text = "Traits";
             // 
             // btnAdopt_Information
             // 
-            this.btnAdopt_Information.Location = new System.Drawing.Point(8, 145);
+            this.btnAdopt_Information.Location = new System.Drawing.Point(5, 94);
+            this.btnAdopt_Information.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnAdopt_Information.Name = "btnAdopt_Information";
-            this.btnAdopt_Information.Size = new System.Drawing.Size(100, 67);
+            this.btnAdopt_Information.Size = new System.Drawing.Size(67, 44);
             this.btnAdopt_Information.TabIndex = 9;
             this.btnAdopt_Information.Text = "Adopt";
             this.btnAdopt_Information.UseVisualStyleBackColor = true;
+            this.btnAdopt_Information.Click += new System.EventHandler(this.btnAdopt_Information_Click_1);
             // 
             // cbAnimalFriendly
             // 
             this.cbAnimalFriendly.AutoSize = true;
             this.cbAnimalFriendly.Enabled = false;
-            this.cbAnimalFriendly.Location = new System.Drawing.Point(8, 55);
+            this.cbAnimalFriendly.Location = new System.Drawing.Point(5, 36);
+            this.cbAnimalFriendly.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbAnimalFriendly.Name = "cbAnimalFriendly";
-            this.cbAnimalFriendly.Size = new System.Drawing.Size(90, 24);
+            this.cbAnimalFriendly.Size = new System.Drawing.Size(62, 17);
             this.cbAnimalFriendly.TabIndex = 3;
             this.cbAnimalFriendly.Text = "Friendly";
             this.cbAnimalFriendly.UseVisualStyleBackColor = true;
@@ -182,9 +195,10 @@
             // 
             this.cbVaccines.AutoSize = true;
             this.cbVaccines.Enabled = false;
-            this.cbVaccines.Location = new System.Drawing.Point(8, 115);
+            this.cbVaccines.Location = new System.Drawing.Point(5, 75);
+            this.cbVaccines.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbVaccines.Name = "cbVaccines";
-            this.cbVaccines.Size = new System.Drawing.Size(100, 24);
+            this.cbVaccines.Size = new System.Drawing.Size(70, 17);
             this.cbVaccines.TabIndex = 2;
             this.cbVaccines.Text = "Vaccines";
             this.cbVaccines.UseVisualStyleBackColor = true;
@@ -194,9 +208,10 @@
             // 
             this.cbAnimalMicochip.AutoSize = true;
             this.cbAnimalMicochip.Enabled = false;
-            this.cbAnimalMicochip.Location = new System.Drawing.Point(8, 85);
+            this.cbAnimalMicochip.Location = new System.Drawing.Point(5, 55);
+            this.cbAnimalMicochip.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbAnimalMicochip.Name = "cbAnimalMicochip";
-            this.cbAnimalMicochip.Size = new System.Drawing.Size(102, 24);
+            this.cbAnimalMicochip.Size = new System.Drawing.Size(72, 17);
             this.cbAnimalMicochip.TabIndex = 1;
             this.cbAnimalMicochip.Text = "Microchip";
             this.cbAnimalMicochip.UseVisualStyleBackColor = true;
@@ -205,9 +220,10 @@
             // 
             this.cbAnimalFixed.AutoSize = true;
             this.cbAnimalFixed.Enabled = false;
-            this.cbAnimalFixed.Location = new System.Drawing.Point(8, 25);
+            this.cbAnimalFixed.Location = new System.Drawing.Point(5, 16);
+            this.cbAnimalFixed.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.cbAnimalFixed.Name = "cbAnimalFixed";
-            this.cbAnimalFixed.Size = new System.Drawing.Size(73, 24);
+            this.cbAnimalFixed.Size = new System.Drawing.Size(51, 17);
             this.cbAnimalFixed.TabIndex = 0;
             this.cbAnimalFixed.Text = "Fixed";
             this.cbAnimalFixed.UseVisualStyleBackColor = true;
@@ -215,9 +231,11 @@
             // gbAnimalDescription
             // 
             this.gbAnimalDescription.Controls.Add(this.txtAnimalDescription);
-            this.gbAnimalDescription.Location = new System.Drawing.Point(6, 148);
+            this.gbAnimalDescription.Location = new System.Drawing.Point(4, 96);
+            this.gbAnimalDescription.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gbAnimalDescription.Name = "gbAnimalDescription";
-            this.gbAnimalDescription.Size = new System.Drawing.Size(356, 218);
+            this.gbAnimalDescription.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbAnimalDescription.Size = new System.Drawing.Size(237, 142);
             this.gbAnimalDescription.TabIndex = 13;
             this.gbAnimalDescription.TabStop = false;
             this.gbAnimalDescription.Text = "Animal Description";
@@ -226,66 +244,73 @@
             // 
             this.txtAnimalDescription.Enabled = false;
             this.txtAnimalDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAnimalDescription.Location = new System.Drawing.Point(6, 25);
+            this.txtAnimalDescription.Location = new System.Drawing.Point(4, 16);
+            this.txtAnimalDescription.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtAnimalDescription.Multiline = true;
             this.txtAnimalDescription.Name = "txtAnimalDescription";
-            this.txtAnimalDescription.Size = new System.Drawing.Size(344, 189);
+            this.txtAnimalDescription.Size = new System.Drawing.Size(231, 124);
             this.txtAnimalDescription.TabIndex = 7;
             // 
             // txtAnimalBreed
             // 
             this.txtAnimalBreed.Enabled = false;
             this.txtAnimalBreed.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAnimalBreed.Location = new System.Drawing.Point(248, 58);
+            this.txtAnimalBreed.Location = new System.Drawing.Point(165, 38);
+            this.txtAnimalBreed.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtAnimalBreed.Name = "txtAnimalBreed";
             this.txtAnimalBreed.ReadOnly = true;
-            this.txtAnimalBreed.Size = new System.Drawing.Size(122, 30);
+            this.txtAnimalBreed.Size = new System.Drawing.Size(83, 23);
             this.txtAnimalBreed.TabIndex = 6;
             // 
             // txtAnimalSpecies
             // 
             this.txtAnimalSpecies.Enabled = false;
             this.txtAnimalSpecies.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAnimalSpecies.Location = new System.Drawing.Point(86, 58);
+            this.txtAnimalSpecies.Location = new System.Drawing.Point(57, 38);
+            this.txtAnimalSpecies.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtAnimalSpecies.Name = "txtAnimalSpecies";
             this.txtAnimalSpecies.ReadOnly = true;
-            this.txtAnimalSpecies.Size = new System.Drawing.Size(101, 30);
+            this.txtAnimalSpecies.Size = new System.Drawing.Size(69, 23);
             this.txtAnimalSpecies.TabIndex = 5;
             // 
             // txtAnimalName
             // 
             this.txtAnimalName.Enabled = false;
             this.txtAnimalName.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtAnimalName.Location = new System.Drawing.Point(86, 22);
+            this.txtAnimalName.Location = new System.Drawing.Point(57, 14);
+            this.txtAnimalName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtAnimalName.Name = "txtAnimalName";
             this.txtAnimalName.ReadOnly = true;
-            this.txtAnimalName.Size = new System.Drawing.Size(284, 30);
+            this.txtAnimalName.Size = new System.Drawing.Size(191, 23);
             this.txtAnimalName.TabIndex = 4;
             // 
             // lblAnimalBreed
             // 
             this.lblAnimalBreed.AutoSize = true;
-            this.lblAnimalBreed.Location = new System.Drawing.Point(193, 65);
+            this.lblAnimalBreed.Location = new System.Drawing.Point(129, 42);
+            this.lblAnimalBreed.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAnimalBreed.Name = "lblAnimalBreed";
-            this.lblAnimalBreed.Size = new System.Drawing.Size(56, 20);
+            this.lblAnimalBreed.Size = new System.Drawing.Size(38, 13);
             this.lblAnimalBreed.TabIndex = 2;
             this.lblAnimalBreed.Text = "Breed:";
             // 
             // lblAnimalSpecies
             // 
             this.lblAnimalSpecies.AutoSize = true;
-            this.lblAnimalSpecies.Location = new System.Drawing.Point(9, 65);
+            this.lblAnimalSpecies.Location = new System.Drawing.Point(6, 42);
+            this.lblAnimalSpecies.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAnimalSpecies.Name = "lblAnimalSpecies";
-            this.lblAnimalSpecies.Size = new System.Drawing.Size(70, 20);
+            this.lblAnimalSpecies.Size = new System.Drawing.Size(48, 13);
             this.lblAnimalSpecies.TabIndex = 1;
             this.lblAnimalSpecies.Text = "Species:";
             // 
             // lblAnimalName
             // 
             this.lblAnimalName.AutoSize = true;
-            this.lblAnimalName.Location = new System.Drawing.Point(9, 29);
+            this.lblAnimalName.Location = new System.Drawing.Point(6, 19);
+            this.lblAnimalName.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAnimalName.Name = "lblAnimalName";
-            this.lblAnimalName.Size = new System.Drawing.Size(55, 20);
+            this.lblAnimalName.Size = new System.Drawing.Size(38, 13);
             this.lblAnimalName.TabIndex = 0;
             this.lblAnimalName.Text = "Name:";
             // 
@@ -299,92 +324,103 @@
             this.gbAnimalLocation.Controls.Add(this.lblAnimalCity);
             this.gbAnimalLocation.Controls.Add(this.txtAnimalStreetAddress);
             this.gbAnimalLocation.Controls.Add(this.lblAnimalStreetAddress);
-            this.gbAnimalLocation.Location = new System.Drawing.Point(14, 382);
+            this.gbAnimalLocation.Location = new System.Drawing.Point(9, 248);
+            this.gbAnimalLocation.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.gbAnimalLocation.Name = "gbAnimalLocation";
-            this.gbAnimalLocation.Size = new System.Drawing.Size(484, 117);
+            this.gbAnimalLocation.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.gbAnimalLocation.Size = new System.Drawing.Size(323, 76);
             this.gbAnimalLocation.TabIndex = 12;
             this.gbAnimalLocation.TabStop = false;
             this.gbAnimalLocation.Text = "Animal Location";
             // 
             // txtAnimalZip
             // 
-            this.txtAnimalZip.Location = new System.Drawing.Point(399, 76);
+            this.txtAnimalZip.Location = new System.Drawing.Point(266, 49);
+            this.txtAnimalZip.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtAnimalZip.Name = "txtAnimalZip";
             this.txtAnimalZip.ReadOnly = true;
-            this.txtAnimalZip.Size = new System.Drawing.Size(79, 26);
+            this.txtAnimalZip.Size = new System.Drawing.Size(54, 20);
             this.txtAnimalZip.TabIndex = 7;
             // 
             // lblAnimalZip
             // 
             this.lblAnimalZip.AutoSize = true;
-            this.lblAnimalZip.Location = new System.Drawing.Point(358, 79);
+            this.lblAnimalZip.Location = new System.Drawing.Point(239, 51);
+            this.lblAnimalZip.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAnimalZip.Name = "lblAnimalZip";
-            this.lblAnimalZip.Size = new System.Drawing.Size(35, 20);
+            this.lblAnimalZip.Size = new System.Drawing.Size(25, 13);
             this.lblAnimalZip.TabIndex = 6;
             this.lblAnimalZip.Text = "Zip:";
             this.lblAnimalZip.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtAnimalState
             // 
-            this.txtAnimalState.Location = new System.Drawing.Point(315, 76);
+            this.txtAnimalState.Location = new System.Drawing.Point(210, 49);
+            this.txtAnimalState.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtAnimalState.Name = "txtAnimalState";
             this.txtAnimalState.ReadOnly = true;
-            this.txtAnimalState.Size = new System.Drawing.Size(37, 26);
+            this.txtAnimalState.Size = new System.Drawing.Size(26, 20);
             this.txtAnimalState.TabIndex = 5;
             // 
             // lblAnimalState
             // 
             this.lblAnimalState.AutoSize = true;
-            this.lblAnimalState.Location = new System.Drawing.Point(257, 79);
+            this.lblAnimalState.Location = new System.Drawing.Point(171, 51);
+            this.lblAnimalState.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAnimalState.Name = "lblAnimalState";
-            this.lblAnimalState.Size = new System.Drawing.Size(52, 20);
+            this.lblAnimalState.Size = new System.Drawing.Size(35, 13);
             this.lblAnimalState.TabIndex = 4;
             this.lblAnimalState.Text = "State:";
             this.lblAnimalState.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtAnimalCity
             // 
-            this.txtAnimalCity.Location = new System.Drawing.Point(51, 76);
+            this.txtAnimalCity.Location = new System.Drawing.Point(34, 49);
+            this.txtAnimalCity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtAnimalCity.Name = "txtAnimalCity";
             this.txtAnimalCity.ReadOnly = true;
-            this.txtAnimalCity.Size = new System.Drawing.Size(200, 26);
+            this.txtAnimalCity.Size = new System.Drawing.Size(135, 20);
             this.txtAnimalCity.TabIndex = 3;
             // 
             // lblAnimalCity
             // 
             this.lblAnimalCity.AutoSize = true;
-            this.lblAnimalCity.Location = new System.Drawing.Point(6, 79);
+            this.lblAnimalCity.Location = new System.Drawing.Point(4, 51);
+            this.lblAnimalCity.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAnimalCity.Name = "lblAnimalCity";
-            this.lblAnimalCity.Size = new System.Drawing.Size(39, 20);
+            this.lblAnimalCity.Size = new System.Drawing.Size(27, 13);
             this.lblAnimalCity.TabIndex = 2;
             this.lblAnimalCity.Text = "City:";
             this.lblAnimalCity.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // txtAnimalStreetAddress
             // 
-            this.txtAnimalStreetAddress.Location = new System.Drawing.Point(130, 37);
+            this.txtAnimalStreetAddress.Location = new System.Drawing.Point(87, 24);
+            this.txtAnimalStreetAddress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txtAnimalStreetAddress.Name = "txtAnimalStreetAddress";
             this.txtAnimalStreetAddress.ReadOnly = true;
-            this.txtAnimalStreetAddress.Size = new System.Drawing.Size(349, 26);
+            this.txtAnimalStreetAddress.Size = new System.Drawing.Size(234, 20);
             this.txtAnimalStreetAddress.TabIndex = 1;
             // 
             // lblAnimalStreetAddress
             // 
             this.lblAnimalStreetAddress.AutoSize = true;
-            this.lblAnimalStreetAddress.Location = new System.Drawing.Point(6, 37);
+            this.lblAnimalStreetAddress.Location = new System.Drawing.Point(4, 24);
+            this.lblAnimalStreetAddress.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.lblAnimalStreetAddress.Name = "lblAnimalStreetAddress";
-            this.lblAnimalStreetAddress.Size = new System.Drawing.Size(124, 20);
+            this.lblAnimalStreetAddress.Size = new System.Drawing.Size(82, 13);
             this.lblAnimalStreetAddress.TabIndex = 0;
             this.lblAnimalStreetAddress.Text = "Street Address: ";
             // 
             // UserControlAnimalRecord
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.gbAnimalLocation);
             this.Controls.Add(this.gbAnimale_Information);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "UserControlAnimalRecord";
-            this.Size = new System.Drawing.Size(507, 518);
+            this.Size = new System.Drawing.Size(338, 337);
             this.gbAnimale_Information.ResumeLayout(false);
             this.gbAnimale_Information.PerformLayout();
             this.gbAnimalOptions.ResumeLayout(false);

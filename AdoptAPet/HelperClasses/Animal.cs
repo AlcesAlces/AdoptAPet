@@ -27,5 +27,6 @@ namespace AdoptAPet.HelperClasses
         public bool isFixed {get;set;}
         public bool isAdopted { get; set; }
 
+
     }
 }
