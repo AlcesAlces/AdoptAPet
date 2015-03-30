@@ -542,7 +542,14 @@ namespace AdoptAPet.HelperFunctions
             DataSet ds = dsBySql(sql);
             foreach (DataRow row in ds.Tables[0].Rows)
             {
-                personID = Int32.Parse(row["PID"].ToString());
+                try
+                {
+                    personID = Int32.Parse(row["PID"].ToString());
+                }
+                catch
+                {
+                    personID = 0;
+                }
             }
             return personID;
         }
