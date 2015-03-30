@@ -36,6 +36,7 @@ namespace AdoptAPet.UserControls
             Global.publicUser = new User();
             Global.publicUser.admin = false;
             Global.publicUser.userName = "Guest";
+            Global.publicUser.userId = 7;
             Global.menuItemsUser[0].Visible = false;
             Global.menuItemsUser[1].Visible = true;
             Global.menuItemsUser[2].Visible = false;

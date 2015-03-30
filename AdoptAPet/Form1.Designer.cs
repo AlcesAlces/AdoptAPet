@@ -33,7 +33,6 @@
             this.addAnimalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeAnimalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addBreedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.adoptAnimalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,7 +60,6 @@
             this.addAnimalToolStripMenuItem,
             this.removeAnimalToolStripMenuItem,
             this.addBreedToolStripMenuItem,
-            this.adoptAnimalToolStripMenuItem,
             this.addUserToolStripMenuItem,
             this.removeUserToolStripMenuItem});
             this.testToolStripMenuItem.Name = "testToolStripMenuItem";
@@ -91,13 +89,6 @@
             this.addBreedToolStripMenuItem.Text = "Add Breed";
             this.addBreedToolStripMenuItem.Visible = false;
             this.addBreedToolStripMenuItem.Click += new System.EventHandler(this.addBreedToolStripMenuItem_Click);
-            // 
-            // adoptAnimalToolStripMenuItem
-            // 
-            this.adoptAnimalToolStripMenuItem.Name = "adoptAnimalToolStripMenuItem";
-            this.adoptAnimalToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-            this.adoptAnimalToolStripMenuItem.Text = "Adopt Animal";
-            this.adoptAnimalToolStripMenuItem.Click += new System.EventHandler(this.adoptAnimalToolStripMenuItem_Click);
             // 
             // addUserToolStripMenuItem
             // 
@@ -184,7 +175,6 @@
         private System.Windows.Forms.ToolStripMenuItem loginToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem logoutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem registerToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem adoptAnimalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addBreedToolStripMenuItem;
 
     }

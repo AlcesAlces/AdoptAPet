@@ -16,13 +16,11 @@ namespace AdoptAPet.UserControls
     {
         Customer _customer = new Customer();
         Animal _animal = new Animal();
-        string[] animalAttributes = new string[17];
         public UserControlAdoptCheckOut(Customer infoCustomer, int animalID)
         {
             InitializeComponent();
             _customer = infoCustomer;
-            animalAttributes = HelperFunctions.Queries.adoptedCheckout_AnimalQuery(false, animalID);
-            populateItems();
+            populateItems(animalID);
             setAnimalInfo();
         }
 
@@ -31,7 +29,7 @@ namespace AdoptAPet.UserControls
             // TODO: Complete member initialization
         }
 
-        private void populateItems()
+        private void populateItems(int aid)
         {
             //customer information
             setAdopterName(_customer.name);
@@ -42,25 +40,9 @@ namespace AdoptAPet.UserControls
             setAdopterState(_customer.state);
             setAdopterZip(_customer.zip);
 
-            //animal information
-            _animal.aid = int.Parse(animalAttributes[0]);
-            _animal.age = int.Parse(animalAttributes[1]) != null ? int.Parse(animalAttributes[1]): 0;
-            _animal.sex = animalAttributes[2] != null ? animalAttributes[2] : "NA";
-            _animal.size = animalAttributes[3] != null ? animalAttributes[3] : "NA" ;
-            _animal.color = int.Parse(animalAttributes[4]);
-            _animal.name = animalAttributes[5] != null ? animalAttributes[5] :"NOT PROVIDED";
-            _animal.friendly = bool.Parse(animalAttributes[6]) != null ? bool.Parse(animalAttributes[6]) : false;
-            //_animal.weight = int.Parse(animalAttributes[7]) != null ? int.Parse(animalAttributes[7]) : 0;
-            _animal.description = animalAttributes[7] != null ? animalAttributes[7] : "NOT PROVIDED";
-            //_animal.vacciness = int.Parse(animalAttributes[8]) != null ? int.Parse(animalAttributes[9]) : 0;
-            _animal.microchip = animalAttributes[9] != null ? animalAttributes[9] : "NA";
-            _animal.location = int.Parse(animalAttributes[10]);
-            _animal.imgid = int.Parse(animalAttributes[11]) != null ? int.Parse(animalAttributes[11]) : 0;
-            _animal.species = int.Parse(animalAttributes[12]);
-            _animal.breed = int.Parse(animalAttributes[13]);
-            _animal.isFixed = bool.Parse(animalAttributes[14]) != null ? bool.Parse(animalAttributes[14]) : false;
-            _animal.isAdopted = bool.Parse(animalAttributes[15]);
+            _animal = Queries.getAnimalByAid(aid);
         }
+
         private void setAdopterName(string setName)
         {
             if (txtAdopterName.InvokeRequired)
@@ -160,12 +142,6 @@ namespace AdoptAPet.UserControls
             //go back to search menu
             Global.panel.Controls.Clear();
             Global.panel.Controls.Add(new UserControlSearch());
-            string[] isAdopted = HelperFunctions.Queries.isAdopted(_animal.aid);
-            if (isAdopted[0] != "True")
-            {
-                HelperFunctions.Queries.adoptedCheckout_RemoveRow(int.Parse(animalAttributes[0]));
-            }
-
         }
 
         private void setAnimalInfo()
@@ -268,7 +244,22 @@ namespace AdoptAPet.UserControls
             if (MessageBox.Show("Do you want to adopt this pet?", "AdoptAPet",
                 MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-               HelperFunctions.Queries.adoptedCheckout_UpdatePet(_animal.aid);
+                try
+                {
+                    //HelperFunctions.Queries.adoptedCheckout_UpdatePet(_animal.aid);
+                    HelperFunctions.Queries.adoptedCheckout_UpdateWithAIDUID(_animal.aid);
+                    HelperFunctions.Queries.setAnimalAdoptedByAid(_animal.aid, true);
+                    MessageBox.Show("Animal adopted successfully!");
+                }
+
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Something terrible happened. Contact your systems administrator or cry a whole lot!");
+                    MessageBox.Show(ex.ToString());
+                }
+
+                Global.panel.Controls.Clear();
+                Global.panel.Controls.Add(new UserControlSearch());
             }
 
         }

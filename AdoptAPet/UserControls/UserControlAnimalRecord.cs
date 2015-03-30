@@ -256,7 +256,7 @@ namespace AdoptAPet.UserControls
             if (_animal.isAdopted == false)
             {
                 //This will pair the current user with a pet to adopt
-                HelperFunctions.Queries.adoptedCheckInformation(Global.publicUser.userId, _animal.aid);
+                //HelperFunctions.Queries.adoptedCheckInformation(Global.publicUser.userId, _animal.aid);
                 
                 //This will return person's information based on which user is logged in and adopted the current pet
                 _customer = HelperFunctions.Queries.customerInformation(HelperFunctions.Queries.adoptedPersonID(Global.publicUser.userId));

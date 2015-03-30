@@ -630,6 +630,12 @@ namespace AdoptAPet.HelperFunctions
                             "WHERE ac.\"UID\" =" + Global.publicUser.userId + "AND ac.\"AID\" = " + animalID + "AND a.\"AID\" = ac.\"AID\"";
             DataSet ds = dsBySql(sql);
         }
+
+        public static void adoptedCheckout_UpdateWithAIDUID(int aid)
+        {
+            string sql = "INSERT INTO \"ADOPTED_CHECKOUT\" (\"AID\", \"UID\") VALUES("+aid+","+Global.publicUser.userId+")";
+            dsBySql(sql);
+        }
         public static string[] isAdopted(int animalID)
         {
             string sql = "SELECT a.\"ADOPTED\" " +
@@ -640,5 +646,27 @@ namespace AdoptAPet.HelperFunctions
             toReturn.Add(ds.Tables[0].Rows[0]["ADOPTED"].ToString());
             return toReturn.ToArray();
         }
+
+        /// <summary>
+        /// Returns an animal based on AID.
+        /// </summary>
+        /// <param name="aid"></param>
+        /// <returns></returns>
+        public static Animal getAnimalByAid(int aid)
+        {
+            string sql = "SELECT * FROM \"ANIMAL\" WHERE \"AID\" = " + aid;
+
+            DataSet ds = dsBySql(sql);
+
+            try
+            {
+                return DataConversions.AnimalFromDataRow(ds.Tables[0].Rows[0]);
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
         }
     }
