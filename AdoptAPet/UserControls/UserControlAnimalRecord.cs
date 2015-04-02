@@ -49,8 +49,8 @@ namespace AdoptAPet.UserControls
 
             //[0]Street|[1]city|[2]state|[3]zip
             string[] animalAddress = HelperFunctions.Queries.returnAnimalAddress(_animal.location);
-            setAnimalStreetAddress(animalAddress[0]);
-            setAnimalCity(animalAddress[1]);
+            setAnimalStreetAddress(animalAddress[1]);
+            setAnimalCity(animalAddress[0]);
             setAnimalState(animalAddress[2]);
             setAnimalZip(animalAddress[3]);
             setAnimalFriendly(_animal.friendly);
