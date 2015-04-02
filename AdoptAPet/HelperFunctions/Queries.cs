@@ -538,7 +538,9 @@ namespace AdoptAPet.HelperFunctions
         public static int adoptedPersonID(int userID)
         {
             int personID = 0;
-            string sql = "SELECT DISTINCT ac.\"PID\" FROM \"ADOPTED_CHECKOUT\" AS ac WHERE ac.\"UID\" = " + userID;
+            string sql = "SELECT DISTINCT p.\"PID\" "+
+                            "FROM \"PERSON\" AS p "+
+                            "WHERE p.\"USER_ID\" = " + userID;
             DataSet ds = dsBySql(sql);
             foreach (DataRow row in ds.Tables[0].Rows)
             {
