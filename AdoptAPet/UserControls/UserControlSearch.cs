@@ -276,9 +276,9 @@ namespace AdoptAPet
         {
 
             setFormEnabled(false);
-            tssLabelStatus.Text = "Loading animal information...";
+            settssLabelStatus("Loading animal information...");
             populateComboboxes();
-            tssLabelStatus.Text = "Animal information loaded";
+            settssLabelStatus("Animal information loaded");
             setFormEnabled(true);
         }
 
@@ -313,6 +313,19 @@ namespace AdoptAPet
         #region threadsafe component interaction
         //All of these functions are needed if you're going to interact with a
         //component outside of this thread.
+
+        private void settssLabelStatus(string toSet)
+        {
+            if(statusStrip1.InvokeRequired)
+            {
+                statusStrip1.Invoke(new MethodInvoker(() => { tssLabelStatus.Text = toSet; }));
+            }
+
+            else
+            {
+                tssLabelStatus.Text = toSet;
+            }
+        }
 
         private void setFormEnabled(bool state)
         {
