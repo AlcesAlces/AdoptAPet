@@ -32,7 +32,7 @@ namespace AdoptAPet
 
                 if (Queries.checkUsernameUnique(txtUsername.Text.ToLower()))
                 {
-                    Queries.addUser(txtUsername.Text.Trim(), txtPass.Text.Trim());
+                    Queries.addPerson(txtUsername.Text.Trim(), txtPass.Text.Trim(), txtEmail.Text.Trim(), txtDoB.Text.Trim(), txtAdr_Street.Text.Trim(), txtAdr_City.Text.Trim(),txtState.Text.Trim(), int.Parse(txtZip.Text.Trim()));
                     MessageBox.Show("User created");
                     FormHelpers.setMainComponentsLogin();
                 }
@@ -66,5 +66,7 @@ namespace AdoptAPet
                 Global.userPanel.Controls.Add(new UserControlLoginOptions());
             }
         }
+
+      
     }
 }

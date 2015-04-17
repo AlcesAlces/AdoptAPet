@@ -624,58 +624,114 @@ namespace AdoptAPet.HelperFunctions
              }
 
              return toReturn.ToArray();
-        }
-        public static void adoptedCheckout_RemoveRow(int animalID)
-        {
-            string sql = "DELETE FROM \"ADOPTED_CHECKOUT\" WHERE \"UID\" = " + Global.publicUser.userId + "AND \"AID\" =" + animalID;
-            DataSet ds = dsBySql(sql);
-
-        }
-        public static void adoptedCheckout_UpdatePet(int animalID)
-        {
-            string sql =    "UPDATE \"ANIMAL\" AS a " +
-                            "SET \"ADOPTED\" = 'true' " +
-                            "FROM \"ADOPTED_CHECKOUT\" AS ac " +
-                            "WHERE ac.\"UID\" =" + Global.publicUser.userId + "AND ac.\"AID\" = " + animalID + "AND a.\"AID\" = ac.\"AID\"";
-            DataSet ds = dsBySql(sql);
-        }
-
-        public static void adoptedCheckout_UpdateWithAIDUID(int aid)
-        {
-            string sql = "INSERT INTO \"ADOPTED_CHECKOUT\" (\"AID\", \"UID\") VALUES("+aid+","+Global.publicUser.userId+")";
-            dsBySql(sql);
-        }
-        public static string[] isAdopted(int animalID)
-        {
-            string sql = "SELECT a.\"ADOPTED\" " +
-                            "FROM \"ANIMAL\" AS a " +
-                            "WHERE a.\"AID\" = " + animalID;
-            DataSet ds = dsBySql(sql);
-            List<string> toReturn = new List<string>();
-            toReturn.Add(ds.Tables[0].Rows[0]["ADOPTED"].ToString());
-            return toReturn.ToArray();
-        }
-
-        /// <summary>
-        /// Returns an animal based on AID.
-        /// </summary>
-        /// <param name="aid"></param>
-        /// <returns></returns>
-        public static Animal getAnimalByAid(int aid)
-        {
-            string sql = "SELECT * FROM \"ANIMAL\" WHERE \"AID\" = " + aid;
-
-            DataSet ds = dsBySql(sql);
-
-            try
-            {
-                return DataConversions.AnimalFromDataRow(ds.Tables[0].Rows[0]);
             }
-            catch
+            public static void adoptedCheckout_RemoveRow(int animalID)
             {
-                return null;
-            }
-        }
+                string sql = "DELETE FROM \"ADOPTED_CHECKOUT\" WHERE \"UID\" = " + Global.publicUser.userId + "AND \"AID\" =" + animalID;
+                DataSet ds = dsBySql(sql);
 
+            }
+            public static void adoptedCheckout_UpdatePet(int animalID)
+            {
+                string sql =    "UPDATE \"ANIMAL\" AS a " +
+                                "SET \"ADOPTED\" = 'true' " +
+                                "FROM \"ADOPTED_CHECKOUT\" AS ac " +
+                                "WHERE ac.\"UID\" =" + Global.publicUser.userId + "AND ac.\"AID\" = " + animalID + "AND a.\"AID\" = ac.\"AID\"";
+                DataSet ds = dsBySql(sql);
+            }
+
+            /// <summary>
+            /// Assign the user to the adopted pet. 
+            /// </summary>
+            public static void adoptedCheckout_UpdateWithAIDUID(int aid)
+            {
+                string sql = "INSERT INTO \"ADOPTED_CHECKOUT\" (\"AID\", \"UID\") VALUES("+aid+","+Global.publicUser.userId+")";
+                dsBySql(sql);
+            }
+            /// <summary>
+            /// Check is animal has already been adopted 
+            /// </summary>
+            public static string[] isAdopted(int animalID)
+            {
+                string sql = "SELECT a.\"ADOPTED\" " +
+                                "FROM \"ANIMAL\" AS a " +
+                                "WHERE a.\"AID\" = " + animalID;
+                DataSet ds = dsBySql(sql);
+                List<string> toReturn = new List<string>();
+                toReturn.Add(ds.Tables[0].Rows[0]["ADOPTED"].ToString());
+                return toReturn.ToArray();
+            }
+
+            /// <summary>
+            /// Returns an animal based on AID.
+            /// </summary>
+            /// <param name="aid"></param>
+            /// <returns></returns>
+            public static Animal getAnimalByAid(int aid)
+            {
+                string sql = "SELECT * FROM \"ANIMAL\" WHERE \"AID\" = " + aid;
+
+                DataSet ds = dsBySql(sql);
+
+                try
+                {
+                    return DataConversions.AnimalFromDataRow(ds.Tables[0].Rows[0]);
+                }
+                catch
+                {
+                    return null;
+                }
+            }
+            /// <summary>
+            /// Add user's personal information into the datebase. 
+            /// Tables used: PERSON, USER, ADDRESS 
+            /// </summary>
+            public static void addPerson(string name, string password, string email, string date_of_birth, string street, string city, string state, int zip)
+                {
+                 /*	Order of operations - Add person to database
+	                -----------------------------------------------------------
+	                 1) Add person to Address table
+	                 2) Save address id from Address table
+ 
+ 	                 3) Add person to User table
+ 	                 4) Save the userId from User table
+
+ 	                 5) Add person's personal information to Person table
+            	    -----------------------------------------------------------
+                */
+                    int user_id = -1;
+
+                // (1) + (2)
+                int address_id = returnAddressIndexQuery(city, zip, street, state);
+            
+                // (3)
+                addUser(name, password);
+
+                // (4)
+                string  sqlUser =  "SELECT \"UID\" "+
+                                    "FROM \"USER\" " +
+                                    "WHERE \"NAME\" = '" + name + "' "+ 
+                                    "AND \"PASS\" = '" + password + "'";
+
+                DataSet ds = dsBySql(sqlUser);
+
+                foreach (DataRow row in ds.Tables[0].Rows)
+                {
+                    try
+                    {
+                      user_id = Int32.Parse(row["UID"].ToString());
+                    }
+                    catch
+                    {
+                        user_id = -1;
+                    }
+                }    
+
+                // (5)
+               string sqlAddPerson =  "INSERT INTO \"PERSON\"(\"NAME\",\"EMAIL\",\"DOB\",\"ADDRESS\",\"USER_ID\")" +
+                                      "VALUES ('" + name + "','" + email + "','" + date_of_birth + "'," + address_id + "," + user_id + ")";
+
+               dsBySql(sqlAddPerson);
+            }
         }
     }
