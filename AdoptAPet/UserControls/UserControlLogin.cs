@@ -58,7 +58,7 @@ namespace AdoptAPet
         /// </summary>
         private void verifyLogin()
         {
-            User user = Queries.returnUserByName(tbUsername.Text);
+            User user = Queries.returnUserByName(tbUsername.Text.ToLower());
 
             if (user != null)
             {

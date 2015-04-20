@@ -382,10 +382,26 @@ namespace AdoptAPet.HelperFunctions
         /// <summary>
         /// Removes an user from the database
         /// </summary>
-        public static void romoveUserById(int uid)
+        public static bool romoveUserById(int uid)
         {
-            string sqlRemoval = "DELETE FROM \"USER\" WHERE \"UID\" =" + uid;
-            dsBySql(sqlRemoval);
+            int personID = getPersonIdFromUid(uid);
+
+            Customer thatGuy = customerInformation(personID);
+            if (thatGuy.has_adopted)
+            {
+                //tht have adopted do not 
+                return false;
+            }
+
+            //Set the user to inactive, set user_id to -1.
+            string sqlUpdate_PERSON = "UPDATE \"PERSON\" SET \"USER_ID\"= -1 WHERE \"USER_ID\" =" + uid;
+            dsBySql(sqlUpdate_PERSON);
+
+            //Remove the user from the user table
+            string sqlRemoval_USER = "DELETE FROM \"USER\" WHERE \"UID\" =" + uid;
+            dsBySql(sqlRemoval_USER);
+
+            return true;
         }
 
         /// <summary>
@@ -555,6 +571,13 @@ namespace AdoptAPet.HelperFunctions
             }
             return personID;
         }
+
+        public static int getPersonIdFromUid(int uid){
+            string sql = "SELECT p.\"PID\" FROM \"PERSON\" p WHERE p.\"USER_ID\" = " + uid;
+            DataSet ds = dsBySql(sql);
+
+           return (int)ds.Tables[0].Rows[0]["PID"];
+        } 
         /// <summary>
         /// Query return the attributes of a customer
         /// </summary>
@@ -562,7 +585,7 @@ namespace AdoptAPet.HelperFunctions
         /// <returns>Name,Email,DoB,User_ID,Has_Adopted,Num_Pets,StreetAddress,CityAddress,StateAddress,CityAddress</returns>
         public static Customer customerInformation(int personID)
         {
-            string sql = "SELECT p.\"NAME\", p.\"EMAIL\", p.\"DOB\", p.\"USER_ID\", c.\"HAS_ADOPTED\", c.\"NUM_PETS\", a.\"STREET\", a.\"CITY\", a.\"STATE\", a.\"ZIP\""+
+            string sql = "SELECT p.\"NAME\", p.\"EMAIL\", p.\"DOB\", p.\"USER_ID\", c.\"HAS_ADOPTED\", c.\"NUM_PETS\", a.\"STREET\", a.\"CITY\", a.\"STATE\", a.\"ZIP\" , c.\"CID\" " +
                 "FROM \"CUSTOMER\" c INNER JOIN \"PERSON\" p ON c.\"CID\" = p.\"CID\" INNER JOIN \"ADDRESS\" a ON p.\"ADDRESS\" = a.\"ADDRESS_ID\"" +
                 "WHERE p.\"PID\" =" + personID;
 
@@ -583,6 +606,7 @@ namespace AdoptAPet.HelperFunctions
                     toReturn.city = item["CITY"].ToString().ToUpper();
                     toReturn.state = item["STATE"].ToString().ToUpper();
                     toReturn.zip = (int)item["ZIP"];
+                    toReturn.CID = (int)item["CID"];
 	           
             }
             return toReturn;
@@ -638,7 +662,10 @@ namespace AdoptAPet.HelperFunctions
                                 "FROM \"ADOPTED_CHECKOUT\" AS ac " +
                                 "WHERE ac.\"UID\" =" + Global.publicUser.userId + "AND ac.\"AID\" = " + animalID + "AND a.\"AID\" = ac.\"AID\"";
                 DataSet ds = dsBySql(sql);
-            }
+
+
+                
+                }
 
             /// <summary>
             /// Assign the user to the adopted pet. 
@@ -647,6 +674,14 @@ namespace AdoptAPet.HelperFunctions
             {
                 string sql = "INSERT INTO \"ADOPTED_CHECKOUT\" (\"AID\", \"UID\") VALUES("+aid+","+Global.publicUser.userId+")";
                 dsBySql(sql);
+
+                int PersonsID = getPersonIdFromUid(Global.publicUser.userId);
+                Customer thatGuy = customerInformation(PersonsID);
+
+                //update customer table
+                string sql2 = "UPDATE \"CUSTOMER\" SET \"HAS_ADOPTED\"= 'true'  WHERE \"CID\" =" + thatGuy.CID;
+                dsBySql(sql);
+
             }
             /// <summary>
             /// Check is animal has already been adopted 
@@ -695,43 +730,116 @@ namespace AdoptAPet.HelperFunctions
  
  	                 3) Add person to User table
  	                 4) Save the userId from User table
+                     
+                     5) Add person to Customer table
+                     6) Save the CID from Customer table
 
- 	                 5) Add person's personal information to Person table
+ 	                 7) Add person's personal information to Person table
             	    -----------------------------------------------------------
                 */
-                    int user_id = -1;
-
-                // (1) + (2)
-                int address_id = returnAddressIndexQuery(city, zip, street, state);
-            
-                // (3)
-                addUser(name, password);
-
-                // (4)
-                string  sqlUser =  "SELECT \"UID\" "+
-                                    "FROM \"USER\" " +
-                                    "WHERE \"NAME\" = '" + name + "' "+ 
-                                    "AND \"PASS\" = '" + password + "'";
-
-                DataSet ds = dsBySql(sqlUser);
+                //Check if the user is a returning user. 
+                    bool returnUserCheck = false;
+                string sqlCheckReturning_User = "SELECT p.\"PID\" " +
+                                                "FROM \"PERSON\" AS p INNER JOIN \"ADDRESS\" AS a ON p.\"ADDRESS\" = a.\"ADDRESS_ID\" "+
+                                                "WHERE p.\"USER_ID\" = -1 " +
+                                                " AND p.\"NAME\" ='" + name + "'"+
+                                                " AND a.\"CITY\" ='" + city + "'"+
+                                                " AND a.\"STATE\" ='" + state + "'" +
+                                                " AND a.\"ZIP\" =" + zip;
+                DataSet ds = dsBySql(sqlCheckReturning_User);
+                int isUserInDatebase;
+                int user_id = -1;
 
                 foreach (DataRow row in ds.Tables[0].Rows)
                 {
                     try
                     {
-                      user_id = Int32.Parse(row["UID"].ToString());
+                        isUserInDatebase = Int32.Parse(row["PID"].ToString());
+                        addUser(name.ToLower(), password);
+                        string sqlUser = "SELECT \"UID\" " +
+                                        "FROM \"USER\" " +
+                                        "WHERE \"NAME\" = '" + name.ToLower() + "' " +
+                                        "AND \"PASS\" = '" + password + "'";
+
+                        ds = dsBySql(sqlUser);
+
+                        foreach (DataRow element in ds.Tables[0].Rows)
+                        {
+                            try
+                            {
+                                user_id = Int32.Parse(element["UID"].ToString());
+                            }
+                            catch
+                            {
+                                break;
+                            }
+                        }
+                        string sqlUpdate_PERSON = "UPDATE \"PERSON\" SET \"USER_ID\"=" + user_id + " WHERE \"PID\" =" + isUserInDatebase;
+                        dsBySql(sqlUpdate_PERSON);
                     }
                     catch
                     {
-                        user_id = -1;
+                        returnUserCheck = true;
+                        break;
                     }
-                }    
+                }
 
-                // (5)
-               string sqlAddPerson =  "INSERT INTO \"PERSON\"(\"NAME\",\"EMAIL\",\"DOB\",\"ADDRESS\",\"USER_ID\")" +
-                                      "VALUES ('" + name + "','" + email + "','" + date_of_birth + "'," + address_id + "," + user_id + ")";
+                //User is not a returning user in the database, add person to the database
+                if (returnUserCheck != false)
+                {
+                    int cid = -1;     //customer id
 
-               dsBySql(sqlAddPerson);
+                    // (1 | 2) Insert and return user's address
+                    int address_id = returnAddressIndexQuery(city, zip, street, state);
+
+                    // (3 | 4) Insert and return user's ID
+                    addUser(name.ToLower(), password);
+
+                    string sqlUser = "SELECT \"UID\" " +
+                                        "FROM \"USER\" " +
+                                        "WHERE \"NAME\" = '" + name.ToLower() + "' " +
+                                        "AND \"PASS\" = '" + password + "'";
+
+                    ds = dsBySql(sqlUser);
+
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        try
+                        {
+                            user_id = Int32.Parse(row["UID"].ToString());
+                        }
+                        catch
+                        {
+                            user_id = -1;
+                        }
+                    }
+                    // (5 | 6) Insert and return user's customer id
+                    string sqlAddCustomer = "INSERT INTO \"CUSTOMER\"(\"HAS_ADOPTED\",\"NUM_PETS\")" +
+                                            "VALUES ('" + false + "'," + 0 + ")";
+                    dsBySql(sqlAddCustomer);
+
+                    string sqlCustomer = "SELECT MAX(\"CID\")" +
+                                          "FROM \"CUSTOMER\"";
+
+                    ds = dsBySql(sqlCustomer);
+                    foreach (DataRow row in ds.Tables[0].Rows)
+                    {
+                        try
+                        {
+                            cid = Int32.Parse(row[0].ToString());
+                        }
+                        catch
+                        {
+                            cid = -1;
+                        }
+                    }
+
+                    // (7) Insert user into person table
+                    string sqlAddPerson = "INSERT INTO \"PERSON\"(\"NAME\",\"EMAIL\",\"DOB\",\"ADDRESS\",\"USER_ID\",\"CID\")" +
+                                           "VALUES ('" + name + "','" + email + "','" + date_of_birth + "'," + address_id + "," + user_id + "," + cid + ")";
+
+                    dsBySql(sqlAddPerson);
+                }
             }
         }
     }

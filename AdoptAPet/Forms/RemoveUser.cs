@@ -30,7 +30,7 @@ namespace AdoptAPet.Forms
 
             List<User> userList = Queries.ReturnAllUsers();
             userList = (from b in userList
-                        where !b.admin
+                        where !b.admin && b.userId != -1    //userId = -1 -> inactive user
                         select b).ToList();
 
             //List<User> example = (List<User>)lbRemoveUser.tag;
@@ -49,7 +49,10 @@ namespace AdoptAPet.Forms
             List<User> userList = (List<User>)lbRemoveUser.Tag;
             int userIndexToRomove = lbRemoveUser.SelectedIndex;
 
-            Queries.romoveUserById(userList[userIndexToRomove].userId);
+            if(!Queries.romoveUserById(userList[userIndexToRomove].userId)){
+                //person has addopted cant delete
+                MessageBox.Show("this Person Has Adopted Can Not Delete Person");
+            }
 
             populateRemoveList();
 
