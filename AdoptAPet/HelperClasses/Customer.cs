@@ -25,6 +25,7 @@ namespace AdoptAPet.HelperClasses
         public int user_id { get; set; }
         public bool has_adopted { get; set; }
         public int num_pets { get; set; }
+        public int CID {get;set;}
 
 
     }
