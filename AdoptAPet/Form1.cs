@@ -18,7 +18,7 @@ namespace AdoptAPet
         {
             InitializeComponent();
             Global.menuItemsEdit.Add(addAnimalToolStripMenuItem);
-            Global.menuItemsEdit.Add(removeAnimalToolStripMenuItem);
+            //Global.menuItemsEdit.Add(removeAnimalToolStripMenuItem);
             Global.menuItemsEdit.Add(addUserToolStripMenuItem);
             Global.menuItemsEdit.Add(removeUserToolStripMenuItem);
             Global.menuItemsEdit.Add(addBreedToolStripMenuItem);
@@ -53,8 +53,9 @@ namespace AdoptAPet
 
         private void removeAnimalToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Form removeAnimalForm = new RemoveAnimal();
-            removeAnimalForm.Show();
+            //Remove animal disabled for the time being.
+            //Form removeAnimalForm = new RemoveAnimal();
+            //removeAnimalForm.Show();
         }
 
         private void adoptAnimalToolStripMenuItem_Click(object sender, EventArgs e)
@@ -72,6 +73,20 @@ namespace AdoptAPet
         {
             RemoveUser removeUserForm = new RemoveUser();
             removeUserForm.Show();
+        }
+
+        private void loginToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Global.userPanel.Controls.Clear();
+            Global.userPanel.Tag = "login";
+            Global.userPanel.Controls.Add(new UserControlLogin());
+        }
+
+        private void registerToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Global.userPanel.Controls.Clear();
+            Global.userPanel.Tag = "not login";
+            Global.userPanel.Controls.Add(new UserControlRegister());
         }
     }
 }

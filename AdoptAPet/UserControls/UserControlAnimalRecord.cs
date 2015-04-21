@@ -31,6 +31,12 @@ namespace AdoptAPet.UserControls
             {
                 btnAdopt_Information.Visible = false;                
             }
+
+            //User is logged in as the guest user.
+            if(Global.publicUser.userId == 7)
+            {
+                btnAdopt_Information.Visible = false;
+            }
         }
 
         private void populateItems()

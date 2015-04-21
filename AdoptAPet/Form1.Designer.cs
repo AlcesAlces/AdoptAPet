@@ -31,7 +31,6 @@
             this.menuStripMain = new System.Windows.Forms.MenuStrip();
             this.testToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addAnimalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.removeAnimalToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addBreedToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.addUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.removeUserToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -58,7 +57,6 @@
             // 
             this.testToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.addAnimalToolStripMenuItem,
-            this.removeAnimalToolStripMenuItem,
             this.addBreedToolStripMenuItem,
             this.addUserToolStripMenuItem,
             this.removeUserToolStripMenuItem});
@@ -69,23 +67,15 @@
             // addAnimalToolStripMenuItem
             // 
             this.addAnimalToolStripMenuItem.Name = "addAnimalToolStripMenuItem";
-            this.addAnimalToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.addAnimalToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addAnimalToolStripMenuItem.Text = "Add Animal";
             this.addAnimalToolStripMenuItem.Visible = false;
             this.addAnimalToolStripMenuItem.Click += new System.EventHandler(this.addAnimalToolStripMenuItem_Click);
             // 
-            // removeAnimalToolStripMenuItem
-            // 
-            this.removeAnimalToolStripMenuItem.Name = "removeAnimalToolStripMenuItem";
-            this.removeAnimalToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
-            this.removeAnimalToolStripMenuItem.Text = "Remove Animal";
-            this.removeAnimalToolStripMenuItem.Visible = false;
-            this.removeAnimalToolStripMenuItem.Click += new System.EventHandler(this.removeAnimalToolStripMenuItem_Click);
-            // 
             // addBreedToolStripMenuItem
             // 
             this.addBreedToolStripMenuItem.Name = "addBreedToolStripMenuItem";
-            this.addBreedToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.addBreedToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addBreedToolStripMenuItem.Text = "Add Breed";
             this.addBreedToolStripMenuItem.Visible = false;
             this.addBreedToolStripMenuItem.Click += new System.EventHandler(this.addBreedToolStripMenuItem_Click);
@@ -93,14 +83,14 @@
             // addUserToolStripMenuItem
             // 
             this.addUserToolStripMenuItem.Name = "addUserToolStripMenuItem";
-            this.addUserToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.addUserToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.addUserToolStripMenuItem.Text = "Add User";
             this.addUserToolStripMenuItem.Visible = false;
             // 
             // removeUserToolStripMenuItem
             // 
             this.removeUserToolStripMenuItem.Name = "removeUserToolStripMenuItem";
-            this.removeUserToolStripMenuItem.Size = new System.Drawing.Size(158, 22);
+            this.removeUserToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.removeUserToolStripMenuItem.Text = "Remove User";
             this.removeUserToolStripMenuItem.Visible = false;
             this.removeUserToolStripMenuItem.Click += new System.EventHandler(this.removeUserToolStripMenuItem_Click);
@@ -121,6 +111,7 @@
             this.loginToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.loginToolStripMenuItem.Text = "Login";
             this.loginToolStripMenuItem.Visible = false;
+            this.loginToolStripMenuItem.Click += new System.EventHandler(this.loginToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
@@ -136,6 +127,7 @@
             this.registerToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.registerToolStripMenuItem.Text = "Register";
             this.registerToolStripMenuItem.Visible = false;
+            this.registerToolStripMenuItem.Click += new System.EventHandler(this.registerToolStripMenuItem_Click);
             // 
             // panelMain
             // 
@@ -168,7 +160,6 @@
         private System.Windows.Forms.ToolStripMenuItem testToolStripMenuItem;
         private System.Windows.Forms.Panel panelMain;
         private System.Windows.Forms.ToolStripMenuItem addAnimalToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem removeAnimalToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem addUserToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem removeUserToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem userToolStripMenuItem;
