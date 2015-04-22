@@ -146,7 +146,9 @@ namespace AdoptAPet.UserControls
 
         private void setAnimalInfo()
         {
-               setpnlContent(new UserControlAnimalRecord( _animal));
+            UserControlAnimalRecord animalRecord = new UserControlAnimalRecord(_animal);
+            animalRecord.setAdoptButtonVis(false);
+            setpnlContent(animalRecord);
 
                 try
                 {

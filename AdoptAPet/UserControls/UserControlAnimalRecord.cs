@@ -39,6 +39,10 @@ namespace AdoptAPet.UserControls
             }
         }
 
+        public void setAdoptButtonVis(bool toSet){
+            btnAdopt_Information.Visible = toSet;
+        }
+
         private void populateItems()
         {
             //TODO: Fill in all of these functions.

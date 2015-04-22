@@ -19,7 +19,6 @@ namespace AdoptAPet
             InitializeComponent();
             Global.menuItemsEdit.Add(addAnimalToolStripMenuItem);
             //Global.menuItemsEdit.Add(removeAnimalToolStripMenuItem);
-            Global.menuItemsEdit.Add(addUserToolStripMenuItem);
             Global.menuItemsEdit.Add(removeUserToolStripMenuItem);
             Global.menuItemsEdit.Add(addBreedToolStripMenuItem);
             Global.menuItemsUser.Add(loginToolStripMenuItem);
