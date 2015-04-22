@@ -785,7 +785,7 @@ namespace AdoptAPet.HelperFunctions
                 }
 
                 //User is not a returning user in the database, add person to the database
-                if (returnUserCheck != false)
+                if (!returnUserCheck)
                 {
                     int cid = -1;     //customer id
 
